@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="人工智能,犯罪预测," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="William's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="今天想聊聊人工智能和犯罪预测。 2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。 CompStat，是COMPuter STATistics（计算机统计）的缩写，现在已经演变成为一个专有名词，特指一种警务管理模式。1994年，纽约市的警察部门启用了一个新的治安信息管理系统，是一个以地图为基础的统计分析系统，">
+<meta name="keywords" content="人工智能,犯罪预测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能与犯罪预测">
+<meta property="og:url" content="http://yoursite.com/2017/05/20/PolicePredict/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:description" content="今天想聊聊人工智能和犯罪预测。 2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。 CompStat，是COMPuter STATistics（计算机统计）的缩写，现在已经演变成为一个专有名词，特指一种警务管理模式。1994年，纽约市的警察部门启用了一个新的治安信息管理系统，是一个以地图为基础的统计分析系统，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-02T15:12:32.323Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工智能与犯罪预测">
+<meta name="twitter:description" content="今天想聊聊人工智能和犯罪预测。 2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。 CompStat，是COMPuter STATistics（计算机统计）的缩写，现在已经演变成为一个专有名词，特指一种警务管理模式。1994年，纽约市的警察部门启用了一个新的治安信息管理系统，是一个以地图为基础的统计分析系统，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/20/PolicePredict/"/>
+
+
+
+
+
+  <title>人工智能与犯罪预测 | William's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">William's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">William的github博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/PolicePredict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人工智能与犯罪预测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T22:49:21+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/人工智能/" itemprop="url" rel="index">
+                    <span itemprop="name">人工智能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天想聊聊人工智能和犯罪预测。</p>
+<p>2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。</p>
+<p>CompStat，是COMPuter STATistics（计算机统计）的缩写，现在已经演变成为一个专有名词，特指一种警务管理模式。1994年，纽约市的警察部门启用了一个新的治安信息管理系统，是一个以地图为基础的统计分析系统，随着它的出现，纽约城的治安开始逐年好转。</p>
+<p>CompStat系统通过分析纽约76个警区日常犯罪的数据，得出地区犯罪报告、逮捕报告以及预测出地区犯罪趋势图，告知警方哪些地段可能会发生暴力事件。在系统预测的案件多发地，多派警力巡查。这个系统运行后，仅仅用一年的时间，纽约的犯罪率就下降了60%。到2003年，谋杀案件降到了1964年以来的历史最低水平。</p>
+<a id="more"></a>
+<p>由于Compstat系统的成功运用，纽约市公民对警察的满意度也上升到了历史最高点。现在美国三分之一以上的警察局都采用该系统，芝加哥、新奥尔良和明里波利斯的警察局自从采用Compstat模式后，犯罪率出现了双位数的下降。</p>
+<p>到了2013年，全美已有超过90%的警方布置了街头和公共场合摄像头，个人数据库渐渐完善，警察的预知能力更是不受地域限制。比如，纽约警察局受Compstat系统成功的激励，2012年首次与微软公司合作，又引进了一款更先进的预测工具，这款工具信息检索系统能分析和及时显示超过3000个监控仪、911电话，车牌和其他资源的数据。</p>
+<p>2014年，这款系统第一次出击，取得的成绩就令人惊叹。通过追踪100万脸书网页、4万个来自臭名昭著的赖克斯岛监狱的通话记录和数百小时来自大楼电梯、走廊和庭院的监控录像，警方突击了一个住宅区，在那儿逮捕了103个黑帮成员，这是纽约历史上最大规模的一次帮派逮捕行动，这个帮派被指控涉嫌2起谋杀、19个致命枪击案和50件其他的枪击事件，大规模的逮捕行动成功地阻止了未来可能的犯罪行为。在没有计算机的过去，这一庞大的数据侦查活动是无法想象的。</p>
+<p>在预测犯罪分子方面，世界各地的警察局根据自身需要，设计出了不同类型的预测软件。在英国，毒品和抢劫一直是社会难题，警察部门现在使用“预测性警务”(PredPol)软件程序，根据过去三年区域的犯罪记录，PredPol会绘制出一份城市地图，用小红框标出热点犯罪区域，这个区域大概占到一个城市街区一半的面积，警察们会按照这份带有标记的地图，到那些小红框区域巡逻。在德国，预测的重点是防偷窃案。</p>
+<p>警察局利用Precobs预测软件，通过搜集犯罪现场、时间、失窃物及窃贼的特定行为等数据做分析，辨別出高失窃风险区，预先部署警力来防止窃案发生。<br>强大数据资源的支撑下，利用先进算法的计算机不难形成较准确的预测系统。过去，在学校门口发现一个可疑车辆，警局接到报案后，会根据车牌搜索信息，但搜索结果只是出现车牌的主人姓名、电话、住址等少部分信息。而现在，假如幼儿园附近有个可疑车辆被报告给了警察局，预测系统就会根据已建立的车牌管理数据库，查出谁拥有了这辆车，车主的逮捕记录，和这个区域的犯罪情况，它不仅能知道这辆车现在在哪里，而且通过调动车牌记录，还可以知道它这几天、几个星期，甚至几个月去过哪里。根据摄像头显示，脸部识别系统又将识别此时开车的人是否是车主本人，通过合理的推测，这个数据可能有助于让犯罪念头扼杀在萌芽中。</p>
+<p>相较而言，Predpol是一个比较成熟的产品。<br>Making predictive policing practical<br>The science behind predictive policing<br>Testing predictive policing in the field</p>
+<p>这套系统的设计理念也很合乎情理，Data + Criminal behaviors + Advanced mathematics = Highest probabilities of crime，但条码君没琢磨懂将犯罪模式抽象成的数学模型。</p>
+<p>相较于Predpol的实用性，Palanti更像是个科研项目，当然其实它是个实用系统。Palanti采用了动态本体论(Ontology)的概念，在自然语言理解层面以及系统的体系结构设计（为了配合Ontology的表示以及异质结构数据导入）上显示了相当的功力。我们知道，建立好本体之间的关系之后就可以进行语义层面上的推理，推理的结果可以映射回语言层面形成新的组合，本体还能比如定义同义词、反义词，对属性的值域施加约束等等。这些手段都是为了加强对大数据的理解，从而更深层次挖掘有用信息。Palanti主要是对人在社会组织中的各种复杂关系做了本体层面的抽象，这样可以全面掌握一个人包含社会关系在内的复杂属性。Palanti的学术资料也非常丰富，附件只是一小部分。</p>
+<p>瑞士苏黎世警方正使用德国开发的Precobs软件，应用这款软件的地区，盗窃案发生率降低了30%。Precobs相对简单，感觉是个线性预测模型，trigger和anti-trigger有点点现在流行的生成对抗网络的意思，但很粗糙和浅显。</p>
+<p>条码君认为，当我们理解人工智能作为未来科技发展趋势的时候，特别是其中自然语言理解部分的时候，我们不能只是想到虚拟个人助理、语音识别技术，这里本体论的应用场景就是一个让人眼前一亮的选择。未来更多的应用还需要我们脑洞大开地将科学与应用相结合。</p>
+<p>其次，犯罪预测也是当下智慧城市建设中不可或缺的一部分。目前一些地方政府部门特别是公安系统也在做相应的研发工作，但单靠自己的有限的科研力量很难有高水平的成果，适当引入外部力量包括资源和产品也是刻不容缓的事情。抛开上述英美国家的产品，国内的海云也在数据分析和可视化方面有了比较成熟的产品可供借鉴了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
+          
+            <a href="/tags/犯罪预测/" rel="tag"># 犯罪预测</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/16/HaierTrip/" rel="next" title="未出土时先有节 已到凌云仍虚心 - 海尔之行">
+                <i class="fa fa-chevron-left"></i> 未出土时先有节 已到凌云仍虚心 - 海尔之行
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">William Teng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
