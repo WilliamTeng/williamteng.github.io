@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/04/16/HaierTrip/</loc>
+    
+    <lastmod>2018-01-03T04:56:05.053Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/04/04/HowFarAI/</loc>
+    
+    <lastmod>2018-01-03T03:47:08.506Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/04/04/EA/</loc>
     
-    <lastmod>2018-01-03T02:57:09.482Z</lastmod>
+    <lastmod>2018-01-03T03:09:39.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/04/09/NACProduct/</loc>
+    
+    <lastmod>2018-01-03T03:08:20.047Z</lastmod>
     
   </url>
   
@@ -12,27 +33,6 @@
     <loc>http://yoursite.com/2017/05/20/PolicePredict/</loc>
     
     <lastmod>2018-01-03T01:51:41.514Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/04/09/NACProduct/</loc>
-    
-    <lastmod>2018-01-03T01:50:10.530Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/04/16/HaierTrip/</loc>
-    
-    <lastmod>2018-01-02T15:16:33.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/04/04/HowFarAI/</loc>
-    
-    <lastmod>2018-01-02T15:04:25.178Z</lastmod>
     
   </url>
   
