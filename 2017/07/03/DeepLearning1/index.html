@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="人工智能,深度学习," />
+  <meta name="keywords" content="深度学习,人工智能," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。 未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。">
-<meta name="keywords" content="人工智能,深度学习">
+<meta name="keywords" content="深度学习,人工智能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="漫谈深度学习与实践">
 <meta property="og:url" content="http://williamteng.github.io/2017/07/03/DeepLearning1/index.html">
@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/05/pA1VGq.jpg">
-<meta property="og:updated_time" content="2018-01-05T11:52:15.604Z">
+<meta property="og:updated_time" content="2018-01-05T11:56:42.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="漫谈深度学习与实践">
 <meta name="twitter:description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。 未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。">
@@ -427,9 +427,29 @@ from torch import optim
 from torch.autograd import Variable  
 from torch.utils.data import DataLoader  
 from torchvision import datasets, transforms
-</code></pre><p>下面是测试网络部分代码：<br>    model.eval()<br>    eval_loss = 0<br>    eval_acc = 0<br>    for data in test_loader:<br>        img.label = data<br>        img = img.view(img.size(0), -1)<br>        if torch.cuda.is_available():<br>            img = Variable(img, volatile = True).cuda()<br>            label = Variable(label, volatile = True).cuda()<br>        else:<br>            img = Variable(img, volatile = True)<br>              label = Variable(lable, volatile = True)<br>        out = model(img)<br>        loss = criterion(out, label)<br>        eval<em>loss += loss.data[0] * label.size(0)  
-        </em>,pred = torch.max(out, 1)<br>        num_correct = (pred == label).sum()<br>        eval_acc += num_correct.data[0]<br>    print(‘Test Loss: (:.6f), Acc:{:.6f}.format(<br>        eval_loss / (len(test_dataset)),<br>        val_acc / (len(test_dataset))))  </p>
-
+</code></pre><p>下面是测试网络部分代码：</p>
+<pre><code>model.eval()  
+eval_loss = 0  
+eval_acc = 0  
+for data in test_loader:  
+    img.label = data  
+    img = img.view(img.size(0), -1)  
+    if torch.cuda.is_available():  
+        img = Variable(img, volatile = True).cuda()  
+        label = Variable(label, volatile = True).cuda()  
+    else:  
+        img = Variable(img, volatile = True)  
+          label = Variable(lable, volatile = True)  
+    out = model(img)  
+    loss = criterion(out, label)  
+    eval_loss += loss.data[0] * label.size(0)  
+    _,pred = torch.max(out, 1)  
+    num_correct = (pred == label).sum()  
+    eval_acc += num_correct.data[0]  
+print(&apos;Test Loss: (:.6f), Acc:{:.6f}.format(  
+    eval_loss / (len(test_dataset)),  
+    val_acc / (len(test_dataset))))  
+</code></pre>
       
     </div>
     
@@ -446,9 +466,9 @@ from torchvision import datasets, transforms
       
         <div class="post-tags">
           
-            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
-          
             <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/人工智能/" rel="tag"># 人工智能</a>
           
         </div>
       
