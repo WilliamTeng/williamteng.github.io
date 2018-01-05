@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/05/pA1VGq.jpg">
-<meta property="og:updated_time" content="2018-01-05T11:04:41.296Z">
+<meta property="og:updated_time" content="2018-01-05T11:46:12.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="漫谈深度学习与实践">
 <meta name="twitter:description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。 未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。">
@@ -421,11 +421,12 @@ if torch.cuda.is_available():
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameter(), lr=learning_rate)
-</code></pre><p>一些模块的引入语句如下，然后开始训练网络。<br>    <code>import torch
-    from torch import optim
-    from torch.autograd import Variable
-    from torch.utils.data import DataLoader
-    from torchvision import datasets, transforms</code></p>
+</code></pre><p>一些模块的引入语句如下，然后开始训练网络。</p>
+<p><code>import torch  
+from torch import optim  
+from torch.autograd import Variable  
+from torch.utils.data import DataLoader  
+from torchvision import datasets, transforms</code>  </p>
 <p>下面是测试网络部分代码：<br><code>model.eval()
     eval_loss = 0
     eval_acc = 0
