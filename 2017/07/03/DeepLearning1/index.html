@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg">
-<meta property="og:updated_time" content="2018-01-03T23:17:36.747Z">
+<meta property="og:updated_time" content="2018-01-05T07:50:29.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="漫谈深度学习与实践">
 <meta name="twitter:description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。 未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。">
@@ -365,7 +365,7 @@
 <a id="more"></a>
 <p>深度学习研究的热潮持续高涨，各种开源深度学习框架也层出不穷，其中包括Google的TensorFlow、Keras、Facebook的Caffe、Torch、Microsoft的CNTK、Amazon的MXNet、以及蒙特利尔大学的Theano等等。而现在几乎所有主流云平台都支持深度学习框架，使用框架创建神经网络就变成一件轻而易举的事情了。</p>
 <p><img src="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg" alt="framework"></p>
-<p>下面简单演示一下使用pyTorch创建一个卷积神经网络，使用经典的MNIST数据集进行训练和测试。</p>
+<p>下面简单演示一下使用pyTorch创建一个三层全连接神经网络，使用经典的MNIST数据集进行训练和测试。</p>
 <p>我们知道：创建一个神经网络主要有4个步骤：</p>
 <ul>
 <li>定义神经网络的结构</li>
@@ -373,7 +373,20 @@
 <li>在会话中，将数据输入进构建的神经网络中，反复优化损失函数，直至得到最优解</li>
 <li>将测试集丢入训练好的神经网络进行验证</li>
 </ul>
+<p>PyTorch中定义三层全连接神经网络</p>
+<pre><code>class simpleNet(nn.Module)
+    def __init__ (self, in_dim, n_hidden_1, n_hidden_2, out_dim):
+        super(simpleNet, self).__init__()
+        self.layer1 = nn.Linear(in_dim, n_hidden_1)
+        self.layer2 = nn.Linear(n_hidden_1, n_hidden_2)
+        self.layer3 = nn.Linear(n_hidden_2, out_dim)
 
+    def foward(self, x):
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.layer3(x)
+        return x
+</code></pre>
       
     </div>
     
