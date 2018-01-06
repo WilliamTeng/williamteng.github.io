@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
+<meta name="description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
 <meta name="keywords" content="深度学习,人工智能,卷积网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习 - 卷积网络发展史">
+<meta property="og:title" content="深度学习 - 卷积网络发展漫谈">
 <meta property="og:url" content="http://williamteng.github.io/2017/08/06/cnn/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
-<meta property="og:description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
+<meta property="og:description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVd28S.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pV65N9.jpg">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgzlt.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgjfA.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgxSI.jpg">
-<meta property="og:updated_time" content="2018-01-06T14:43:16.526Z">
+<meta property="og:updated_time" content="2018-01-06T14:46:09.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习 - 卷积网络发展史">
-<meta name="twitter:description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
+<meta name="twitter:title" content="深度学习 - 卷积网络发展漫谈">
+<meta name="twitter:description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。  引自互联网图片">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/01/06/pVd28S.jpg">
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>深度学习 - 卷积网络发展史 | William's Blog</title>
+  <title>深度学习 - 卷积网络发展漫谈 | William's Blog</title>
   
 
 
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深度学习 - 卷积网络发展史</h1>
+          <h1 class="post-title" itemprop="name headline">深度学习 - 卷积网络发展漫谈</h1>
         
 
         <div class="post-meta">
@@ -362,7 +362,7 @@
       
 
       
-        <p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年年人工智能将为产业界和我们的生活带来多大的冲击。</p>
+        <p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中都不惜工本，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVd28S.jpg" alt="gartner"></p>
 <p align="center" font="gray" size="2">引自互联网图片</p>
 
@@ -370,25 +370,18 @@
 <p>对于CNN最早可以追溯到1986年BP算法的提出，1989年LeCun将其用到多层神经网络中，1998年LeCun提出LeNet-5模型，神经网络的雏形完成。在接下来近十年的时间里，卷积神经网络的相关研究停滞不前，主要原因：一是多层神经网络在进行BP训练时的计算量极大，硬件计算能力不可能实现；二是SVM等浅层机器学习算法暂露头脚。</p>
 <p>2006年，Hinton在《科学》上发表文章，CNN再度觉醒，并取得长足发展。2012年，CNN在ImageNet大赛上夺冠。2014年，谷歌研发出20层的VGG模型。同年，DeepFace、DeepID模型横空出世，将LFW数据库上的人脸识别、人脸认证的正确率刷到99.75%，几乎超越人类。</p>
 <p>2015年深度学习领域的三巨头LeCun、Bengio 、Hinton联手在Nature上发表综述对DeepLearning进行科普。2016年3月阿尔法狗打败李世石。</p>
-<p>###1986年~1998年</p>
-<p>这段时间里是CNN的雏形阶段，主要包括BP算法的提出、BP算法在多层神经网络模型中的应用、LeNet-5模型的正式定型。</p>
-<p>####BP算法的提出</p>
-<p>BP算法是在1986年由Rumelhart在《Learning Internal Representations by Error Propagation》一文中提出，BP神经网络的计算过程由正向计算过程和反向计算过程组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每层神经元的状态只影响下一层神经元的状态。</p>
+<h3 id="1986年-1998年"><a href="#1986年-1998年" class="headerlink" title="1986年~1998年"></a>1986年~1998年</h3><p>这段时间里是CNN的雏形阶段，主要包括BP算法的提出、BP算法在多层神经网络模型中的应用、LeNet-5模型的正式定型。</p>
+<h4 id="BP算法的提出"><a href="#BP算法的提出" class="headerlink" title="BP算法的提出"></a>BP算法的提出</h4><p>BP算法是在1986年由Rumelhart在《Learning Internal Representations by Error Propagation》一文中提出，BP神经网络的计算过程由正向计算过程和反向计算过程组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每层神经元的状态只影响下一层神经元的状态。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pV65N9.jpg" alt="BP"></p>
 <p>如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
-<p>####基于BP算法的CNN雏形</p>
-<p>在BP算法提出3年之后，嗅觉敏锐的LeCun选择将BP算法用于训练多层卷积神经网络来识别手写数字，这可以说是CNN的雏形。</p>
+<h4 id="基于BP算法的CNN雏形"><a href="#基于BP算法的CNN雏形" class="headerlink" title="基于BP算法的CNN雏形"></a>基于BP算法的CNN雏形</h4><p>在BP算法提出3年之后，嗅觉敏锐的LeCun选择将BP算法用于训练多层卷积神经网络来识别手写数字，这可以说是CNN的雏形。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVcyUH.jpg" alt="cnn"></p>
-<p>####LeNet-5模型的最终定型</p>
-<p>LeNet-5模型的提出标志着CNN的正式成型，不幸的是接下来这个技术就被打入冷宫，原因如上文所说，它不仅吃设备，而且好的替代品还很多。</p>
+<h4 id="LeNet-5模型的最终定型"><a href="#LeNet-5模型的最终定型" class="headerlink" title="LeNet-5模型的最终定型"></a>LeNet-5模型的最终定型</h4><p>LeNet-5模型的提出标志着CNN的正式成型，不幸的是接下来这个技术就被打入冷宫，原因如上文所说，它不仅吃设备，而且好的替代品还很多。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVc4r8.jpg" alt="lenet5"></p>
-<p>###2006年</p>
-<p>这一年可以说是DeepLearning觉醒的一年，标志就是Hinton在Science发文，指出“多隐层神经网络具有更为优异的特征学习能力，并且其在训练上的复杂度可以通过逐层初始化来有效缓解”。这篇惊世骇俗之作名为《Reducing the dimensionality of data with neural networks》，目前引用量3210次：</p>
+<h3 id="2006年"><a href="#2006年" class="headerlink" title="2006年"></a>2006年</h3><p>这一年可以说是DeepLearning觉醒的一年，标志就是Hinton在Science发文，指出“多隐层神经网络具有更为优异的特征学习能力，并且其在训练上的复杂度可以通过逐层初始化来有效缓解”。这篇惊世骇俗之作名为《Reducing the dimensionality of data with neural networks》，目前引用量3210次：</p>
 <p>至此，在GPU加速的硬件条件下，在大数据识别的应用背景下，DeepLearning、CNN再次起飞。</p>
-<p>###2012年~2014年</p>
-<p>这段时间卷积神经网络的相关研究已经进行的如火如荼，学术文献呈井喷式层出不穷，具有代表性的我认为有两个：2012年的ImageNet大赛和2014年的DeepFace、DeepID模型。</p>
-<p>####ImageNet竞赛上CNN的一鸣惊人</p>
-<p>可以说，2012年CNN在ImageNet竞赛中的表现直接奠定了它的重要地位，两个第一，正确率超出第二近10%，确实让人大跌眼镜。</p>
+<h3 id="2012年-2014年"><a href="#2012年-2014年" class="headerlink" title="2012年~2014年"></a>2012年~2014年</h3><p>这段时间卷积神经网络的相关研究已经进行的如火如荼，学术文献呈井喷式层出不穷，具有代表性的我认为有两个：2012年的ImageNet大赛和2014年的DeepFace、DeepID模型。</p>
+<h4 id="ImageNet竞赛上CNN的一鸣惊人"><a href="#ImageNet竞赛上CNN的一鸣惊人" class="headerlink" title="ImageNet竞赛上CNN的一鸣惊人"></a>ImageNet竞赛上CNN的一鸣惊人</h4><p>可以说，2012年CNN在ImageNet竞赛中的表现直接奠定了它的重要地位，两个第一，正确率超出第二近10%，确实让人大跌眼镜。</p>
 <p>计算机视觉比赛ILSVRC（ImageNet Large Scale Visual RecognitionChallenge）使用的数据都来自ImageNet。ImageNet项目于2007年由斯坦福大学华人教授李飞飞创办，目标是收集大量带有标注信息的图片数据供计算机视觉模型训练。</p>
 <p>ImageNet拥有1500万张标注过的高清图片，总共拥有22000类，其中约有100万张标注了图片中主要物体的定位边框。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVgzlt.jpg" alt="imagenet"></p>
@@ -397,11 +390,9 @@
 <p>AlexNet获得了比赛分类项目的2012年冠军（AlexNet, top-5错误率16.4%，使用额外数据可达到15.3%，8层神经网络）、上图所示为AlexNet识别ILSVRC数据集中图片的情况，每张图片下面是分类预测得分最高的5个分类及其分值。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVgxSI.jpg" alt="ilsvrc"></p>
 <p>如图所示，ILSVRC的top-5错误率在最近几年取得重大突破，而主要的突破点都是在深度学习和卷积神经网络，成绩的大幅提升几乎都伴随着卷积神经网络的层数加深。</p>
-<p>####DeepFace、DeepID</p>
-<p>在2012年CNN一炮打响之后，其应用领域再也不只局限于手写数字识别以及声音识别了，人脸识别成为其重要的应用领域之一。在这期间DeepFace和DeepID作为两个相对成功的高性能人脸识别与认证模型，成为CNN在人脸识别领域中的标志性研究成果。</p>
+<h4 id="DeepFace、DeepID"><a href="#DeepFace、DeepID" class="headerlink" title="DeepFace、DeepID"></a>DeepFace、DeepID</h4><p>在2012年CNN一炮打响之后，其应用领域再也不只局限于手写数字识别以及声音识别了，人脸识别成为其重要的应用领域之一。在这期间DeepFace和DeepID作为两个相对成功的高性能人脸识别与认证模型，成为CNN在人脸识别领域中的标志性研究成果。</p>
 <p>至于DeepID，这是由香港中文大学汤晓鸥教授的研究团队提出第一次试图去探索CNN的本质属性，史无前例。</p>
-<p>###2015年~至今</p>
-<p>卷积神经网络自从2006年再度走进人们的视线，发展到现在已经快有十个年头。2015年深度学习领域的三巨头LeCun、Bengio 、Hinton在Nature上发表一篇综述，系统的总结了深度学习的发展前世今生，文章写得通俗易懂，全文几乎都没有什么公式，是一篇科普性较强的文章，个人觉得研究深度学习的人员都应该去读一读，题目也很简洁，就叫《Deep Learning》，2015年发表，目前引用量已达321次： </p>
+<h3 id="2015年-至今"><a href="#2015年-至今" class="headerlink" title="2015年~至今"></a>2015年~至今</h3><p>卷积神经网络自从2006年再度走进人们的视线，发展到现在已经快有十个年头。2015年深度学习领域的三巨头LeCun、Bengio 、Hinton在Nature上发表一篇综述，系统的总结了深度学习的发展前世今生，文章写得通俗易懂，全文几乎都没有什么公式，是一篇科普性较强的文章，个人觉得研究深度学习的人员都应该去读一读，题目也很简洁，就叫《Deep Learning》，2015年发表，目前引用量已达321次： </p>
 <p>然后在2016年，CNN再次给人们一个惊喜：谷歌研发的基于深度神经网络和搜索树的智能机器人“阿尔法狗”在围棋上击败了人类，更惊喜的是谷歌在Nature专门发表了一篇文章来解释这个阿尔法狗。</p>
 
       
@@ -497,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -565,6 +565,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1986年-1998年"><span class="nav-number">1.</span> <span class="nav-text">1986年~1998年</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BP算法的提出"><span class="nav-number">1.1.</span> <span class="nav-text">BP算法的提出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于BP算法的CNN雏形"><span class="nav-number">1.2.</span> <span class="nav-text">基于BP算法的CNN雏形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeNet-5模型的最终定型"><span class="nav-number">1.3.</span> <span class="nav-text">LeNet-5模型的最终定型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2006年"><span class="nav-number">2.</span> <span class="nav-text">2006年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2012年-2014年"><span class="nav-number">3.</span> <span class="nav-text">2012年~2014年</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageNet竞赛上CNN的一鸣惊人"><span class="nav-number">3.1.</span> <span class="nav-text">ImageNet竞赛上CNN的一鸣惊人</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeepFace、DeepID"><span class="nav-number">3.2.</span> <span class="nav-text">DeepFace、DeepID</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015年-至今"><span class="nav-number">4.</span> <span class="nav-text">2015年~至今</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
