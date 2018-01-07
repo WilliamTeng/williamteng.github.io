@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/2017/07/03/DeepLearning1/</loc>
+    
+    <lastmod>2018-01-07T03:38:37.511Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2017/08/06/cnn/</loc>
     
-    <lastmod>2018-01-07T03:23:17.692Z</lastmod>
+    <lastmod>2018-01-07T03:37:38.038Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://williamteng.github.io/2017/04/04/HowFarAI/</loc>
     
     <lastmod>2018-01-07T02:54:54.335Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2017/07/03/DeepLearning1/</loc>
-    
-    <lastmod>2018-01-07T02:37:28.476Z</lastmod>
     
   </url>
   
