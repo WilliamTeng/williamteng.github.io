@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/about/index.html</loc>
+    
+    <lastmod>2018-02-21T11:20:24.215Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2018/01/19/NewRetail/</loc>
     
     <lastmod>2018-02-21T11:18:31.936Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://williamteng.github.io/2017/04/16/HaierTrip/</loc>
     
     <lastmod>2018-01-07T10:58:49.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/about/index.html</loc>
-    
-    <lastmod>2018-01-07T02:36:06.307Z</lastmod>
     
   </url>
   
