@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/about/index.html</loc>
+    
+    <lastmod>2020-02-17T11:29:31.996Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2018/01/19/NewRetail/</loc>
     
-    <lastmod>2018-02-23T14:09:51.698Z</lastmod>
+    <lastmod>2018-02-23T14:37:50.634Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://williamteng.github.io/2018/02/10/DigitalEconomy/</loc>
     
     <lastmod>2018-02-23T13:34:50.814Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/about/index.html</loc>
-    
-    <lastmod>2018-02-21T11:20:24.215Z</lastmod>
     
   </url>
   
