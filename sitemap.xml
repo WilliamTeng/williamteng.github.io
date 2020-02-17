@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/2017/04/16/HaierTrip/</loc>
+    
+    <lastmod>2020-02-17T13:53:03.660Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/about/index.html</loc>
     
-    <lastmod>2020-02-17T11:29:31.996Z</lastmod>
+    <lastmod>2020-02-17T13:19:50.403Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>http://williamteng.github.io/2017/04/04/HowFarAI/</loc>
     
     <lastmod>2018-01-08T14:03:38.072Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2017/04/16/HaierTrip/</loc>
-    
-    <lastmod>2018-01-07T10:58:49.979Z</lastmod>
     
   </url>
   
