@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://williamteng.github.io/"/>
-  <updated>2020-10-12T23:33:57.572Z</updated>
+  <updated>2020-10-12T23:38:14.312Z</updated>
   <id>http://williamteng.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>再谈零售行业的数字化转型</title>
+    <title>聊聊现代零售行业数字化转型痛点、路径和系统实现</title>
     <link href="http://williamteng.github.io/2020/10/12/NewRetail02/"/>
     <id>http://williamteng.github.io/2020/10/12/NewRetail02/</id>
     <published>2020-10-12T11:47:44.000Z</published>
-    <updated>2020-10-12T23:33:57.572Z</updated>
+    <updated>2020-10-12T23:38:14.312Z</updated>
     
     <content type="html"><![CDATA[<p>近来零售行业的数字化转型引发越来越多企业的关注，因为每个企业都更多地牵涉到销售、客户相关问题的解决。</p><p><img src="https://s1.ax1x.com/2020/10/13/0Wzg9s.png" alt="Gartner New Retail"></p><h3 id="零售行业拓展市场的主要方式和痛点问题"><a href="#零售行业拓展市场的主要方式和痛点问题" class="headerlink" title="零售行业拓展市场的主要方式和痛点问题"></a>零售行业拓展市场的主要方式和痛点问题</h3><p>零售行业拓展市场通常采用如下方式：</p><ul><li>建立消费者数据库</li><li>消费者精细化营销 </li></ul><a id="more"></a><ul><li>实现品牌营收增长</li></ul><p>企业以往更多依靠的是线下零售方式，具体而言就是：</p><ul><li>依靠线下门店销售情况、传统市场调研等方式获得相关数据</li><li>通过新产品、新系列研发抢占细分人群市场</li><li>通过营销活动及广告，线下门店等渠道触达消费者</li></ul><p>在这种传统模式下，品牌商、零售商会遇到如下痛点问题：</p><ul><li>数据统计有时间延迟</li><li>市场调研成本高昂</li><li>新产品缺乏预热渠道</li><li>营销难以即时触达消费者</li><li>线下门店营销过度被动</li></ul><h3 id="零售行业数字化转型的路径"><a href="#零售行业数字化转型的路径" class="headerlink" title="零售行业数字化转型的路径"></a>零售行业数字化转型的路径</h3><p>相比传统模型，数字化手段为商家构筑了更精细、更广阔、更即时、更有活力的线下零售场景。比如我的客户永辉生活、百果园、美宜佳、优衣库、悦诗风吟等等，利用“小程序下单+自提/外卖”的基本服务，采用“积分+社交裂变”的增长模式，成功吸引了大批新用户。</p><p>许多客户缺乏零售行业数字化转型路径中的具体工作，我将之总结为以下几点关键之处：</p><h4 id="数据运营"><a href="#数据运营" class="headerlink" title="数据运营"></a>数据运营</h4><p>搭建品牌自己的线上平台，并将消费者从线下或其他网络平台引流过来，获得消费者的个人信息与联系方式，建立品牌消费者数据库，实现产品+消费者生命周期全阶段数据采集；搭建关键指标体系，量化营销关键点。</p><h4 id="人群运营"><a href="#人群运营" class="headerlink" title="人群运营"></a>人群运营</h4><p>实现对不同消费者人群的不同运营，持续运营对品牌而言更高价值的消费者，实现千人千面的消费者管理；</p><h4 id="会员管理"><a href="#会员管理" class="headerlink" title="会员管理"></a>会员管理</h4><p>完善会员体系及相关服务内容，加强与消费者的互动连接，逐步加深品牌忠诚度，为品牌培养更多忠实消费者；</p><h4 id="用户增长"><a href="#用户增长" class="headerlink" title="用户增长"></a>用户增长</h4><p>通过引导用户在各种移动社交应用上主动裂变，抢占私域流量，迅速触达更多潜在消费者；</p><h4 id="营收增长"><a href="#营收增长" class="headerlink" title="营收增长"></a>营收增长</h4><p>缩短品牌的营销到达消费者的时间以及成本，提升营销活动的实际效果，刺激用户消费，增加品牌营收。</p><h3 id="现代零售商与品牌商开启数字化转型系统功能"><a href="#现代零售商与品牌商开启数字化转型系统功能" class="headerlink" title="现代零售商与品牌商开启数字化转型系统功能"></a>现代零售商与品牌商开启数字化转型系统功能</h3><h4 id="曝光引流、成交沉淀"><a href="#曝光引流、成交沉淀" class="headerlink" title="曝光引流、成交沉淀"></a>曝光引流、成交沉淀</h4><p>具体工作包括<strong>微信营销与新媒体矩阵的建设</strong>、<strong>搜索引擎与朋友圈广告的投放</strong>，有些品牌需要做<strong>小程序/H5微商城</strong>开发，覆盖微信、QQ、百度、快手、头条、抖音等<strong>全渠道生态</strong>，构筑全方位的数字化营销渠道。</p><h4 id="微商城系统"><a href="#微商城系统" class="headerlink" title="微商城系统"></a>微商城系统</h4><p>会员制<strong>、</strong>内容营销<strong>、</strong>社区团购等多种运营模式，具有功能，包括<strong>拼团秒杀</strong>、<strong>二件折扣</strong>、<strong>优惠券</strong>、<strong>限时限量</strong>、<strong>订单弹幕</strong>、<strong>短视频</strong>、<strong>直播营销</strong>、<strong>分销推广</strong>、<strong>积分体制</strong>、<strong>以客推客</strong>等营销玩法，从<strong>推广</strong>、<strong>互动</strong>、<strong>留存</strong>、<strong>成交</strong>、<strong>复购</strong>5个维度为商家的线上平台赋能。</p><h4 id="专业的管理后台"><a href="#专业的管理后台" class="headerlink" title="专业的管理后台"></a>专业的管理后台</h4><p>数据管理系统，提供会员标签<strong>、</strong>数据分析和数据挖掘等功能，为商家在运营管理上实现效率与精细度的双重提升。</p>]]></content>
     
