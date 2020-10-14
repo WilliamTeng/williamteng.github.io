@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>再谈卷积神经网络发展历程 | William's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">再谈卷积神经网络发展历程</h1><a id="logo" href="/.">William's Blog</a><p class="description">William的github博客</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/tags/"><i class="fa fa-tags"> 标签</i></a><a href="/categories/"><i class="fa fa-th"> 分类</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">再谈卷积神经网络发展历程</h1><div class="post-meta">2017-08-06<span> | </span><span class="category"><a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2.1k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 7</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVd28S.jpg" alt="gartner"></p>
+<center> <font size=2>Gartner报告-引自互联网图片</font></center>
+
+<a id="more"></a>
+<p>假如我们从此时此刻回首人工智能过去几十年的发展历程，完全符合辩证法螺旋式上升的理论。而这一次深度学习的复兴更是卷积神经网络CNN(Convolutional Neural Network)的复兴。其实卷积神经网络的发展也是经历了一个曲折的过程的。</p>
+<p>对于CNN最早可以追溯到1986年BP算法的提出，1989年LeCun将其用到多层神经网络中，1998年LeCun提出LeNet-5模型，神经网络的雏形完成。在接下来近十年的时间里，卷积神经网络的相关研究停滞不前，主要原因：一是多层神经网络在进行BP训练时的计算量极大，硬件计算能力不可能实现；二是SVM等浅层机器学习算法暂露头脚。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ33dS.jpg" alt="google dl"></p>
+<center> <font size=2>Google对卷积神经网络的解释</font></center>
+
+<p>2006年，Hinton在《科学》上发表文章，CNN再度觉醒，并取得长足发展。2012年，CNN在ImageNet大赛上夺冠。2014年，谷歌研发出20层的VGG模型。同年，DeepFace、DeepID模型横空出世，将LFW数据库上的人脸识别、人脸认证的正确率刷到99.75%，几乎超越人类。</p>
+<p>2015年深度学习领域的三巨头LeCun、Bengio 、Hinton联手在Nature上发表综述对DeepLearning进行科普。2016年3月阿尔法狗打败李世石。<em>2017年10月，AlphaGo Zero 100:0击败Alpha Go！(补充)</em></p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZbdeJ.jpg" alt="deeplearntop"></p>
+<center><font size=2>从左往右依次为Yann LeCun(Facebook AI Research)，Hinton(Google Brain)，Yoshua Bengio(Université de Montréal)，吴恩达(coursera)</font></center>
+
+<h3 id="1986年-1998年-CNN雏形阶段"><a href="#1986年-1998年-CNN雏形阶段" class="headerlink" title="1986年~1998年 CNN雏形阶段"></a>1986年~1998年 CNN雏形阶段</h3><p>这段时间里是CNN的雏形阶段，主要包括BP算法的提出、BP算法在多层神经网络模型中的应用、LeNet-5模型的正式定型。</p>
+<h4 id="BP算法的提出"><a href="#BP算法的提出" class="headerlink" title="BP算法的提出"></a>BP算法的提出</h4><p>BP算法是在1986年由Rumelhart在《Learning Internal Representations by Error Propagation》一文中提出，BP神经网络的计算过程由正向计算过程和反向计算过程组成。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZQJi9.jpg" alt="Rosenblatt"></p>
+<center><font size=2>Rosenblatt</font></center>
+
+<p>正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每层神经元的状态只影响下一层神经元的状态。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pV65N9.jpg" alt="BP"></p>
+<p>如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
+<h4 id="基于BP算法的CNN雏形"><a href="#基于BP算法的CNN雏形" class="headerlink" title="基于BP算法的CNN雏形"></a>基于BP算法的CNN雏形</h4><p>在BP算法提出3年之后，嗅觉敏锐的LeCun选择将BP算法用于训练多层卷积神经网络来识别手写数字，这可以说是CNN的雏形。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVcyUH.jpg" alt="cnn"></p>
+<h4 id="LeNet-5模型的最终定型"><a href="#LeNet-5模型的最终定型" class="headerlink" title="LeNet-5模型的最终定型"></a>LeNet-5模型的最终定型</h4><p>LeNet-5模型的提出标志着CNN的正式成型。LenNet-5共有7层（不包括输入层），每层都包含不同数量的训练参数。主要的有卷积层、下抽样层、全连接层3种连接方式。不幸的是接下来这个技术就被打入冷宫，原因如上文所说，它不仅吃设备，而且好的替代品还很多。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVc4r8.jpg" alt="lenet5"></p>
+<center><font color=gray size=2>经典的LenNet-5结构</font></center>
+
+<h3 id="2006年-Hinton带领卷积神经网络复兴"><a href="#2006年-Hinton带领卷积神经网络复兴" class="headerlink" title="2006年 Hinton带领卷积神经网络复兴"></a>2006年 Hinton带领卷积神经网络复兴</h3><p>这一年可以说是DeepLearning觉醒的一年，标志就是Hinton在Science发文，指出“多隐层神经网络具有更为优异的特征学习能力，并且其在训练上的复杂度可以通过逐层初始化来有效缓解”。这篇惊世骇俗之作名为《Reducing the dimensionality of data with neural networks》。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1cKP.jpg" alt="display"></p>
+<center><font color=gray size=2>别有深意地放上教主图片，感谢游戏拯救了人工智能</font></center>
+
+<p>至此，在GPU加速的硬件条件下，在大数据识别的应用背景下，DeepLearning、CNN再次起飞。</p>
+<h3 id="2012年-2014年-重新火热的CNN"><a href="#2012年-2014年-重新火热的CNN" class="headerlink" title="2012年~2014年 重新火热的CNN"></a>2012年~2014年 重新火热的CNN</h3><p>这段时间卷积神经网络的相关研究已经进行的如火如荼，学术文献呈井喷式层出不穷，具有代表性的：2012年的ImageNet大赛和2014年的DeepFace、DeepID模型。</p>
+<h4 id="ImageNet竞赛上CNN的一鸣惊人"><a href="#ImageNet竞赛上CNN的一鸣惊人" class="headerlink" title="ImageNet竞赛上CNN的一鸣惊人"></a>ImageNet竞赛上CNN的一鸣惊人</h4><p>可以说，2012年CNN在ImageNet竞赛中的表现直接奠定了它的重要地位，两个第一，正确率超出第二近10%，确实让人大跌眼镜。</p>
+<p>计算机视觉比赛ILSVRC（ImageNet Large Scale Visual RecognitionChallenge）使用的数据都来自ImageNet。ImageNet项目于2007年由斯坦福大学华人教授李飞飞创办，目标是收集大量带有标注信息的图片数据供计算机视觉模型训练。</p>
+<p>ImageNet拥有1500万张标注过的高清图片，总共拥有22000类，其中约有100万张标注了图片中主要物体的定位边框。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgzlt.jpg" alt="imagenet"></p>
+<p>每年度的ILSVRC比赛数据集中大概拥有120万张图片，以及1000类的标注，是ImageNet全部数据的一个子集。比赛一般采用top-5和top-1分类错误率作为模型性能的评测指标。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgjfA.jpg" alt="alex"></p>
+<p>AlexNet获得了比赛分类项目的2012年冠军（AlexNet, top-5错误率16.4%，使用额外数据可达到15.3%，8层神经网络）、上图所示为AlexNet识别ILSVRC数据集中图片的情况，每张图片下面是分类预测得分最高的5个分类及其分值。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgxSI.jpg" alt="ilsvrc"></p>
+<p>如图所示，ILSVRC的top-5错误率在最近几年取得重大突破，而主要的突破点都是在深度学习和卷积神经网络，成绩的大幅提升几乎都伴随着卷积神经网络的层数加深。</p>
+<h4 id="DeepFace、DeepID"><a href="#DeepFace、DeepID" class="headerlink" title="DeepFace、DeepID"></a>DeepFace、DeepID</h4><p>在2012年CNN一炮打响之后，其应用领域再也不只局限于手写数字识别以及声音识别了，人脸识别成为其重要的应用领域之一。在这期间DeepFace和DeepID作为两个相对成功的高性能人脸识别与认证模型，成为CNN在人脸识别领域中的标志性研究成果。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1WVS.jpg" alt="deepface"></p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1fUg.jpg" alt="deepface2"></p>
+<p>至于DeepID，这是由香港中文大学汤晓鸥教授的研究团队提出第一次试图去探索CNN的本质属性，史无前例。汤教授被聘为阿里NASA计划达摩院入选科学家也名至实归。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1o2n.jpg" alt="deepid"></p>
+<h3 id="2015年-至今-AI成为了应用标配"><a href="#2015年-至今-AI成为了应用标配" class="headerlink" title="2015年~至今 AI成为了应用标配"></a>2015年~至今 AI成为了应用标配</h3><p>卷积神经网络自从2006年再度走进人们的视线，发展到现在已经快有十个年头。2015年深度学习领域的三巨头LeCun、Bengio 、Hinton在Nature上发表一篇综述，系统的总结了深度学习的发展前世今生，文章写得通俗易懂，全文几乎都没有什么公式，是一篇科普性较强的文章，个人觉得研究深度学习的人员都应该去读一读，题目也很简洁，就叫《Deep Learning》。</p>
+<p>对英语有障碍的童鞋可以参考CSDN的中文译文，附链接如下:<br><a target="_blank" rel="noopener" href="https://www.csdn.net/article/2015-06-01/2824811">深度学习-LeCun、Bengio和Hinton的联合综述（上）</a><br><a target="_blank" rel="noopener" href="http://www.csdn.net/article/2015-06-02/2824825">深度学习-LeCun、Bengio和Hinton的联合综述（下）</a></p>
+<p>然后在2016年，CNN再次给人们一个惊喜：谷歌研发的基于深度神经网络和搜索树的智能机器人“阿尔法狗”在围棋上击败了人类，更惊喜的是谷歌在Nature专门发表了一篇文章来解释这个阿尔法狗。</p>
+<blockquote>
+<p>2017年10月19日凌晨，在国际学术期刊《自然》（Nature）上发表的一篇研究论文中，谷歌下属公司Deepmind报告新版程序AlphaGo Zero：从空白状态学起，在无任何人类输入的条件下，它能够迅速自学围棋，并以100:0的战绩击败“前辈”。 (2017.10.20添加)</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1XaF.jpg" alt="deepmind"></p>
+<center><font color=gray size=2>DeepMind联合创始人Demis Hassabis</font></center>
+
+
+
+<blockquote>
+<p>“Don‘t model the World,  Model the Mind.”  </p>
+<hr>
+<p>“Data is king, algorithm is queen.”  </p>
+<hr>
+<p>“数据是燃料， 算法是火箭” —— 吴恩达  </p>
+<hr>
+</blockquote>
+<p>没有数据, 缺乏高质量的数据, 一切算法都是鸡肋.</p>
+<p>引用电影《人工智能》中的一句话，</p>
+<blockquote>
+<p>“世界尽头的地方，是雄狮落泪的地方，是月亮升起的地方，是美梦诞生的地方”，</p>
+</blockquote>
+<p>相信这一次深度学习的复兴将会使我们的生活变得越来越美好。</p>
+</div><div class="tags"><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa fa-tag"></i>深度学习</a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"><i class="fa fa-tag"></i>人工智能</a><a href="/tags/%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C/"><i class="fa fa-tag"></i>卷积网络</a></div><div class="post-nav"><a class="pre" href="/2017/12/08/AI-IC/">人工智能芯片产业生态</a><a class="next" href="/2017/07/03/DeepLearning/">一个卷积神经网络MNIST数据集实验</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/">企业架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/">数字化转型</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/">数字经济</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/12/NewRetail02/">聊聊现代零售行业数字化转型痛点、路径和系统实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/10/DigitalEconomy/">数字经济：颠覆、转型、机遇</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/NewRetail/">新零售时代的取胜之道</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/08/AI-IC/">人工智能芯片产业生态</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/cnn/">再谈卷积神经网络发展历程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/DeepLearning/">一个卷积神经网络MNIST数据集实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/PolicePredict/">人工智能与犯罪预测</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/HaierTrip/">未出土时先有节 已到凌云仍虚心 - 海尔行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/NACProduct/">NAC产品的现状与未来</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/EA/">企业架构之道</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">William's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" color="0,0,0" opacity="0.5" zIndex="-2" count="50" src="//cdn.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
