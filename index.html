@@ -1,22 +1,1164 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>William's Blog | William的github博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">William's Blog</h1><a id="logo" href="/.">William's Blog</a><p class="description">William的github博客</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/tags/"><i class="fa fa-tags"> 标签</i></a><a href="/categories/"><i class="fa fa-th"> 分类</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2020/10/12/NewRetail02/">聊聊现代零售行业数字化转型痛点、路径和系统实现</a></h1><div class="post-meta">2020-10-12</div><div class="post-content"><p>近来零售行业的数字化转型引发越来越多企业的关注，因为随着以客户为中心经营理念的普及，几乎每一家企业都越来越多地牵涉到销售、客户相关问题的解决中了。下面就我个人的观察，谈一谈对相关痛点问题、实现路径和具体实操中一些问题的粗略看法。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="William&#39;s Blog">
+<meta property="og:url" content="http://williamteng.github.io/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="William Teng">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://williamteng.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>William's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">William's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">William的github博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2020/10/12/NewRetail02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/12/NewRetail02/" class="post-title-link" itemprop="url">聊聊现代零售行业数字化转型痛点、路径和系统实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-12 19:47:44" itemprop="dateCreated datePublished" datetime="2020-10-12T19:47:44+08:00">2020-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-13 10:39:20" itemprop="dateModified" datetime="2020-10-13T10:39:20+08:00">2020-10-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>近来零售行业的数字化转型引发越来越多企业的关注，因为随着以客户为中心经营理念的普及，几乎每一家企业都越来越多地牵涉到销售、客户相关问题的解决中了。下面就我个人的观察，谈一谈对相关痛点问题、实现路径和具体实操中一些问题的粗略看法。</p>
 <p><img src="https://s1.ax1x.com/2020/10/13/0Wzg9s.png" alt="Gartner New Retail"></p>
 <h3 id="零售行业拓展市场的主要方式和痛点问题"><a href="#零售行业拓展市场的主要方式和痛点问题" class="headerlink" title="零售行业拓展市场的主要方式和痛点问题"></a>零售行业拓展市场的主要方式和痛点问题</h3><p>零售行业拓展市场通常采用如下方式：</p>
 <ul>
 <li>建立消费者数据库</li>
 <li>消费者精细化营销</li>
 <li>实现品牌营收增长</li>
-</ul></div><p class="readmore"><a href="/2020/10/12/NewRetail02/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/02/10/DigitalEconomy/">数字经济：颠覆、转型、机遇</a></h1><div class="post-meta">2018-02-10</div><div class="post-content"><p>数字经济时代不是即将来临，而是已经到来。虽然Gartner发布的新技术趋势报告都是企业在未来五到十年数字经济中赢得生存空间和蓬勃发展的重要方向，但Gartner报告中很少涉及<strong>数字经济</strong>概念本身，毕竟这是一个非常宏观层面的概念，以IT为方向的Gartner研究只能是其中一个分支。数字经济是当前政府、企业都无法回避的一个热点话题，我在和客户贵阳市政府领导的交流中感触良多，这里简单总结一下。</p>
-<p><img src="https://s1.ax1x.com/2018/02/20/9NCTMt.jpg" alt="Gartner"></p></div><p class="readmore"><a href="/2018/02/10/DigitalEconomy/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/01/19/NewRetail/">新零售时代的取胜之道</a></h1><div class="post-meta">2018-01-19</div><div class="post-content"><p>永辉和Gartner是长期的战略合作伙伴，双方携手对新零售以及垂直行业数字化转型共同研究以期突破。</p>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/12/NewRetail02/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/02/10/DigitalEconomy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/10/DigitalEconomy/" class="post-title-link" itemprop="url">数字经济：颠覆、转型、机遇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-10 07:52:44" itemprop="dateCreated datePublished" datetime="2018-02-10T07:52:44+08:00">2018-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-13 10:22:04" itemprop="dateModified" datetime="2020-10-13T10:22:04+08:00">2020-10-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/" itemprop="url" rel="index"><span itemprop="name">数字经济</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>数字经济时代不是即将来临，而是已经到来。虽然Gartner发布的新技术趋势报告都是企业在未来五到十年数字经济中赢得生存空间和蓬勃发展的重要方向，但Gartner报告中很少涉及<strong>数字经济</strong>概念本身，毕竟这是一个非常宏观层面的概念，以IT为方向的Gartner研究只能是其中一个分支。数字经济是当前政府、企业都无法回避的一个热点话题，我在和客户贵阳市政府领导的交流中感触良多，这里简单总结一下。</p>
+<p><img src="https://s1.ax1x.com/2018/02/20/9NCTMt.jpg" alt="Gartner"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/02/10/DigitalEconomy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/01/19/NewRetail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/19/NewRetail/" class="post-title-link" itemprop="url">新零售时代的取胜之道</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-19 19:47:44" itemprop="dateCreated datePublished" datetime="2018-01-19T19:47:44+08:00">2018-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-13 10:31:33" itemprop="dateModified" datetime="2020-10-13T10:31:33+08:00">2020-10-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>永辉和Gartner是长期的战略合作伙伴，双方携手对新零售以及垂直行业数字化转型共同研究以期突破。</p>
 <p><img src="https://s1.ax1x.com/2018/02/23/9aFoss.jpg" alt="Yonghui"></p>
-<p>2016年，阿里巴巴马云首次提出“新零售”的概念。此后，“新零售”成为热点话题，开始席卷各个消费品细分行业，对品牌商及零售企业都带来了巨大的变革性影响。</p></div><p class="readmore"><a href="/2018/01/19/NewRetail/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/12/08/AI-IC/">人工智能芯片产业生态</a></h1><div class="post-meta">2017-12-08</div><div class="post-content"><p>看到新闻寒武纪科技（Cambricon）获得了一亿美元A轮融资，而在不久前的7月，商汤科技(SenseTime)4.1亿美元B轮融资，人工智能的火势可以说越烧越大。在产业发展史中，每一场重要的产业变革总会带来新的重大机遇。如果能够在新兴产业中占据核心产业链位臵，必将能够充分享受新兴产业爆发性增长带来的红利。</p>
-<p><img src="https://s1.ax1x.com/2018/01/28/pj5181.jpg" alt="Cambricon"></p></div><p class="readmore"><a href="/2017/12/08/AI-IC/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/06/cnn/">再谈卷积神经网络发展历程</a></h1><div class="post-meta">2017-08-06</div><div class="post-content"><p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。</p>
+<p>2016年，阿里巴巴马云首次提出“新零售”的概念。此后，“新零售”成为热点话题，开始席卷各个消费品细分行业，对品牌商及零售企业都带来了巨大的变革性影响。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/01/19/NewRetail/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/12/08/AI-IC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/08/AI-IC/" class="post-title-link" itemprop="url">人工智能芯片产业生态</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-08 08:56:40" itemprop="dateCreated datePublished" datetime="2017-12-08T08:56:40+08:00">2017-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-13 10:31:58" itemprop="dateModified" datetime="2020-10-13T10:31:58+08:00">2020-10-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看到新闻寒武纪科技（Cambricon）获得了一亿美元A轮融资，而在不久前的7月，商汤科技(SenseTime)4.1亿美元B轮融资，人工智能的火势可以说越烧越大。在产业发展史中，每一场重要的产业变革总会带来新的重大机遇。如果能够在新兴产业中占据核心产业链位臵，必将能够充分享受新兴产业爆发性增长带来的红利。</p>
+<p><img src="https://s1.ax1x.com/2018/01/28/pj5181.jpg" alt="Cambricon"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/12/08/AI-IC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/08/06/cnn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/08/06/cnn/" class="post-title-link" itemprop="url">再谈卷积神经网络发展历程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-06 21:23:10" itemprop="dateCreated datePublished" datetime="2017-08-06T21:23:10+08:00">2017-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-02-20 09:38:04" itemprop="dateModified" datetime="2018-02-20T09:38:04+08:00">2018-02-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pVd28S.jpg" alt="gartner"></p>
-<center> <font size=2>Gartner报告-引自互联网图片</font></center></div><p class="readmore"><a href="/2017/08/06/cnn/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/07/03/DeepLearning/">一个卷积神经网络MNIST数据集实验</a></h1><div class="post-meta">2017-07-03</div><div class="post-content"><p>每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。</p>
+<center> <font size=2>Gartner报告-引自互联网图片</font></center>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/08/06/cnn/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/07/03/DeepLearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/03/DeepLearning/" class="post-title-link" itemprop="url">一个卷积神经网络MNIST数据集实验</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-07-03 20:18:24" itemprop="dateCreated datePublished" datetime="2017-07-03T20:18:24+08:00">2017-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-02-20 09:17:34" itemprop="dateModified" datetime="2018-02-20T09:17:34+08:00">2018-02-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。2017年新兴技术成熟度曲线最亮眼的就是人工智能技术。Gartner指出，插上人工智能AI的“翅膀”，基于数据，人们可以解决超乎想象的问题。</p>
 <p>未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。</p>
 <p><img src="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg" alt="gartner"></p>
-<p align=center font size =2>引自互联网图片</p></div><p class="readmore"><a href="/2017/07/03/DeepLearning/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/20/PolicePredict/">人工智能与犯罪预测</a></h1><div class="post-meta">2017-05-20</div><div class="post-content"><p>今天想聊聊人工智能和犯罪预测。</p>
+<p align=center font size =2>引自互联网图片</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/07/03/DeepLearning/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/05/20/PolicePredict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/05/20/PolicePredict/" class="post-title-link" itemprop="url">人工智能与犯罪预测</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-05-20 22:49:21" itemprop="dateCreated datePublished" datetime="2017-05-20T22:49:21+08:00">2017-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-03 16:31:00" itemprop="dateModified" datetime="2018-01-03T16:31:00+08:00">2018-01-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天想聊聊人工智能和犯罪预测。</p>
 <p>2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。</p>
-<p><img src="https://s1.ax1x.com/2018/01/03/p9KGh4.jpg" alt="crime"></p></div><p class="readmore"><a href="/2017/05/20/PolicePredict/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/16/HaierTrip/">未出土时先有节 已到凌云仍虚心 - 海尔行</a></h1><div class="post-meta">2017-04-16</div><div class="post-content"><p>春暖花开的季节。青的山与蓝的天相接，红色屋顶映衬着青岛的缤纷多彩。</p>
-<p><img src="https://s1.ax1x.com/2018/01/03/p9TqAJ.jpg" alt="lake2"></p></div><p class="readmore"><a href="/2017/04/16/HaierTrip/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/09/NACProduct/">NAC产品的现状与未来</a></h1><div class="post-meta">2017-04-09</div><div class="post-content"><p>一位美女同事跑来说“威廉姆，你的笔记不错啊。”刹那间让William回到了青葱的校园时代，William同学凿壁借光、奋笔疾书的笔记成为了所有同学考前的必备资料(<em>奋进向上的背景音乐…..</em>)</p>
-<p><img src="https://s1.ax1x.com/2018/01/03/pCFO5n.jpg" alt="study"></p></div><p class="readmore"><a href="/2017/04/09/NACProduct/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/04/EA/">企业架构之道</a></h1><div class="post-meta">2017-04-04</div><div class="post-content"><p>这是一篇四年前在陶氏化学DOW老员工群–志同道合、分享有道活动中的分享，讲得并不深入。没想到现在自己加入了Gartner公司，些许唏嘘，些许感慨。</p>
-<p><img src="https://s1.ax1x.com/2018/01/03/p9IiAs.jpg" alt="dow"></p></div><p class="readmore"><a href="/2017/04/04/EA/">阅读全文</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/">企业架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/">数字化转型</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/">数字经济</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/12/NewRetail02/">聊聊现代零售行业数字化转型痛点、路径和系统实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/10/DigitalEconomy/">数字经济：颠覆、转型、机遇</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/NewRetail/">新零售时代的取胜之道</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/08/AI-IC/">人工智能芯片产业生态</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/cnn/">再谈卷积神经网络发展历程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/DeepLearning/">一个卷积神经网络MNIST数据集实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/PolicePredict/">人工智能与犯罪预测</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/HaierTrip/">未出土时先有节 已到凌云仍虚心 - 海尔行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/NACProduct/">NAC产品的现状与未来</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/EA/">企业架构之道</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">William's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" color="0,0,0" opacity="0.5" zIndex="-2" count="50" src="//cdn.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KGh4.jpg" alt="crime"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/05/20/PolicePredict/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/04/16/HaierTrip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/16/HaierTrip/" class="post-title-link" itemprop="url">未出土时先有节 已到凌云仍虚心 - 海尔行</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-16 23:47:44" itemprop="dateCreated datePublished" datetime="2017-04-16T23:47:44+08:00">2017-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-17 21:53:03" itemprop="dateModified" datetime="2020-02-17T21:53:03+08:00">2020-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>春暖花开的季节。青的山与蓝的天相接，红色屋顶映衬着青岛的缤纷多彩。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9TqAJ.jpg" alt="lake2"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/16/HaierTrip/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/04/09/NACProduct/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/09/NACProduct/" class="post-title-link" itemprop="url">NAC产品的现状与未来</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-09 23:47:44" itemprop="dateCreated datePublished" datetime="2017-04-09T23:47:44+08:00">2017-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-03 16:37:33" itemprop="dateModified" datetime="2018-01-03T16:37:33+08:00">2018-01-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一位美女同事跑来说“威廉姆，你的笔记不错啊。”刹那间让William回到了青葱的校园时代，William同学凿壁借光、奋笔疾书的笔记成为了所有同学考前的必备资料(<em>奋进向上的背景音乐…..</em>)</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/pCFO5n.jpg" alt="study"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/09/NACProduct/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2017/04/04/EA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/04/EA/" class="post-title-link" itemprop="url">企业架构之道</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-04 23:47:44" itemprop="dateCreated datePublished" datetime="2017-04-04T23:47:44+08:00">2017-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-03 14:20:11" itemprop="dateModified" datetime="2018-01-03T14:20:11+08:00">2018-01-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">企业架构</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这是一篇四年前在陶氏化学DOW老员工群–志同道合、分享有道活动中的分享，讲得并不深入。没想到现在自己加入了Gartner公司，些许唏嘘，些许感慨。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9IiAs.jpg" alt="dow"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/04/EA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">William Teng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
