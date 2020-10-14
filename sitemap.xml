@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://williamteng.github.io/2018/05/20/PolicePredict/</loc>
-    
-    <lastmod>2020-10-14</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://williamteng.github.io/2018/12/09/NACProduct/</loc>
     
     <lastmod>2020-10-14</lastmod>
@@ -16,14 +9,28 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/2020/10/12/HowFarAI/</loc>
+    <loc>http://williamteng.github.io/2018/04/16/HaierQDTrip/</loc>
     
     <lastmod>2020-10-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/2020/10/12/HaierTrip/</loc>
+    <loc>http://williamteng.github.io/2018/04/04/DowEA/</loc>
+    
+    <lastmod>2020-10-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2018/04/04/HowFarIsAI/</loc>
+    
+    <lastmod>2020-10-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2018/05/20/PolicePredict/</loc>
     
     <lastmod>2020-10-14</lastmod>
     
@@ -52,13 +59,6 @@
   
   <url>
     <loc>http://williamteng.github.io/2018/07/03/DeepLearning/</loc>
-    
-    <lastmod>2020-10-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2018/04/04/EA/</loc>
     
     <lastmod>2020-10-14</lastmod>
     
@@ -130,6 +130,13 @@
   </url>
   
   <url>
+    <loc>http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2020-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5/</loc>
     <lastmod>2020-10-14</lastmod>
     <changefreq>daily</changefreq>
@@ -137,7 +144,7 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/</loc>
+    <loc>http://williamteng.github.io/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
     <lastmod>2020-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -173,13 +180,6 @@
   
   <url>
     <loc>http://williamteng.github.io/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B%E8%B7%AF%E5%BE%84/</loc>
-    <lastmod>2020-10-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
     <lastmod>2020-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -237,14 +237,14 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</loc>
+    <loc>http://williamteng.github.io/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
     <lastmod>2020-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
+    <loc>http://williamteng.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2020-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
