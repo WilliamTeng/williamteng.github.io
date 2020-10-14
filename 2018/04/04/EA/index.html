@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这是一篇很多年前在陶氏化学DOW老员工群–“志同道合、分享有道”活动中的分享，讲得并不深入，有心的主持人Jay做了笔记发给了我。没想到现在自己在Gartner公司已经工作了相当一段时间了，些许唏嘘，些许感慨。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业架构之道">
+<meta property="og:url" content="http://williamteng.github.io/2018/04/04/EA/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:description" content="这是一篇很多年前在陶氏化学DOW老员工群–“志同道合、分享有道”活动中的分享，讲得并不深入，有心的主持人Jay做了笔记发给了我。没想到现在自己在Gartner公司已经工作了相当一段时间了，些许唏嘘，些许感慨。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9IiAs.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Y2vD.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9YDER.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9YwDJ.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Y6C6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Y0b9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9taJP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Ys4x.png">
+<meta property="article:published_time" content="2018-04-04T15:47:44.000Z">
+<meta property="article:modified_time" content="2020-10-14T07:36:18.926Z">
+<meta property="article:author" content="William Teng">
+<meta property="article:tag" content="企业战略">
+<meta property="article:tag" content="企业架构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/01/03/p9IiAs.jpg">
+
+<link rel="canonical" href="http://williamteng.github.io/2018/04/04/EA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>企业架构之道 | William's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">William's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">William的github博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/04/04/EA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          企业架构之道
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-04 23:47:44" itemprop="dateCreated datePublished" datetime="2018-04-04T23:47:44+08:00">2018-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-14 15:36:18" itemprop="dateModified" datetime="2020-10-14T15:36:18+08:00">2020-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">企业架构</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这是一篇很多年前在陶氏化学DOW老员工群–“志同道合、分享有道”活动中的分享，讲得并不深入，有心的主持人Jay做了笔记发给了我。没想到现在自己在Gartner公司已经工作了相当一段时间了，些许唏嘘，些许感慨。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9IiAs.jpg" alt="DOW的文化熏陶和聚集了一群志同道合的小伙伴"></p>
+<a id="more"></a>
+<p><em>请大家预习的内容</em></p>
+<ul>
+<li>Zachman:“企业架构是构成组织的所有关键元素和关系的综合描述。企业架构框架（EAF）是一个描述企业架构方法的蓝图。”</li>
+<li>TOGAF（开放组体系结构框架）将“企业”定义为有着共同目标集合的组织的聚集。例如，企业可能是政府部门、一个完整的公司、公司部门、单个处/科室，或通过共同拥有权连接在一起的地理上疏远的组织链。</li>
+<li>The OPEN GROUP：“企业架构是关于理解所有构成企业的不同企业元素，以及这些元素怎样相互关联。”</li>
+<li>Gartner Group 对企业架构的定义是: 企业架构是通过创建、沟通和提高用以描述企业未来状态和发展的关键原则来把商业远景和战略转化成有效的企业变更的过程。 </li>
+</ul>
+<p>===</p>
+<p><em>分享部分正文</em></p>
+<p>谈到企业架构，首先我们应该明白企业架构Enterprise Architect的由来。</p>
+<p>EA是个有20多年历史的老话题了。主要是为了解决企业IT架构的复杂性问题而生的。</p>
+<p>有个简单的比喻，自己做一个狗窝，边想边做就可以，不会出现大的差池。但建造一个城市的建筑群，边想边做就一定是一团糟。这个时候就需要架构师解决这种所谓的复杂性问题。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Y2vD.jpg" alt="city"></p>
+<p>在问题提出来之后这20多年间，出现了许多的方法论。其中最著名的就是前面提到的四种。</p>
+<h3 id="Zachman框架"><a href="#Zachman框架" class="headerlink" title="Zachman框架"></a>Zachman框架</h3><p>最早提出来解决方案的框架的是Zachman，他的方法其实是个分类的框架。这个复杂的表格，作为架构设计的起点是很好的，之后就不那么管用了。</p>
+<p>表格的本质说白了和我们在老东家DOW学的six sigma课程里面的stakeholder analysis如出一辙。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9YDER.png" alt="Zachman"></p>
+<p>Zachman因为是EA学科的鼻祖，所以大家很尊重和崇拜他，他的方法在实际应用中有些感觉力所不逮，但作为架构设计的起点还是很好的。</p>
+<p>Zachman的方法的表格里就是把所有的stakeholder都放进去，然后几乎所有的问题都问一遍。不同的人回答一遍，就几乎能找到所有人的concern，所以不是一个真正的方法论，更像一个全面的问卷调查。</p>
+<p>Zachman之后一心钻研这个问题，从IBM出来后成立了专门咨询公司提供企业架构咨询，粉丝遍布世界各地。今年年初老人家还飞到了上海来走穴，大受追捧和欢迎。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9YwDJ.jpg" alt="Zachman"></p>
+<h3 id="TOGAF模型"><a href="#TOGAF模型" class="headerlink" title="TOGAF模型"></a>TOGAF模型</h3><p>对企业EA真正有用的是另一种架构模型TOGAF。</p>
+<p>下面我们首先来看看TOGAF的划分，它分business architect, application architect, information architect和technical architect四个层次的。</p>
+<p>这四个层面不能单纯靠字面去理解，有兴趣可以看看具体的定义。比如information主要是database层面的，但现在的big data等等都在这里面，具体内容非常丰富，具体实施的时候需要仔细参照按照企业实际情况进行取舍。Jerry提到的tech arch其实主要是解决最基本的技术层面问题的。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Y6C6.png" alt="Togaf"></p>
+<p>TOGAF除了我们提到的层次外，最重要的是ADM(ArchitectureDevelopmentMethod)。</p>
+<p>ADM之所以有用就是因为它是一个流程。有八个步骤，把EA的落地按照顺序描述出来了。这八个步骤和我们做项目的顺序是差不多的，但价值在于他告诉你了做其中每个步骤具体都有哪些内容。</p>
+<p>1、需要得到各方支持，确认范围，把biz需求文档化以及建立作为的as is和to be</p>
+<p>2、detailed biz analysis, tech requirement documentation.</p>
+<p>3、information systems architecture – 这里面会有详细的要求告诉你做什么。有兴趣的看文档就好。我和Jay就展示下这个方法论的结构</p>
+<p>4、技术架构设计。就是老邢说的哪些人介入，告诉大家用什么基础架构</p>
+<p>5、转化为项目</p>
+<p>6、做prioritize</p>
+<p>7、项目实现</p>
+<p>8、change management process.</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Y0b9.png" alt="Togaf ADM"></p>
+<h3 id="Gartner企业架构"><a href="#Gartner企业架构" class="headerlink" title="Gartner企业架构"></a>Gartner企业架构</h3><p>Gartner是我们讲的第三种方法论，更多的是最佳实践和动态的概念。</p>
+<p>在Gartner的观念中，企业架构建设的起点应该是对企业发展方向的明确，而不是仅仅对企业当前状态的描述，并且一个成功的企业架构应该能将biz owner,IT专家联系起来，并为他们提供统一、针对企业现状以及发展方向的vision。</p>
+<p>Gartner将企业架构看作为一个动态的过程，Gartner是给CIO做架构咨询的，他们有非常丰富的案例。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9taJP.png" alt="Gartner"></p>
+<p>Gartner是以在企业架构建设领域中积累的大量实践经验为基础，对外提供关于企业架构方面的各种最佳实践。如果企业要用Gartner来建设企业架构，要么出钱购买其资讯服务，要么就以Gartner公司提供的数个企业架构建设实例为参考来构建自身的企业架构。</p>
+<p>Gartner既不提供企业架构内容的分类法，也不提供企业架构的建设过程指南，因而从架构框架的定义来看，Gartner应该不能算是一个严格意义上的企业架构框架理论。</p>
+<h3 id="FEA架构"><a href="#FEA架构" class="headerlink" title="FEA架构"></a>FEA架构</h3><p>第四种是FEA， FEA是米国政府部门提出的企业架构理论和实践，有意思的是米国政府要求政府部门要实现EA架构，所以这些方法论在米国政府都有各种实践，FEA不仅在企业架构内容上由其自己的分类方式，而且关于架构过程也有着相当的描述，FEA不是一个通用的框架，对某些行业特别有用。主要是健康、教育、自然资源以及国土安全。</p>
+<p>FEA用服务的概念对企业部门的各种服务能力以业务线（Line-of-Business）为单位进行标识、组织和定义，并且将这些服务按照其使用的范围归纳为企业服务（Enterprise Service）和片段服务（Segment Service）。FEA的指导理念就是根据五层模型描述企业的as is和to be，然后做gap analysis，再转化为project。这些层次的描述在FEA中通过五层参考模型的方式进行规范，从而为各个部门建立起一种统一的用于描述各自服务能力的方法。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Ys4x.png" alt="FEA"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>四种框架的优劣势：</p>
+<ul>
+<li>总体来说，在涉案方方面面涵盖最广的是Zachman</li>
+<li>目前500强里面80%是用TOGAF，TOGAF是厂商无关度最高</li>
+<li>Gartner是最关注业务的</li>
+<li>FEA则是完整的参考模型指南</li>
+</ul>
+<p>以上我们谈的是企业架构EnterpriseArchitect的四种最流行方法论，因为时间关系，仅仅聊了一些简单的框架方面的内容。具体实施中会牵涉到方方面面的内容，所以不能简单地认为了解了框架就能做企业架构设计了。</p>
+<p>TOGAF最新版本是v9，有专门的认证考试。如果有志于从事企业架构设计方面的工作，不妨参加相应培训进一步学习相关方面的知识。</p>
+<h3 id="Q-amp-A环节"><a href="#Q-amp-A环节" class="headerlink" title="Q&amp;A环节"></a>Q&amp;A环节</h3><h4 id="Robin提到了现在企业业务发展变化很快，企业架构如何应对的问题"><a href="#Robin提到了现在企业业务发展变化很快，企业架构如何应对的问题" class="headerlink" title="Robin提到了现在企业业务发展变化很快，企业架构如何应对的问题"></a>Robin提到了现在企业业务发展变化很快，企业架构如何应对的问题</h4><blockquote>
+<p>但从架构上讲，针对business layer的变化，企业架构更多是从下面的三层中具体的application layer、inforamtion layer和technical layer变化做应对。</p>
+<p>虽然EA是个20多年的老话题，但新技术的不断演进也在对各种方法论起着补充作用。特别是近期业界开始大谈企业的数字化转型问题，使得企业架构师对新技术掌握的要求也不断提高，比如在Application Layer必须需要了解包括诸如客户关系管理、供应链以及特别是和行业和应用场景相结合的知识，Technical Layer必须掌握Big Data、AI应用和/或Digital Marketing、各种移动平台开发以及云计算的基本原理，Data Layer需要了解包括半结构化和非结构化数据的处理方法等等。</p>
+<p>但终究的出发点还是业务，企业的业务需求千变万化、时效性也很强，如何让架构也能保持良好的弹性机制，更好地支持业务是值得我们不断去研究的。因而这个老话题里又蕴含了无穷的新内容和生命力。</p>
+</blockquote>
+<h4 id="Jerry谈到了CIO和EA之间的关系问题"><a href="#Jerry谈到了CIO和EA之间的关系问题" class="headerlink" title="Jerry谈到了CIO和EA之间的关系问题"></a>Jerry谈到了CIO和EA之间的关系问题</h4><blockquote>
+<p>我觉得在一个大的企业内部，CIO了解EA当然好，但实际的工作还是要EA去做的。所以EA还是和CIO不同的角色，CIO是当仁不让的企业IT司令官，EA在企业内部是IT智囊团的位置，EA总架构师相当于IT总参谋长职责，对企业的IT战略走向也是起到至关重要作用的一个role。</p>
+</blockquote>
+<p><strong>“士不可以不弘毅，任重而道远。”有志于企业架构设计的同学们，前途是光明的，道路是曲折的。让我们多多举办版聚之类的团队活动，吃好、喝好，然后把革命工作做得更好吧……</strong></p>
+<p><em>部分图片来自网络，在此应用仅供学习与内部交流，版权仍属于原作者所有。</em></p>
+
+    </div>
+
+    
+    
+    
+      
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5/" rel="tag"># 企业战略</a>
+              <a href="/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/" rel="tag"># 企业架构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2018/05/20/PolicePredict/" rel="next" title="人工智能与犯罪预测">
+      人工智能与犯罪预测 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Zachman%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">Zachman框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TOGAF%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">TOGAF模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gartner%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">Gartner企业架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FEA%E6%9E%B6%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">FEA架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A%E7%8E%AF%E8%8A%82"><span class="nav-number">6.</span> <span class="nav-text">Q&amp;A环节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Robin%E6%8F%90%E5%88%B0%E4%BA%86%E7%8E%B0%E5%9C%A8%E4%BC%81%E4%B8%9A%E4%B8%9A%E5%8A%A1%E5%8F%91%E5%B1%95%E5%8F%98%E5%8C%96%E5%BE%88%E5%BF%AB%EF%BC%8C%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">6.1.</span> <span class="nav-text">Robin提到了现在企业业务发展变化很快，企业架构如何应对的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jerry%E8%B0%88%E5%88%B0%E4%BA%86CIO%E5%92%8CEA%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%E9%97%AE%E9%A2%98"><span class="nav-number">6.2.</span> <span class="nav-text">Jerry谈到了CIO和EA之间的关系问题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="William Teng"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">William Teng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WilliamTeng" title="GitHub → https://github.com/WilliamTeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:teng_lian_wei@gmail.com" title="E-Mail → mailto:teng_lian_wei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

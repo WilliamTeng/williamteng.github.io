@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一位美女同事跑来说“威廉姆，你的笔记不错啊。”刹那间让William回到了青葱的校园时代，William同学凿壁借光、奋笔疾书的笔记成为了所有同学考前的必备资料(奋进向上的背景音乐…..)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NAC产品的现状与未来">
+<meta property="og:url" content="http://williamteng.github.io/2018/12/09/NACProduct/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:description" content="一位美女同事跑来说“威廉姆，你的笔记不错啊。”刹那间让William回到了青葱的校园时代，William同学凿壁借光、奋笔疾书的笔记成为了所有同学考前的必备资料(奋进向上的背景音乐…..)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/pCFO5n.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KggA.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kbgs.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KDAO.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KrND.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kc3d.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9lIUK.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Ko4g.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KhHf.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9K2jI.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KfDP.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9K5E8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KIUS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p91KGF.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KWut.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KH3j.png">
+<meta property="article:published_time" content="2018-12-09T15:47:44.000Z">
+<meta property="article:modified_time" content="2020-10-14T07:47:25.101Z">
+<meta property="article:author" content="William Teng">
+<meta property="article:tag" content="企业架构">
+<meta property="article:tag" content="信息安全">
+<meta property="article:tag" content="基础架构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/01/03/pCFO5n.jpg">
+
+<link rel="canonical" href="http://williamteng.github.io/2018/12/09/NACProduct/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NAC产品的现状与未来 | William's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">William's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">William的github博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/12/09/NACProduct/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NAC产品的现状与未来
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-09 23:47:44" itemprop="dateCreated datePublished" datetime="2018-12-09T23:47:44+08:00">2018-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-14 15:47:25" itemprop="dateModified" datetime="2020-10-14T15:47:25+08:00">2020-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一位美女同事跑来说“威廉姆，你的笔记不错啊。”刹那间让William回到了青葱的校园时代，William同学凿壁借光、奋笔疾书的笔记成为了所有同学考前的必备资料(<em>奋进向上的背景音乐…..</em>)</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/pCFO5n.jpg" alt="努力学习(图片引自互联网)"></p>
+<a id="more"></a>
+<pre><code>“喂，老爹，收快递~~”
+
+随着家里大哥的呼唤，
+
+William迅速从YY状态中苏醒过来。
+
+这个世界
+
+欢乐总是太短
+
+忧伤总是太长
+
+......
+</code></pre><p>这是一个真实的故事。盆友圈看到的励志大片。一位名叫Slavik的俄罗斯黑客通过宙斯特洛伊木马每月天价进账，随着FBI的调查深入发现数百企业高管的电脑都被感染，全球银行几乎都被掌控。Slavik对FBI的围剿几进几出，操纵了前不久的川普大选，泄漏了“赫敏”的美艳香照，iphone用户密码被破解……</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KggA.jpg" alt="BOGACHEV"></p>
+<p>Slavik因此成为FBI No.1的通缉黑客。天才黑客的故事总能极大满足我们报复社会的愿望。常常自诩也是电脑专业的，可跟人家比比…… 生亦何哀，死亦何苦啊……</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kbgs.jpg" alt="HACKER"></p>
+<p>结论：<strong>网络安全很（<em>heng</em>）重要</strong>，嗯。</p>
+<h3 id="本文框架"><a href="#本文框架" class="headerlink" title="本文框架"></a>本文框架</h3><p>一位朋友让我对他们研发的网络安全设备NAC(Network Access Control)产品提点建议，所以今天聊聊NAC。说到网络安全，不能不谈到安全的顶尖峰会RSA 2017。下面我们尝试解读一下</p>
+<ul>
+<li>NAC产品的发展趋势</li>
+<li>NAC产品当前的状况</li>
+</ul>
+<p>如果对NAC想了解一下基本知识，电梯直达LG2<br>(按钮呢？哪位大牛教教怎么页面内跳转？)</p>
+<h3 id="NAC产品的发展方向漫谈"><a href="#NAC产品的发展方向漫谈" class="headerlink" title="NAC产品的发展方向漫谈"></a>NAC产品的发展方向漫谈</h3><p>每年一次的RSA年会今年是第26届，以“<strong><em>Power of opportUNITY</em></strong>”为主题，结合16年”Connect to Protect”的主题，这两年RSA的主题都在向外界传达一个信号：<strong>连接</strong>与<strong>协同</strong>。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KDAO.jpg" alt="rsa2017"></p>
+<p>今年将“<strong>UNITY</strong>”大写，强调团结就是机遇，就是力量。在这样的主题背后，隐藏着一个非常重要的关键词：生态的力量。因此老威认为，未来NAC的发展首要方向也是</p>
+<h4 id="开放和互联"><a href="#开放和互联" class="headerlink" title="开放和互联"></a>开放和互联</h4><p>特别是在情报共享与威胁检测方面，近年来的RSA大会已经从讨论“信息共享”转向“情报共享”，从情报信息本身到利用威胁情报分析并从中获益是情报与威胁检测正在发生的转变。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KrND.jpg" alt="Open and Share"></p>
+<p>举个栗子，你家门口发现了一个鬼鬼祟祟的身影在撬门，是不是要用适当的方式让所有的邻居、小区物业和其他人都知道这个侵入信息？</p>
+<p>在情报的生产环节，国外已经初具规模，正在朝着标准化的方向发展。就国内的情形来看，仍然处于少量的大公司（如360企业安全、亚信安全等）自给自足阶段。</p>
+<p>在情报的共享阶段，国际上STIX提供了基于标准XML的语法描述威胁因素、威胁活动，安全事故等威胁情报的细节和威胁内容的方法，使安全研究人员交换威胁情报的效率和准确率大大提升。国内的安全相关厂商（安全厂商和用户的安全部门）出于各种原因，不愿意开放共享自身的威胁情报解决这些问题还需要时间，需要市场的不断成熟。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kc3d.jpg" alt="stix"></p>
+<p>在情报的消费环节，威胁情报提供商需要使用最新的大数据以及人工智能不断优化算法，提供更为直观、更为简便的情报数据，国内360除了会为用户提供基础的威胁情报数据外，还会针对不同行业的用户提供具有针对性的威胁情报，这样会让用户在消费情报时更加具有针对性。</p>
+<p>从上述闭环产业链来看，<strong>NAC产品必须保证自己的开放性，能够与生态圈中其他系统信息/情报共享和互动</strong>。</p>
+<h4 id="人工智能的应用"><a href="#人工智能的应用" class="headerlink" title="人工智能的应用"></a>人工智能的应用</h4><p>现在火热无比的人工智能方面，其实有两个方面值得关注。其一，是人工智能本身的安全性问题；其次，是如何利用人工智能比如机器学习等方面的发展去监控并能主动发现安全威胁，学习和生产威胁信息。前面人工智能方面的笔记中我们聊到，人工智能有两大途径，目前在安全领域基本也是以知识导引为主的方式，如何将日前多层神经网络的技术发展应用到安全领域是个亟待研究的课题。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9lIUK.jpg" alt="ai"></p>
+<p>通过深层学习，检测和监测到安全威胁所在，挖掘出有价值的威胁情报，以及对网络安全知识图谱的表示和产品级应用，NAC产品能够<strong>在人工智能特别是数据驱动方面做出多大的突破</strong>也是评价这款产品先进性的一个重要指标。</p>
+<h4 id="物联网IoT的安全"><a href="#物联网IoT的安全" class="headerlink" title="物联网IoT的安全"></a>物联网IoT的安全</h4><p>智能生活渐渐融入了我们的日常生活，老威手机上的米家控制着从小米网关连接的智能灯泡、门铃和插座，可以方便的看到净水器滤芯和一系列家用电器状态，阿里智能连接着RSA盒子以便能还享受下胆机和网易云音乐的互联，从智能家电、无人机、智能汽车，到工业4.0，这些设备的安全问题将成为无法避免的安全课题。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Ko4g.jpg" alt="iot security"></p>
+<p>物联网的安全是否是NAC覆盖的领域目前业界尚无定论，但倘若属于，<strong>NAC将采用什么样的拓展标准以及如何面对复杂庞大的设备接入</strong>将会是一个全新的挑战。</p>
+<h4 id="大数据-身份识别的创新"><a href="#大数据-身份识别的创新" class="headerlink" title="大数据 - 身份识别的创新"></a>大数据 - 身份识别的创新</h4><p>每年的RSA大会上，创新沙盒环节都是备受关注的焦点。凭借颠覆传统的身份识别方式，UNIFYID成为了2017年获胜者。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KhHf.jpg" alt="sandbox"></p>
+<p>UNIFYID通过用户平常使用手机、电脑和可穿戴设备里的陀螺仪，加速器，GPS，周围光感应，WIFI，蓝牙等等，对包括击键间隔，鼠标的移动和滚轮的滚动，触摸板的移动，周边WIFI，蓝牙等等一百种维度产生数据。这些数据上传云端并使用机器算法，对用户的行为进行学习。消除噪音数据，包括因运动状态，环境等导致的差异。</p>
+<p>通过产生的数据，辨识用户的特征，例如走路的步态、速度等，形成用户的独特的档案，再与登录账户时传来的数据比对，判断是不是用户本人，从而作为凭证。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9K2jI.gif" alt="braintree"></p>
+<p>威廉姆对UNIFYID简直不(wu)屑(ti)一(tou)顾(di)，这样的身份验证虽不能说是万无一失，但也不能不说奇葩至极吧。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KfDP.jpg" alt="team"></p>
+<p>NFC产品若是定位在<strong>具有大数据分析和特征提取能力</strong>的层面，那么安全级别也一定是出类拔萃的吧。</p>
+<h4 id="跨平台的能力"><a href="#跨平台的能力" class="headerlink" title="跨平台的能力"></a>跨平台的能力</h4><p>身份验证和角色控制本身在企业IT环境中有非常多的实现方式， 比如目录服务。NAC的再次发展更多源于BYOD，就企业而言，越来越多的员工会将自己的平板和智能手机兼做公司用途，银行和其他服务产业的客户也会接入访问，因而跨平台能力的支持是NAC必备的能力之一。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9K5E8.png" alt="market share"></p>
+<h4 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h4><p>认证信息、告警信息分发部署自动化，Gartner在2017年的终端产品安全性预测报告中指出，安全应用的自动化部署能力将对企业投资价值衡量产生影响。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KIUS.png" alt="automation"></p>
+<p>Bradfordnetworks的产品对此进行了精确的阐释。以下是Garnter分析师的原文引用。</p>
+<pre><code>By 2020, security program owners who are able to automate at least 50% of their program will experience half the amount of breaches as their peers who haven’t embraced security automation.  Automation delivers clear, measurable business value in terms of Total Cost of Ownership (TCO) and reduction in breaches.
+</code></pre><p>原文链接位于<a href="&lt;https://www.bradfordnetworks.com/trends-in-nac-and-endpoint-security/">&lt;https://www.bradfordnetworks.com/trends-in-nac-and-endpoint-security/</a>&gt;</p>
+<p>因而，<strong>NAC产品的自动化程度将决定部署和实施时候的性价比判读</strong>，也是产品化中不可忽视的一个组成部分。</p>
+<h3 id="NAC产品目前状态"><a href="#NAC产品目前状态" class="headerlink" title="NAC产品目前状态"></a>NAC产品目前状态</h3><p>目前在NAC领先的产品厂商主要还是老牌的Cisco、HPE收购的Aruba、ForeScout Technology以及Juniper Network、BradFord Network。Gartner的魔力象限有具体分析和介绍，网络上能找到一篇2013年12月的，附上链接，仅供参考。<a href="&lt;http://emailing.aquastar-consulting.com/2013/Infra/Newsletters/2014/Janvier/Magic-Quadrant-for-Network-Access-Control.pdf">&lt;http://emailing.aquastar-consulting.com/2013/Infra/Newsletters/2014/Janvier/Magic-Quadrant-for-Network-Access-Control.pdf</a>&gt;</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p91KGF.jpg" alt="gartner"></p>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>Cisco </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>NAC设备 </td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>强大内嵌强制执行能力。有限细粒度，网络边缘强制执行能力弱 </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>HPE/Aruba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>ProCurve Identity Driven Manager/ClearPass</td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>性价比不错，管理能力和控制能力较强。需依靠HPE交换机/Aruba设备。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>ForeScout Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>CounterAct设备</td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>面向端点，提供可见性。扩展能力弱，认证能力较弱。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>Bradford Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>Network Sentry</td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>成熟产品，可应用于复杂情况。太过复杂，企业安装部署困难。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>Juniper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>统一接入控制UAC</td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>能与SSL-VPN集成、强大功能组合、分离控制。复杂，在Juniper网络中表现好。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>360企业安全集团</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>天擎</td>
+</tr>
+<tr>
+<td>优缺点</td>
+<td>强大的执行能力。拓展能力有限。</td>
+</tr>
+</tbody>
+</table>
+<p>另外，NAC也有着广泛的<strong>开源解决方案</strong>，William热衷于此，但开源的利与弊就由实施者自己去考虑了。</p>
+<h5 id="PacketFence-Zero-Effort-NAC-ZEN"><a href="#PacketFence-Zero-Effort-NAC-ZEN" class="headerlink" title="PacketFence Zero Effort NAC (ZEN)"></a>PacketFence Zero Effort NAC (ZEN)</h5><p>一个虚拟设备操作系统，运行在Windows或Linux系统内。ZEN基于Fedora Linux、LAMP、Perl和Snort。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KWut.jpg" alt="ZEN"></p>
+<h5 id="FreeNAC"><a href="#FreeNAC" class="headerlink" title="FreeNAC"></a>FreeNAC</h5><p>由瑞士的Swisscom所开发，近来也提供商业版本。它使用802.1x或思科的VMPS。 此外，FreeNAC还可以提供VLAN和交换机的端口管理、文档编制、端口电缆信息、设备发现等功能 。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KH3j.png" alt="freeNAC"></p>
+<h5 id="更多的开源NAC"><a href="#更多的开源NAC" class="headerlink" title="更多的开源NAC"></a>更多的开源NAC</h5><p>现在有许多大学正在开发开源的NAC项目。如美国的卡内基梅隆大学的Netreg和堪萨斯州大学Rings的开发人员已经开发了自己内部的NAC方案。 这种Rings产品拥有其自身的DHCP服务器，这也是使它成为一个专门产品的一个方面。</p>
+<p>另外一个NAC厂商StillSecure确实以开源软件的形式发布了一个免费的NAC产品版本。StillSecure的免费NAC产品也称为Safe Access Lite。</p>
+<p>此外，赛门铁克和其它的五个厂商已经宣告他们将联合起来构建一个开源的NAC客户端。赛门铁克、TippingPoint、 Trapeze Networks、 Extreme Networks、 Identity Engines、Infoblox等公司已经形成了一个称为Open Secure Edge Access Alliance的组织来开发。</p>
+<p>这个客户端从技术上可称为一个NAC的请求者，请求者运行在设备上，要求获得准许从一个访问控制服务器连接到网络。这个访问控制服务器可以增强NAC安全策略，如反病毒定义的文件版本、操作系统补丁的水平，以及防火墙的设置等等。</p>
+<h3 id="网络准入控制-NAC的基本概念"><a href="#网络准入控制-NAC的基本概念" class="headerlink" title="网络准入控制 - NAC的基本概念"></a>网络准入控制 - NAC的基本概念</h3><h4 id="NAC的基本概念"><a href="#NAC的基本概念" class="headerlink" title="NAC的基本概念"></a>NAC的基本概念</h4><p>Network Access Control，网络准入控制，简而言之，就是只允许合法的、值得信任的端点设备(例如PC 、服务器、平板以及手机等 )接入网络，而不允许其它设备接入。</p>
+<p>比如，如果你的iphone越了狱或者Android手机root了，绝大多数企业NAC是不允许该手机接入企业内部网络的。</p>
+<h4 id="NAC的组成"><a href="#NAC的组成" class="headerlink" title="NAC的组成"></a>NAC的组成</h4><p>NAC一般包括三部分</p>
+<ul>
+<li>终端上的安全检查软件，如AirWatch的Agent</li>
+<li>网络接入设备（接入交换机和无线访问点），摆在机房里，对绝大多数用户来说，这部分：邻家有女初长成，养在深闺人未识</li>
+<li>策略服务器，傲娇如上。</li>
+</ul>
+<h4 id="NAC的部署"><a href="#NAC的部署" class="headerlink" title="NAC的部署"></a>NAC的部署</h4><p>常见有四种部署方式：</p>
+<ul>
+<li>802.1X准入控制  如图，关键点是有高大上的交换机支持。</li>
+<li>DHCP准入控制  </li>
+<li>网管型准入控制 只是对终端出外网进行了控制，有性能瓶颈</li>
+<li>MVG准入控制  多厂商虚拟网管。</li>
+</ul>
+<p>文中引述材料均来源于互联网，如果图片或引言牵扯到知识产权和个人隐私问题，请第一时间通知<a href="william.tengATgartner.com">William</a>进行删除。文中对Garnter魔力象限（2013）的引用也来自互联网公开内容，如果需要最新魔力象限数据，请联络Gartner公司。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/" rel="tag"># 企业架构</a>
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" rel="tag"># 信息安全</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/" rel="tag"># 基础架构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/08/AI-IC/" rel="prev" title="人工智能芯片产业生态">
+      <i class="fa fa-chevron-left"></i> 人工智能芯片产业生态
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/01/19/NewRetail/" rel="next" title="新零售时代的取胜之道">
+      新零售时代的取胜之道 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">本文框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAC%E4%BA%A7%E5%93%81%E7%9A%84%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91%E6%BC%AB%E8%B0%88"><span class="nav-number">2.</span> <span class="nav-text">NAC产品的发展方向漫谈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E5%92%8C%E4%BA%92%E8%81%94"><span class="nav-number">2.1.</span> <span class="nav-text">开放和互联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">人工智能的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E8%81%94%E7%BD%91IoT%E7%9A%84%E5%AE%89%E5%85%A8"><span class="nav-number">2.3.</span> <span class="nav-text">物联网IoT的安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE-%E8%BA%AB%E4%BB%BD%E8%AF%86%E5%88%AB%E7%9A%84%E5%88%9B%E6%96%B0"><span class="nav-number">2.4.</span> <span class="nav-text">大数据 - 身份识别的创新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E8%83%BD%E5%8A%9B"><span class="nav-number">2.5.</span> <span class="nav-text">跨平台的能力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="nav-number">2.6.</span> <span class="nav-text">自动化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAC%E4%BA%A7%E5%93%81%E7%9B%AE%E5%89%8D%E7%8A%B6%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">NAC产品目前状态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PacketFence-Zero-Effort-NAC-ZEN"><span class="nav-number">3.0.1.</span> <span class="nav-text">PacketFence Zero Effort NAC (ZEN)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeNAC"><span class="nav-number">3.0.2.</span> <span class="nav-text">FreeNAC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E5%BC%80%E6%BA%90NAC"><span class="nav-number">3.0.3.</span> <span class="nav-text">更多的开源NAC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%87%86%E5%85%A5%E6%8E%A7%E5%88%B6-NAC%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.</span> <span class="nav-text">网络准入控制 - NAC的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NAC%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">NAC的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAC%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">4.2.</span> <span class="nav-text">NAC的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAC%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="nav-number">4.3.</span> <span class="nav-text">NAC的部署</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="William Teng"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">William Teng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WilliamTeng" title="GitHub → https://github.com/WilliamTeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:teng_lian_wei@gmail.com" title="E-Mail → mailto:teng_lian_wei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

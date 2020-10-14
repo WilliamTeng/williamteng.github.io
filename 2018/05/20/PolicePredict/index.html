@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="今天想聊聊人工智能和犯罪预测。 2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能与犯罪预测">
+<meta property="og:url" content="http://williamteng.github.io/2018/05/20/PolicePredict/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:description" content="今天想聊聊人工智能和犯罪预测。 2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KGh4.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kepj.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KNcR.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KMn0.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kdnx.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kl7T.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KwB6.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KQBV.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9Kt39.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/03/p9KUj1.jpg">
+<meta property="article:published_time" content="2018-05-20T14:49:21.000Z">
+<meta property="article:modified_time" content="2020-10-14T07:47:45.946Z">
+<meta property="article:author" content="William Teng">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="犯罪预测">
+<meta property="article:tag" content="数字政府">
+<meta property="article:tag" content="智慧城市">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/01/03/p9KGh4.jpg">
+
+<link rel="canonical" href="http://williamteng.github.io/2018/05/20/PolicePredict/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>人工智能与犯罪预测 | William's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">William's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">William的github博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/05/20/PolicePredict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能与犯罪预测
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-20 22:49:21" itemprop="dateCreated datePublished" datetime="2018-05-20T22:49:21+08:00">2018-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-14 15:47:45" itemprop="dateModified" datetime="2020-10-14T15:47:45+08:00">2020-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天想聊聊人工智能和犯罪预测。</p>
+<p>2011年前后，因为本.拉登的终结，美国政府9.11之后反恐行动终于有了一个交代，之后对恐怖和犯罪行动的预防转化成为美国联邦政府的主要工作。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KGh4.jpg" alt="crime"></p>
+<a id="more"></a>
+<p>CompStat，是COMPuter STATistics（计算机统计）的缩写，现在已经演变成为一个专有名词，特指一种警务管理模式。1994年，纽约市的警察部门启用了一个新的治安信息管理系统，是一个以地图为基础的统计分析系统，随着它的出现，纽约城的治安开始逐年好转。</p>
+<p>CompStat系统通过分析纽约76个警区日常犯罪的数据，得出地区犯罪报告、逮捕报告以及预测出地区犯罪趋势图，告知警方哪些地段可能会发生暴力事件。在系统预测的案件多发地，多派警力巡查。这个系统运行后，仅仅用一年的时间，纽约的犯罪率就下降了60%。到2003年，谋杀案件降到了1964年以来的历史最低水平。</p>
+<p>由于Compstat系统的成功运用，纽约市公民对警察的满意度也上升到了历史最高点。现在美国三分之一以上的警察局都采用该系统，芝加哥、新奥尔良和明里波利斯的警察局自从采用Compstat模式后，犯罪率出现了双位数的下降。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kepj.jpg" alt="CompStat"></p>
+<p>到了2013年，全美已有超过90%的警方布置了街头和公共场合摄像头，个人数据库渐渐完善，警察的预知能力更是不受地域限制。比如，纽约警察局受Compstat系统成功的激励，2012年首次与微软公司合作，又引进了一款更先进的预测工具，这款工具信息检索系统能分析和及时显示超过3000个监控仪、911电话，车牌和其他资源的数据。</p>
+<p>2014年，这款系统第一次出击，取得的成绩就令人惊叹。通过追踪100万脸书网页、4万个来自臭名昭著的赖克斯岛监狱的通话记录和数百小时来自大楼电梯、走廊和庭院的监控录像，警方突击了一个住宅区，在那儿逮捕了103个黑帮成员，这是纽约历史上最大规模的一次帮派逮捕行动，这个帮派被指控涉嫌2起谋杀、19个致命枪击案和50件其他的枪击事件，大规模的逮捕行动成功地阻止了未来可能的犯罪行为。在没有计算机的过去，这一庞大的数据侦查活动是无法想象的。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KNcR.jpg" alt="compstat"></p>
+<p>在预测犯罪分子方面，世界各地的警察局根据自身需要，设计出了不同类型的预测软件。在英国，毒品和抢劫一直是社会难题，警察部门现在使用“预测性警务”(PredPol)软件程序，根据过去三年区域的犯罪记录，PredPol会绘制出一份城市地图，用小红框标出热点犯罪区域，这个区域大概占到一个城市街区一半的面积，警察们会按照这份带有标记的地图，到那些小红框区域巡逻。在德国，预测的重点是防偷窃案。</p>
+<p>警察局利用Precobs预测软件，通过搜集犯罪现场、时间、失窃物及窃贼的特定行为等数据做分析，辨別出高失窃风险区，预先部署警力来防止窃案发生。</p>
+<p>强大数据资源的支撑下，利用先进算法的计算机不难形成较准确的预测系统。过去，在学校门口发现一个可疑车辆，警局接到报案后，会根据车牌搜索信息，但搜索结果只是出现车牌的主人姓名、电话、住址等少部分信息。而现在，假如幼儿园附近有个可疑车辆被报告给了警察局，预测系统就会根据已建立的车牌管理数据库，查出谁拥有了这辆车，车主的逮捕记录，和这个区域的犯罪情况，它不仅能知道这辆车现在在哪里，而且通过调动车牌记录，还可以知道它这几天、几个星期，甚至几个月去过哪里。根据摄像头显示，脸部识别系统又将识别此时开车的人是否是车主本人，通过合理的推测，这个数据可能有助于让犯罪念头扼杀在萌芽中。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KMn0.jpg" alt="predpol"></p>
+<p>相较而言，Predpol是一个比较成熟的产品。</p>
+<ul>
+<li>Making predictive policing practical</li>
+<li>The science behind predictive policing</li>
+<li>Testing predictive policing in the field</li>
+</ul>
+<p>这套系统的设计理念也很合乎情理，Data + Criminal behaviors + Advanced mathematics = Highest probabilities of crime，但没琢磨懂将犯罪模式抽象成的数学模型。</p>
+<p>相较于Predpol的实用性，Palanti更像是个科研项目，当然其实它是个实用系统。Palanti采用了动态本体论(Ontology)的概念，在自然语言理解层面以及系统的体系结构设计（为了配合Ontology的表示以及异质结构数据导入）上显示了相当的功力。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kdnx.jpg" alt="Ontology"></p>
+<p>我们知道，建立好本体之间的关系之后就可以进行语义层面上的推理，推理的结果可以映射回语言层面形成新的组合，本体还能比如定义同义词、反义词，对属性的值域施加约束等等。这些手段都是为了加强对大数据的理解，从而更深层次挖掘有用信息。Palanti主要是对人在社会组织中的各种复杂关系做了本体层面的抽象，这样可以全面掌握一个人包含社会关系在内的复杂属性。Palanti的学术资料也非常丰富，附件只是一小部分。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kl7T.jpg" alt="Palanti"></p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KwB6.jpg" alt="Palanti"></p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KQBV.jpg" alt="Palanti"></p>
+<p>瑞士苏黎世警方正使用德国开发的Precobs软件，应用这款软件的地区，盗窃案发生率降低了30%。Precobs相对简单，感觉是个线性预测模型，trigger和anti-trigger有点点现在流行的生成对抗网络的意思，但很粗糙和浅显。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9Kt39.jpg" alt="precobs"></p>
+<p>我认为，当我们理解人工智能作为未来科技发展趋势的时候，特别是其中自然语言理解部分的时候，我们不能只是想到虚拟个人助理、语音识别技术，这里本体论的应用场景就是一个让人眼前一亮的选择。未来更多的应用还需要我们脑洞大开地将科学与应用相结合。</p>
+<p><img src="https://s1.ax1x.com/2018/01/03/p9KUj1.jpg" alt="PolicePredict"></p>
+<p>其次，犯罪预测也是当下智慧城市建设中不可或缺的一部分。目前一些地方政府部门特别是公安系统也在做相应的研发工作，但单靠自己的有限的科研力量很难有高水平的成果，适当引入外部力量包括资源和产品也是刻不容缓的事情。抛开上述英美国家的产品，国内的海云也在数据分析和可视化方面有了比较成熟的产品可供借鉴了。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E7%8A%AF%E7%BD%AA%E9%A2%84%E6%B5%8B/" rel="tag"># 犯罪预测</a>
+              <a href="/tags/%E6%95%B0%E5%AD%97%E6%94%BF%E5%BA%9C/" rel="tag"># 数字政府</a>
+              <a href="/tags/%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/" rel="tag"># 智慧城市</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/04/04/EA/" rel="prev" title="企业架构之道">
+      <i class="fa fa-chevron-left"></i> 企业架构之道
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/07/03/DeepLearning/" rel="next" title="一个卷积神经网络MNIST数据集实验">
+      一个卷积神经网络MNIST数据集实验 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="William Teng"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">William Teng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WilliamTeng" title="GitHub → https://github.com/WilliamTeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:teng_lian_wei@gmail.com" title="E-Mail → mailto:teng_lian_wei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

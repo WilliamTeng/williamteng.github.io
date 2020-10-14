@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再谈卷积神经网络发展历程">
+<meta property="og:url" content="http://williamteng.github.io/2018/08/06/cnn/index.html">
+<meta property="og:site_name" content="William&#39;s Blog">
+<meta property="og:description" content="Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVd28S.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ33dS.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZbdeJ.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZQJi9.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pV65N9.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVcyUH.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVc4r8.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ1cKP.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgzlt.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgjfA.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pVgxSI.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ1WVS.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ1fUg.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ1o2n.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/01/07/pZ1XaF.jpg">
+<meta property="article:published_time" content="2018-08-06T13:23:10.000Z">
+<meta property="article:modified_time" content="2020-10-14T07:42:06.668Z">
+<meta property="article:author" content="William Teng">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="卷积网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/01/06/pVd28S.jpg">
+
+<link rel="canonical" href="http://williamteng.github.io/2018/08/06/cnn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>再谈卷积神经网络发展历程 | William's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">William's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">William的github博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/08/06/cnn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          再谈卷积神经网络发展历程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-06 21:23:10" itemprop="dateCreated datePublished" datetime="2018-08-06T21:23:10+08:00">2018-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-14 15:42:06" itemprop="dateModified" datetime="2020-10-14T15:42:06+08:00">2020-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Gartner每年都会发布未来一年的十大科技趋势预测，近两年的十大科技趋势中对人工智能特别是机器学习的发展，在惜字如金的演讲中不惜篇幅，可见未来若干年人工智能将为产业界和我们的生活带来多大的冲击。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVd28S.jpg" alt="Gartner人工智能发展预测(引自互联网)"></p>
+<a id="more"></a>
+<p>假如我们从此时此刻回首人工智能过去几十年的发展历程，完全符合辩证法螺旋式上升的理论。而这一次深度学习的复兴更是卷积神经网络CNN(Convolutional Neural Network)的复兴。其实卷积神经网络的发展也是经历了一个曲折的过程的。</p>
+<p>对于CNN最早可以追溯到1986年BP算法的提出，1989年LeCun将其用到多层神经网络中，1998年LeCun提出LeNet-5模型，神经网络的雏形完成。在接下来近十年的时间里，卷积神经网络的相关研究停滞不前，主要原因：一是多层神经网络在进行BP训练时的计算量极大，硬件计算能力不可能实现；二是SVM等浅层机器学习算法暂露头脚。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ33dS.jpg" alt="google dl"></p>
+<center> <font size=2>Google对卷积神经网络的解释</font></center>
+
+<p>2006年，Hinton在《科学》上发表文章，CNN再度觉醒，并取得长足发展。2012年，CNN在ImageNet大赛上夺冠。2014年，谷歌研发出20层的VGG模型。同年，DeepFace、DeepID模型横空出世，将LFW数据库上的人脸识别、人脸认证的正确率刷到99.75%，几乎超越人类。</p>
+<p>2015年深度学习领域的三巨头LeCun、Bengio 、Hinton联手在Nature上发表综述对DeepLearning进行科普。2016年3月阿尔法狗打败李世石。<em>2017年10月，AlphaGo Zero 100:0击败Alpha Go！(补充)</em></p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZbdeJ.jpg" alt="deeplearntop"></p>
+<center><font size=2>从左往右依次为Yann LeCun(Facebook AI Research)，Hinton(Google Brain)，Yoshua Bengio(Université de Montréal)，吴恩达(coursera)</font></center>
+
+<h3 id="1986年-1998年-CNN雏形阶段"><a href="#1986年-1998年-CNN雏形阶段" class="headerlink" title="1986年~1998年 CNN雏形阶段"></a>1986年~1998年 CNN雏形阶段</h3><p>这段时间里是CNN的雏形阶段，主要包括BP算法的提出、BP算法在多层神经网络模型中的应用、LeNet-5模型的正式定型。</p>
+<h4 id="BP算法的提出"><a href="#BP算法的提出" class="headerlink" title="BP算法的提出"></a>BP算法的提出</h4><p>BP算法是在1986年由Rumelhart在《Learning Internal Representations by Error Propagation》一文中提出，BP神经网络的计算过程由正向计算过程和反向计算过程组成。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZQJi9.jpg" alt="Rosenblatt"></p>
+<center><font size=2>Rosenblatt</font></center>
+
+<p>正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每层神经元的状态只影响下一层神经元的状态。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pV65N9.jpg" alt="BP"></p>
+<p>如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
+<h4 id="基于BP算法的CNN雏形"><a href="#基于BP算法的CNN雏形" class="headerlink" title="基于BP算法的CNN雏形"></a>基于BP算法的CNN雏形</h4><p>在BP算法提出3年之后，嗅觉敏锐的LeCun选择将BP算法用于训练多层卷积神经网络来识别手写数字，这可以说是CNN的雏形。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVcyUH.jpg" alt="cnn"></p>
+<h4 id="LeNet-5模型的最终定型"><a href="#LeNet-5模型的最终定型" class="headerlink" title="LeNet-5模型的最终定型"></a>LeNet-5模型的最终定型</h4><p>LeNet-5模型的提出标志着CNN的正式成型。LenNet-5共有7层（不包括输入层），每层都包含不同数量的训练参数。主要的有卷积层、下抽样层、全连接层3种连接方式。不幸的是接下来这个技术就被打入冷宫，原因如上文所说，它不仅吃设备，而且好的替代品还很多。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVc4r8.jpg" alt="lenet5"></p>
+<center><font color=gray size=2>经典的LenNet-5结构</font></center>
+
+<h3 id="2006年-Hinton带领卷积神经网络复兴"><a href="#2006年-Hinton带领卷积神经网络复兴" class="headerlink" title="2006年 Hinton带领卷积神经网络复兴"></a>2006年 Hinton带领卷积神经网络复兴</h3><p>这一年可以说是DeepLearning觉醒的一年，标志就是Hinton在Science发文，指出“多隐层神经网络具有更为优异的特征学习能力，并且其在训练上的复杂度可以通过逐层初始化来有效缓解”。这篇惊世骇俗之作名为《Reducing the dimensionality of data with neural networks》。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1cKP.jpg" alt="display"></p>
+<center><font color=gray size=2>别有深意地放上教主图片，感谢游戏拯救了人工智能</font></center>
+
+<p>至此，在GPU加速的硬件条件下，在大数据识别的应用背景下，DeepLearning、CNN再次起飞。</p>
+<h3 id="2012年-2014年-重新火热的CNN"><a href="#2012年-2014年-重新火热的CNN" class="headerlink" title="2012年~2014年 重新火热的CNN"></a>2012年~2014年 重新火热的CNN</h3><p>这段时间卷积神经网络的相关研究已经进行的如火如荼，学术文献呈井喷式层出不穷，具有代表性的：2012年的ImageNet大赛和2014年的DeepFace、DeepID模型。</p>
+<h4 id="ImageNet竞赛上CNN的一鸣惊人"><a href="#ImageNet竞赛上CNN的一鸣惊人" class="headerlink" title="ImageNet竞赛上CNN的一鸣惊人"></a>ImageNet竞赛上CNN的一鸣惊人</h4><p>可以说，2012年CNN在ImageNet竞赛中的表现直接奠定了它的重要地位，两个第一，正确率超出第二近10%，确实让人大跌眼镜。</p>
+<p>计算机视觉比赛ILSVRC（ImageNet Large Scale Visual RecognitionChallenge）使用的数据都来自ImageNet。ImageNet项目于2007年由斯坦福大学华人教授李飞飞创办，目标是收集大量带有标注信息的图片数据供计算机视觉模型训练。</p>
+<p>ImageNet拥有1500万张标注过的高清图片，总共拥有22000类，其中约有100万张标注了图片中主要物体的定位边框。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgzlt.jpg" alt="imagenet"></p>
+<p>每年度的ILSVRC比赛数据集中大概拥有120万张图片，以及1000类的标注，是ImageNet全部数据的一个子集。比赛一般采用top-5和top-1分类错误率作为模型性能的评测指标。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgjfA.jpg" alt="alex"></p>
+<p>AlexNet获得了比赛分类项目的2012年冠军（AlexNet, top-5错误率16.4%，使用额外数据可达到15.3%，8层神经网络）、上图所示为AlexNet识别ILSVRC数据集中图片的情况，每张图片下面是分类预测得分最高的5个分类及其分值。</p>
+<p><img src="https://s1.ax1x.com/2018/01/06/pVgxSI.jpg" alt="ilsvrc"></p>
+<p>如图所示，ILSVRC的top-5错误率在最近几年取得重大突破，而主要的突破点都是在深度学习和卷积神经网络，成绩的大幅提升几乎都伴随着卷积神经网络的层数加深。</p>
+<h4 id="DeepFace、DeepID"><a href="#DeepFace、DeepID" class="headerlink" title="DeepFace、DeepID"></a>DeepFace、DeepID</h4><p>在2012年CNN一炮打响之后，其应用领域再也不只局限于手写数字识别以及声音识别了，人脸识别成为其重要的应用领域之一。在这期间DeepFace和DeepID作为两个相对成功的高性能人脸识别与认证模型，成为CNN在人脸识别领域中的标志性研究成果。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1WVS.jpg" alt="deepface"></p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1fUg.jpg" alt="deepface2"></p>
+<p>至于DeepID，这是由香港中文大学汤晓鸥教授的研究团队提出第一次试图去探索CNN的本质属性，史无前例。汤教授被聘为阿里NASA计划达摩院入选科学家也名至实归。</p>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1o2n.jpg" alt="deepid"></p>
+<h3 id="2015年-至今-AI成为了应用标配"><a href="#2015年-至今-AI成为了应用标配" class="headerlink" title="2015年~至今 AI成为了应用标配"></a>2015年~至今 AI成为了应用标配</h3><p>卷积神经网络自从2006年再度走进人们的视线，发展到现在已经快有十个年头。2015年深度学习领域的三巨头LeCun、Bengio 、Hinton在Nature上发表一篇综述，系统的总结了深度学习的发展前世今生，文章写得通俗易懂，全文几乎都没有什么公式，是一篇科普性较强的文章，个人觉得研究深度学习的人员都应该去读一读，题目也很简洁，就叫《Deep Learning》。</p>
+<p>对英语有障碍的童鞋可以参考CSDN的中文译文，附链接如下:<br><a target="_blank" rel="noopener" href="https://www.csdn.net/article/2015-06-01/2824811">深度学习-LeCun、Bengio和Hinton的联合综述（上）</a><br><a target="_blank" rel="noopener" href="http://www.csdn.net/article/2015-06-02/2824825">深度学习-LeCun、Bengio和Hinton的联合综述（下）</a></p>
+<p>然后在2016年，CNN再次给人们一个惊喜：谷歌研发的基于深度神经网络和搜索树的智能机器人“阿尔法狗”在围棋上击败了人类，更惊喜的是谷歌在Nature专门发表了一篇文章来解释这个阿尔法狗。</p>
+<blockquote>
+<p>2017年10月19日凌晨，在国际学术期刊《自然》（Nature）上发表的一篇研究论文中，谷歌下属公司Deepmind报告新版程序AlphaGo Zero：从空白状态学起，在无任何人类输入的条件下，它能够迅速自学围棋，并以100:0的战绩击败“前辈”。 (2017.10.20添加)</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2018/01/07/pZ1XaF.jpg" alt="deepmind"></p>
+<center><font color=gray size=2>DeepMind联合创始人Demis Hassabis</font></center>
+
+
+
+<blockquote>
+<p>“Don‘t model the World,  Model the Mind.”  </p>
+<hr>
+<p>“Data is king, algorithm is queen.”  </p>
+<hr>
+<p>“数据是燃料， 算法是火箭” —— 吴恩达  </p>
+<hr>
+</blockquote>
+<p>没有数据, 缺乏高质量的数据, 一切算法都是鸡肋.</p>
+<p>引用电影《人工智能》中的一句话，</p>
+<blockquote>
+<p>“世界尽头的地方，是雄狮落泪的地方，是月亮升起的地方，是美梦诞生的地方”，</p>
+</blockquote>
+<p>相信这一次深度学习的复兴将会使我们的生活变得越来越美好。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C/" rel="tag"># 卷积网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/07/03/DeepLearning/" rel="prev" title="一个卷积神经网络MNIST数据集实验">
+      <i class="fa fa-chevron-left"></i> 一个卷积神经网络MNIST数据集实验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/08/AI-IC/" rel="next" title="人工智能芯片产业生态">
+      人工智能芯片产业生态 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1986%E5%B9%B4-1998%E5%B9%B4-CNN%E9%9B%8F%E5%BD%A2%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text">1986年~1998年 CNN雏形阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BP%E7%AE%97%E6%B3%95%E7%9A%84%E6%8F%90%E5%87%BA"><span class="nav-number">1.1.</span> <span class="nav-text">BP算法的提出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EBP%E7%AE%97%E6%B3%95%E7%9A%84CNN%E9%9B%8F%E5%BD%A2"><span class="nav-number">1.2.</span> <span class="nav-text">基于BP算法的CNN雏形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeNet-5%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9C%80%E7%BB%88%E5%AE%9A%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">LeNet-5模型的最终定型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2006%E5%B9%B4-Hinton%E5%B8%A6%E9%A2%86%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%A4%8D%E5%85%B4"><span class="nav-number">2.</span> <span class="nav-text">2006年 Hinton带领卷积神经网络复兴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2012%E5%B9%B4-2014%E5%B9%B4-%E9%87%8D%E6%96%B0%E7%81%AB%E7%83%AD%E7%9A%84CNN"><span class="nav-number">3.</span> <span class="nav-text">2012年~2014年 重新火热的CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageNet%E7%AB%9E%E8%B5%9B%E4%B8%8ACNN%E7%9A%84%E4%B8%80%E9%B8%A3%E6%83%8A%E4%BA%BA"><span class="nav-number">3.1.</span> <span class="nav-text">ImageNet竞赛上CNN的一鸣惊人</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeepFace%E3%80%81DeepID"><span class="nav-number">3.2.</span> <span class="nav-text">DeepFace、DeepID</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015%E5%B9%B4-%E8%87%B3%E4%BB%8A-AI%E6%88%90%E4%B8%BA%E4%BA%86%E5%BA%94%E7%94%A8%E6%A0%87%E9%85%8D"><span class="nav-number">4.</span> <span class="nav-text">2015年~至今 AI成为了应用标配</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="William Teng"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">William Teng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WilliamTeng" title="GitHub → https://github.com/WilliamTeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:teng_lian_wei@gmail.com" title="E-Mail → mailto:teng_lian_wei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Teng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
