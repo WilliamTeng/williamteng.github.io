@@ -21,28 +21,21 @@
     var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。 未来10年人工智能将成为最具颠覆性的">
+  <meta name="description" content="什么是多模态深度学习？多模态深度学习（英文名：Multimodal Deep Learning）是人工智能（AI）的一个子领域，其重点是开发能够同时处理和学习多种类型数据的模型。这些数据类型，或称模态，可以包括文本、图像、音频、视频和传感器数据等。通过结合这些不同的模式，多模态深度学习旨在创建更强大和多功能的人工智能系统，能够更好地理解、解释复杂的现实世界数据并采取行动。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个卷积神经网络MNIST数据集实验">
-<meta property="og:url" content="http://williamteng.github.io/2018/07/03/DeepLearning/index.html">
+<meta property="og:title" content="多模态学习">
+<meta property="og:url" content="http://williamteng.github.io/2023/03/21/MultimodalDeepLearning/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
-<meta property="og:description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。 未来10年人工智能将成为最具颠覆性的">
+<meta property="og:description" content="什么是多模态深度学习？多模态深度学习（英文名：Multimodal Deep Learning）是人工智能（AI）的一个子领域，其重点是开发能够同时处理和学习多种类型数据的模型。这些数据类型，或称模态，可以包括文本、图像、音频、视频和传感器数据等。通过结合这些不同的模式，多模态深度学习旨在创建更强大和多功能的人工智能系统，能够更好地理解、解释复杂的现实世界数据并采取行动。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/05/pA1VGq.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pEbAI0.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pEbViV.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pEbZGT.jpg">
-<meta property="article:published_time" content="2018-07-03T12:18:24.000Z">
-<meta property="article:modified_time" content="2020-10-14T07:40:38.227Z">
+<meta property="article:published_time" content="2023-03-21T05:24:21.000Z">
+<meta property="article:modified_time" content="2023-05-17T13:55:11.327Z">
 <meta property="article:author" content="William Teng">
-<meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="多模态学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg">
 
-<link rel="canonical" href="http://williamteng.github.io/2018/07/03/DeepLearning/">
+<link rel="canonical" href="http://williamteng.github.io/2023/03/21/MultimodalDeepLearning/">
 
 
 <script id="page-configurations">
@@ -55,7 +48,7 @@
   };
 </script>
 
-  <title>一个卷积神经网络MNIST数据集实验 | William's Blog</title>
+  <title>多模态学习 | William's Blog</title>
   
 
 
@@ -173,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2018/07/03/DeepLearning/">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2023/03/21/MultimodalDeepLearning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -186,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一个卷积神经网络MNIST数据集实验
+          多模态学习
         </h1>
 
         <div class="post-meta">
@@ -196,7 +189,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-07-03 20:18:24" itemprop="dateCreated datePublished" datetime="2018-07-03T20:18:24+08:00">2018-07-03</time>
+              <time title="创建时间：2023-03-21 13:24:21" itemprop="dateCreated datePublished" datetime="2023-03-21T13:24:21+08:00">2023-03-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,152 +212,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。</p>
-<p>未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。</p>
-<p><img src="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg" alt="Gartner 2017年新兴技术成熟度曲线(引自互联网)"></p>
+        <h2 id="什么是多模态深度学习？"><a href="#什么是多模态深度学习？" class="headerlink" title="什么是多模态深度学习？"></a>什么是多模态深度学习？</h2><p>多模态深度学习（英文名：Multimodal Deep Learning）是人工智能（AI）的一个子领域，其重点是开发能够同时处理和学习多种类型数据的模型。这些数据类型，或称模态，可以包括文本、图像、音频、视频和传感器数据等。通过结合这些不同的模式，多模态深度学习旨在创建更强大和多功能的人工智能系统，能够更好地理解、解释复杂的现实世界数据并采取行动。</p>
 <a id="more"></a>
-<p>深度学习研究的热潮持续高涨，各种开源深度学习框架也层出不穷，其中包括Google的TensorFlow、Keras、Facebook的Caffe、Torch、Microsoft的CNTK、Amazon的MXNet、以及蒙特利尔大学的Theano等等。而现在几乎所有主流云平台都支持深度学习框架，使用框架创建神经网络就变成一件轻而易举的事情了。</p>
-<p><img src="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg" alt="framework"></p>
-<p>下面简单演示一下使用pyTorch创建一个卷积神经网络，使用经典的MNIST数据集进行训练和测试。</p>
-<p>我们知道：创建一个神经网络主要有4个步骤：</p>
+<h2 id="为什么是多模态深度学习？"><a href="#为什么是多模态深度学习？" class="headerlink" title="为什么是多模态深度学习？"></a>为什么是多模态深度学习？</h2><p>我们生活的世界本质上是多模态的，因为我们不断处理和整合来自不同来源的信息，如我们的视觉、听觉和触觉。这种同时处理和理解多种类型信息的能力是一个重要的优势，使我们能够更好地浏览和与我们的环境互动。</p>
+<p>然而，传统的深度学习模型通常专注于处理和学习单一的模式。虽然这些模型在各种任务中取得了显著的成功，如图像识别、自然语言处理和语音识别，但它们在处理现实世界中经常涉及多种模式的复杂数据的能力上是有限的。</p>
+<p>多模态深度学习通过开发能够理解和整合多种类型数据的模型来解决这一限制。这种整合可以提高性能，因为模型可以利用来自不同模式的互补信息来做出更准确的预测或决策。</p>
+<h2 id="多模态融合的方法"><a href="#多模态融合的方法" class="headerlink" title="多模态融合的方法"></a>多模态融合的方法</h2><p>在多模态深度学习中，有各种方法和架构用来解决这些挑战。一些最常见的方法包括：</p>
 <ul>
-<li>定义神经网络的结构</li>
-<li>定义损失函数</li>
-<li>在会话中，将数据输入进构建的神经网络中，反复优化损失函数，直至得到最优解</li>
-<li>将测试集丢入训练好的神经网络进行验证</li>
+<li>早期融合（Early fusion）： 这种方法也被称为特征上（feature-level）进行融合，涉及到在将不同模态提取的特征送入深度学习模型之前串联或结合这些特征。这种融合允许模型学习数据的联合表示，但可能会失去一些特定的模式信息。</li>
+<li>后期融合（Late fusion）： 这种方法也被称为决策上（decision-level）进行融合，包括为每种模式训练单独的模型，然后使用融合层或机制将它们的输出结合起来。这种方法允许更多的特定模态表示，但可能无法捕捉模态之间的复杂关系。</li>
+<li>中间融合（Intermediate fusion）： 这种方法结合了Early fusion和Late fusion的元素，在深度学习模型的不同阶段整合来自不同模态的信息。这种方法可以捕捉到模态之间更复杂的关系，同时保留了模态的特定信息。</li>
+<li>多任务学习： 在这种方法中，一个单一的模型被训练来执行不同模态的多个任务。通过在不同的任务中分享信息，模型可以学习到更强大的表征并提高其整体性能。</li>
 </ul>
-<p>PyTorch中定义卷积神经网络</p>
-<pre><code>class CNN(nn.Module):
-    def __init__(self):
-    super(CNN, self).__init__()
-    self.conv1 = nn.Sequential(             # input shape (1, 28, 28)
-        nn.Conv2d(
-            in_channels=1,              # input height
-            out_channels=16,            # n_filters
-            kernel_size=5,              # filter size
-            stride=1,                   # filter movement/step
-            padding=2,                  # if want same width and length of this image after con2d, padding=(kernel_size-1)/2 if stride=1
-        ),  # output shape (16, 28, 28)
-        nn.ReLU(),                      # activation
-        nn.MaxPool2d(kernel_size=2),    # choose max value in 2x2 area, output shape (16, 14, 14)
-    )
-    self.conv2 = nn.Sequential(             # input shape (1, 14, 14)
-        nn.Conv2d(16, 32, 5, 1, 2),         # output shape (32, 14, 14)
-        nn.ReLU(),                      # activation
-        nn.MaxPool2d(2),                # output shape (32, 7, 7)
-    )
-    self.out = nn.Linear(32 * 7 * 7, 10)      # fully connected layer, output 10 classes
-
-    def forward(self, x):
-        x = self.conv1(x)
-        x = self.conv2(x)
-        x = x.view(x.size(0), -1)           # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
-        output = self.out(x)
-        return output, x                # return x for visualization
-</code></pre><p>下面使用MNIST数据集训练网络。MNIST 数据集来自美国国家标准与技术研究所，National Institute of Standards and Technology (NIST)。训练集 (training set) 由来自 250 个不同人手写的数字构成，其中 50% 是高中学生，50% 来自人口普查局 (the Census Bureau) 的工作人员。</p>
-<p><img src="https://s1.ax1x.com/2018/01/05/pA1VGq.jpg" alt="mnist"></p>
-<p>测试集(test set) 也是同样比例的手写数字数据。MNIST 数据集可在 <a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a> 获取。</p>
-<pre><code># Mnist digits dataset
-if not(os.path.exists(&apos;./mnist/&apos;)) or not os.listdir(&apos;./mnist/&apos;):
-# not mnist dir or mnist is empyt dir
-DOWNLOAD_MNIST = True
-
-train_data = torchvision.datasets.MNIST(
-    root=&apos;./mnist/&apos;,
-    train=True,                                     # this is training data
-    transform=torchvision.transforms.ToTensor(),        # Converts a PIL.Image or numpy.ndarray to
-                                                    # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
-    download=DOWNLOAD_MNIST,
-)
-
-# plot one example
-print(train_data.train_data.size())                     # (60000, 28, 28)
-print(train_data.train_labels.size())                       # (60000)
-plt.imshow(train_data.train_data[0].numpy(), cmap=&apos;gray&apos;)
-plt.title(&apos;%i&apos; % train_data.train_labels[0])
-plt.show()
-
-# Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)
-train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
-
-# convert test data into Variable, pick 2000 samples to speed up testing
-test_data = torchvision.datasets.MNIST(root=&apos;./mnist/&apos;, train=False)
-test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1), volatile=True).type(torch.FloatTensor)[:2000]/255.   # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
-test_y = test_data.test_labels[:2000]
-</code></pre><p>运行程序，我们画出第一个数字是5。</p>
-<p><img src="https://s1.ax1x.com/2018/01/06/pEbAI0.jpg" alt="5"></p>
-<p>一些模块的引入语句如下，然后开始训练网络。</p>
-<pre><code>import os
-
-# third-party library
-import torch
-import torch.nn as nn
-from torch.autograd import Variable
-import torch.utils.data as Data
-import torchvision
-import matplotlib.pyplot as plt
-
-# torch.manual_seed(1)# reproducible
-
-# Hyper Parameters
-EPOCH = 1   # train the training data n times, to save time, we just train 1 epoch
-BATCH_SIZE = 50
-LR = 0.001  # learning rate
-DOWNLOAD_MNIST = False
-</code></pre><p>下面是测试网络部分代码：</p>
-<pre><code>cnn = CNN()
-print(cnn)  # net architecture
-
-optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)   # optimize all cnn parameters
-loss_func = nn.CrossEntropyLoss()   # the target label is not one-hotted
-
-# following function (plot_with_labels) is for visualization, can be ignored if not interested
-from matplotlib import cm
-try: from sklearn.manifold import TSNE; HAS_SK = True
-except: HAS_SK = False; print(&apos;Please install sklearn for layer visualization&apos;)
-def plot_with_labels(lowDWeights, labels):
-    plt.cla()
-    X, Y = lowDWeights[:, 0], lowDWeights[:, 1]
-    for x, y, s in zip(X, Y, labels):
-        c = cm.rainbow(int(255 * s / 9)); plt.text(x, y, s, backgroundcolor=c, fontsize=9)
-    plt.xlim(X.min(), X.max()); plt.ylim(Y.min(), Y.max()); plt.title(&apos;Visualize last layer&apos;); plt.show(); plt.pause(0.01)
-
-plt.ion()
-# training and testing
-    for epoch in range(EPOCH):
-    for step, (x, y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader
-    b_x = Variable(x)   # batch x
-    b_y = Variable(y)   # batch y
-
-    output = cnn(b_x)[0]   # cnn output
-    loss = loss_func(output, b_y)   # cross entropy loss
-    optimizer.zero_grad()   # clear gradients for this training step
-    loss.backward() # backpropagation, compute gradients
-    optimizer.step()# apply gradients
-
-    if step % 50 == 0:
-        test_output, last_layer = cnn(test_x)
-        pred_y = torch.max(test_output, 1)[1].data.squeeze()
-        accuracy = sum(pred_y == test_y) / float(test_y.size(0))
-        print(&apos;Epoch: &apos;, epoch, &apos;| train loss: %.4f&apos; % loss.data[0], &apos;| test accuracy: %.2f&apos; % accuracy)
-        if HAS_SK:
-            # Visualization of trained flatten layer (T-SNE)
-            tsne = TSNE(perplexity=30, n_components=2, init=&apos;pca&apos;, n_iter=5000)
-            plot_only = 500
-            low_dim_embs = tsne.fit_transform(last_layer.data.numpy()[:plot_only, :])
-            labels = test_y.numpy()[:plot_only]
-            plot_with_labels(low_dim_embs, labels)
-plt.ioff()
-
-# print 10 predictions from test data
-test_output, _ = cnn(test_x[:10])
-pred_y = torch.max(test_output, 1)[1].data.numpy().squeeze()
-print(pred_y, &apos;prediction number&apos;)
-print(test_y[:10].numpy(), &apos;real number&apos;)
-</code></pre><p><img src="https://s1.ax1x.com/2018/01/06/pEbViV.jpg" alt="误差图像"></p>
-<p>运行结果：</p>
-<p><img src="https://s1.ax1x.com/2018/01/06/pEbZGT.jpg" alt="result"></p>
-<p>话说哪位老铁有多余的有CUDA功能的Geforce显卡，当初入了A家，现在想自己在深度学习领域hands-on一下，有点欲哭无泪啊……</p>
+<h2 id="多模态深度学习的应用"><a href="#多模态深度学习的应用" class="headerlink" title="多模态深度学习的应用"></a>多模态深度学习的应用</h2><p>多模态深度学习目前已被应用于广泛的任务和领域，包括：</p>
+<ul>
+<li>多媒体内容分析： 结合文本、视觉和听觉信息可以提高任务的性能，如视频总结、基于内容的图像检索和情感分析。</li>
+<li>人机交互： 多模态深度学习可用于开发更自然、更直观的界面，如也能解释面部表情的语音识别系统或既能理解口头语言又能理解手势的虚拟助手。</li>
+<li>医疗保健： 通过整合各种来源的数据，如医疗图像、电子健康记录和可穿戴传感器，多模态深度学习可以提高诊断的准确性，并实现更个性化的治疗计划。</li>
+<li>机器人和自主系统： 多模态深度学习可以帮助机器人和自主系统通过处理和整合来自各种传感器的信息，如相机、激光雷达和GPS，更好地理解和导航周围的环境。</li>
+</ul>
+<h2 id="多模态深度学习的挑战"><a href="#多模态深度学习的挑战" class="headerlink" title="多模态深度学习的挑战"></a>多模态深度学习的挑战</h2><p>开发多模态深度学习模型有几个挑战，包括：</p>
+<ul>
+<li>对齐： 对齐来自不同模式的数据可能很困难，因为它们可能有不同的格式、结构和时间分辨率。当试图融合来自不同来源的数据时，这种错位会带来挑战。</li>
+<li>表征： 为不同的模式找到合适的表示方法，并能有效地整合是一个关键的挑战。每种模式都可能有独特的特征，开发一个统一的表征，抓住每种模式的基本信息，对有效学习至关重要。</li>
+<li>融合： 结合来自不同模式的信息需要有效的融合技术，在保留其独特特征的同时捕捉模式间的关系，开发这些技术是多模态深度学习的一个持续研究领域。</li>
+</ul>
 
     </div>
 
@@ -387,8 +259,8 @@ print(test_y[:10].numpy(), &apos;real number&apos;)
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
               <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%AD%A6%E4%B9%A0/" rel="tag"># 多模态学习</a>
           </div>
 
         
@@ -397,13 +269,10 @@ print(test_y[:10].numpy(), &apos;real number&apos;)
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/05/20/PolicePredict/" rel="prev" title="人工智能与犯罪预测">
-      <i class="fa fa-chevron-left"></i> 人工智能与犯罪预测
+    <a href="/2022/05/16/SentimentAnalysis/" rel="prev" title="情感分析">
+      <i class="fa fa-chevron-left"></i> 情感分析
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/08/06/cnn/" rel="next" title="再谈卷积神经网络发展历程">
-      再谈卷积神经网络发展历程 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -462,6 +331,7 @@ print(test_y[:10].numpy(), &apos;real number&apos;)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是多模态深度学习？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么是多模态深度学习？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E8%9E%8D%E5%90%88%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">多模态融合的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">多模态深度学习的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">多模态深度学习的挑战</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
