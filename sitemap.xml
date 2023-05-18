@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/2023/05/06/2023AITrends/</loc>
+    
+    <lastmod>2023-05-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2023/05/01/AIGC/</loc>
     
     <lastmod>2023-05-18</lastmod>
@@ -313,6 +320,13 @@
   
   <url>
     <loc>http://williamteng.github.io/tags/AIGC/</loc>
+    <lastmod>2023-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/tags/2023%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/</loc>
     <lastmod>2023-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
