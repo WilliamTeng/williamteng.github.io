@@ -21,21 +21,21 @@
     var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="随着人工智能（AI）不断重塑我们的世界，其发展的一个关键方面已经成为现代机器学习模型的支柱：预训练。在本篇文章中，我们将探讨预训练的概念，它在人工智能中的重要性，用于实现预训练的各种技术，以及该领域的研究人员所面临的一些挑战。">
+  <meta name="description" content="近年来人工智能（AI）领域经历了巨大的增长，而自然语言处理（NLP）更是其中一个取得快速进展的领域。NLP中最重要的发展便是大语言模型（LLM），该项技术可能彻底改变我们与科技互动的方式，加上OpenAI的GPT-3的爆火，使得大语言模型在业界更加备受关注。在本篇文章中，我们将简单地介绍一下大语言模型，科普其定义、训练方式、流行原因、常见大语言模型例子以及其面临的挑战。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="预训练">
-<meta property="og:url" content="http://williamteng.github.io/2023/03/14/Pre-training/index.html">
+<meta property="og:title" content="大语言模型">
+<meta property="og:url" content="http://williamteng.github.io/2023/01/12/LargeLanguageModel/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
-<meta property="og:description" content="随着人工智能（AI）不断重塑我们的世界，其发展的一个关键方面已经成为现代机器学习模型的支柱：预训练。在本篇文章中，我们将探讨预训练的概念，它在人工智能中的重要性，用于实现预训练的各种技术，以及该领域的研究人员所面临的一些挑战。">
+<meta property="og:description" content="近年来人工智能（AI）领域经历了巨大的增长，而自然语言处理（NLP）更是其中一个取得快速进展的领域。NLP中最重要的发展便是大语言模型（LLM），该项技术可能彻底改变我们与科技互动的方式，加上OpenAI的GPT-3的爆火，使得大语言模型在业界更加备受关注。在本篇文章中，我们将简单地介绍一下大语言模型，科普其定义、训练方式、流行原因、常见大语言模型例子以及其面临的挑战。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-14T03:26:11.000Z">
-<meta property="article:modified_time" content="2023-05-20T11:19:35.532Z">
+<meta property="article:published_time" content="2023-01-12T07:14:11.000Z">
+<meta property="article:modified_time" content="2023-05-20T12:31:16.300Z">
 <meta property="article:author" content="William Teng">
-<meta property="article:tag" content="多模态学习">
-<meta property="article:tag" content="预训练">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="大语言模型">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://williamteng.github.io/2023/03/14/Pre-training/">
+<link rel="canonical" href="http://williamteng.github.io/2023/01/12/LargeLanguageModel/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>预训练 | William's Blog</title>
+  <title>大语言模型 | William's Blog</title>
   
 
 
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2023/03/14/Pre-training/">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2023/01/12/LargeLanguageModel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          预训练
+          大语言模型
         </h1>
 
         <div class="post-meta">
@@ -189,7 +189,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-03-14 11:26:11" itemprop="dateCreated datePublished" datetime="2023-03-14T11:26:11+08:00">2023-03-14</time>
+              <time title="创建时间：2023-01-12 15:14:11" itemprop="dateCreated datePublished" datetime="2023-01-12T15:14:11+08:00">2023-01-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,33 +212,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>随着人工智能（AI）不断重塑我们的世界，其发展的一个关键方面已经成为现代机器学习模型的支柱：预训练。在本篇文章中，我们将探讨预训练的概念，它在人工智能中的重要性，用于实现预训练的各种技术，以及该领域的研究人员所面临的一些挑战。</p>
+        <p>近年来人工智能（AI）领域经历了巨大的增长，而自然语言处理（NLP）更是其中一个取得快速进展的领域。NLP中最重要的发展便是大语言模型（LLM），该项技术可能彻底改变我们与科技互动的方式，加上OpenAI的GPT-3的爆火，使得大语言模型在业界更加备受关注。在本篇文章中，我们将简单地介绍一下大语言模型，科普其定义、训练方式、流行原因、常见大语言模型例子以及其面临的挑战。</p>
 <span id="more"></span>
 
-<h2 id="什么是预训练？"><a href="#什么是预训练？" class="headerlink" title="什么是预训练？"></a>什么是预训练？</h2><p>在人工智能和机器学习的领域，预训练（pre-training）是指在一个较小的、特定任务的数据集上进行微调（fine-tuning）之前，在一个大数据集上训练一个模型的过程。这个初始训练阶段允许模型从数据中学习一般的特征和表征，然后可以针对具体任务进行微调。</p>
-<p>预训练背后的主要动机是利用从大规模数据集获得的知识来提高模型在较小的、更集中的数据集上的性能。通过这样的方式，研究人员可以用较少的标记实例获得更好的结果，减少对大量特定任务、标记数据的需求。</p>
-<h2 id="预训练的重要性"><a href="#预训练的重要性" class="headerlink" title="预训练的重要性"></a>预训练的重要性</h2><p>预训练成为现代人工智能的一个重要组成部分有几个原因：</p>
-<ol>
-<li>转移学习： 预训练使知识可以从一个领域或任务转移到另一个领域。通过从大规模的数据集中学习一般的特征和表征，可以对模型进行微调，以便在广泛的任务中表现良好。这减少了对特定任务训练数据的需求，使研究人员能够更容易地处理新问题。</li>
-<li>计算效率： 预训练允许模型从大量的数据中学习，而不需要特定任务的、标记的例子。这可以大大减少训练所需的计算资源，使训练大规模模型更加可行。</li>
-<li>模型性能： 经过预训练的模型在特定任务上的表现往往比从头开始训练的模型更好。在预训练期间学到的一般特征和表征可以针对广泛的任务进行微调，从而提高性能并加快收敛。</li>
-</ol>
-<h2 id="预训练的技术"><a href="#预训练的技术" class="headerlink" title="预训练的技术"></a>预训练的技术</h2><p>有几种技术可用于人工智能模型的预训练，其中无监督和有监督的预训练是最常见的方法。</p>
-<h3 id="无监督预训练"><a href="#无监督预训练" class="headerlink" title="无监督预训练"></a>无监督预训练</h3><p>无监督预训练（Unsupervised Pre-training）包括在一个没有任何标记的例子的大数据集上训练一个模型。该模型学会了在没有任何标签指导的情况下识别数据中的模式和结构。一些流行的无监督预训练技术包括：</p>
 <ul>
-<li>自动编码器（Autoencoders，AE）： 自动编码器是学习对数据进行编码和解码的神经网络。它们被训练成通过最小化原始输入和重构输出之间的差异来重构其输入。通过学习数据的压缩表示，自动编码器可以捕捉到对后续任务有用的重要特征和模式。</li>
-<li>生成式模型（Generative models）： 生成式模型，如变异自动编码器（VAEs）和生成对抗网络（GANs），学习生成与训练数据相似的新数据样本。通过学习基础数据分布，这些模型可以学习有用的特征和表征，可以转移到其他任务。</li>
-</ul>
-<h3 id="有监督的预训练"><a href="#有监督的预训练" class="headerlink" title="有监督的预训练"></a>有监督的预训练</h3><p>有监督的预训练（Supervised Pre-training）包括在一个有标签的大数据集上训练一个模型。该模型学习预测与输入数据相关的标签，然后可以为特定的任务进行微调。一些流行的监督性预训练技术包括：</p>
+<li><h2 id="大语言模型的定义"><a href="#大语言模型的定义" class="headerlink" title="大语言模型的定义"></a>大语言模型的定义</h2><p>大语言模型（英文：Large Language Model，缩写LLM），也称大型语言模型，是一种人工智能模型，旨在理解和生成人类语言。它们在大量的文本数据上进行训练，可以执行广泛的任务，包括文本总结、翻译、情感分析等等。LLM的特点是规模庞大，包含数十亿的参数，帮助它们学习语言数据中的复杂模式。这些模型通常基于深度学习架构，如转化器，这有助于它们在各种NLP任务上取得令人印象深刻的表现。</p>
+<h2 id="大语言模型的训练方式"><a href="#大语言模型的训练方式" class="headerlink" title="大语言模型的训练方式"></a>大语言模型的训练方式</h2><p>训练语言模型需要向其提供大量的文本数据，模型利用这些数据来学习人类语言的结构、语法和语义。这个过程通常是通过无监督学习完成的，使用一种叫做自我监督学习的技术。在自我监督学习中，模型通过预测序列中的下一个词或标记，为输入的数据生成自己的标签，并给出之前的词。</p>
+<p>训练过程包括两个主要步骤：预训练（pre-training）和微调（fine-tuning）：</p>
 <ul>
-<li>语言模型： 语言模型的训练是为了预测一个序列中的下一个词，给定前面的词。通过学习生成连贯的文本，这些模型捕捉重要的语言特征和表征，可以转移到其他自然语言处理任务中。预训练的语言模型的例子包括OpenAI推出的GPT和Google的BERT。</li>
-<li>图像分类模型： 图像分类模型的训练是为了预测输入图像的类别。预训练的图像分类模型，如ResNet和VGG，可以进行微调，以便在广泛的计算机视觉任务中表现良好，包括物体检测、分类等。</li>
+<li>在预训练阶段，模型从一个巨大的、多样化的数据集中学习，通常包含来自不同来源的数十亿词汇，如网站、书籍和文章。这个阶段允许模型学习一般的语言模式和表征。</li>
+<li>在微调阶段，模型在与目标任务或领域相关的更具体、更小的数据集上进一步训练。这有助于模型微调其理解，并适应任务的特殊要求。</li>
 </ul>
-<h2 id="预训练面临的挑战"><a href="#预训练面临的挑战" class="headerlink" title="预训练面临的挑战"></a>预训练面临的挑战</h2><ol>
-<li>可扩展性： 随着人工智能模型的规模和复杂性不断增加，预训练所需的计算资源也在增加。开发更有效的预训练技术和利用分布式计算资源将是推动该领域发展的关键。</li>
-<li>数据偏差： 预训练的模型很容易受到训练数据中存在的偏差的影响。解决数据偏差和开发方法以确保预训练模型的公平性和稳健性是一个持续研究的领域。</li>
-<li>可解释性： 随着模型变得越来越复杂，理解它们的内部运作和它们学习的表征变得越来越有挑战性。开发更好地理解和解释预训练模型的方法，对于建立信任和确保人工智能系统的安全至关重要。</li>
-</ol>
+<h2 id="大语言模型的流行原因"><a href="#大语言模型的流行原因" class="headerlink" title="大语言模型的流行原因"></a>大语言模型的流行原因</h2><p>为什么大语言模型越来越受欢迎，以下是其主要的流行原因：</p>
+<ul>
+<li>性能提升： 大语言模型的庞大规模使其能够捕捉复杂的语言模式，从而在各种任务中展现出令人惊叹的能力，尤其是在准确性和流畅性方面往往超过了以前最先进的方法。</li>
+<li>迁移学习： 大语言模型可以针对特定的任务进行微调，使得模型能够利用其一般的语言理解，迅速适应新的领域。这种迁移学习能力大大减少了对特定任务数据和训练时间的需求。</li>
+<li>多功能性： 大语言模型可以执行多种任务，而不需要特定任务的架构或模型，可用于文本生成、翻译、总结等，使其在各种应用中具有高度的灵活性和通用性。</li>
+<li>高互动性： 大语言模型理解和产生类似人类的反应的能力使其能够与人工智能系统进行更自然和直观的互动，为人工智能驱动的工具和应用提供了新的可能性。</li>
+</ul>
+<h2 id="常见的大语言模型"><a href="#常见的大语言模型" class="headerlink" title="常见的大语言模型"></a>常见的大语言模型</h2><ul>
+<li>GPT-3（OpenAI）： Generative Pre-trained Transformer 3（GPT-3）是最著名的LLM之一，拥有1750亿个参数。该模型在文本生成、翻译和其他任务中表现出显著的性能，在全球范围内引起了热烈的反响，目前OpenAI已经迭代到了<a target="_blank" rel="noopener" href="https://ai-bot.cn/sites/49.html">GPT-4</a>版本。</li>
+<li>BERT（谷歌）：Bidirectional Encoder Representations from Transformers（BERT）是另一个流行的LLM，对NLP研究产生了重大影响。该模型使用双向方法从一个词的左右两边捕捉上下文，使得各种任务的性能提高，如情感分析和命名实体识别。</li>
+<li>T5（谷歌）： 文本到文本转换器（T5）是一个LLM，该模型将所有的NLP任务限定为文本到文本问题，简化了模型适应不同任务的过程。T5在总结、翻译和问题回答等任务中表现出强大的性能。</li>
+<li>ERNIE 3.0 文心大模型（百度）：百度推出的大语言模型ERNIE 3.0首次在百亿级和千亿级预训练模型中引入大规模知识图谱，提出了海量无监督文本与大规模知识图谱的平行预训练方法。</li>
+</ul>
+<h2 id="大语言模型面临的挑战"><a href="#大语言模型面临的挑战" class="headerlink" title="大语言模型面临的挑战"></a>大语言模型面临的挑战</h2><p>尽管大语言模型的能力令人刮目相看，但他们仍然面临着一些挑战：</p>
+<ul>
+<li>资源消耗巨大： 训练LLM需要大量的计算资源，这使得较小的组织或研究人员在开发和部署这些模型方面面临挑战。此外，与训练LLM有关的能源消耗也引起了一定程度的环境问题。</li>
+<li>输出可能带有偏见：由于训练数据中可能带有偏见，而LLM可以学习并延续其训练数据中的偏见，导致有偏见的输出，可能是冒犯性的、歧视性甚至是错误性的观念。</li>
+<li>理解能力受限： 虽然大语言模型有能力产生看似连贯和与背景上下文相关的文本，但LLM有时对其所写的概念缺乏深刻的理解，这很可能导致不正确或无意义的输出。</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -261,8 +266,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%AD%A6%E4%B9%A0/" rel="tag"># 多模态学习</a>
-              <a href="/tags/%E9%A2%84%E8%AE%AD%E7%BB%83/" rel="tag"># 预训练</a>
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" rel="tag"># 大语言模型</a>
           </div>
 
         
@@ -271,12 +276,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/02/12/LargeLanguageModel/" rel="prev" title="大语言模型">
-      <i class="fa fa-chevron-left"></i> 大语言模型
+    <a href="/2022/11/21/MultimodalDeepLearning/" rel="prev" title="多模态学习">
+      <i class="fa fa-chevron-left"></i> 多模态学习
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/04/12/AIGC/" rel="next" title="AIGC">
-      AIGC <i class="fa fa-chevron-right"></i>
+    <a href="/2023/02/14/Pre-training/" rel="next" title="预训练">
+      预训练 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -336,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%A2%84%E8%AE%AD%E7%BB%83%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是预训练？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">预训练的重要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">预训练的技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="nav-number">3.1.</span> <span class="nav-text">无监督预训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="nav-number">3.2.</span> <span class="nav-text">有监督的预训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-number">4.</span> <span class="nav-text">预训练面临的挑战</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">大语言模型的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%AD%E7%BB%83%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">大语言模型的训练方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%B5%81%E8%A1%8C%E5%8E%9F%E5%9B%A0"><span class="nav-number">3.</span> <span class="nav-text">大语言模型的流行原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">常见的大语言模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">大语言模型面临的挑战</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
