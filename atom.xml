@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://williamteng.github.io/"/>
-  <updated>2023-05-20T12:30:35.399Z</updated>
+  <updated>2023-05-18T10:36:46.006Z</updated>
   <id>http://williamteng.github.io/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>企业数字化转型当前形势与发展趋势(2023)</title>
-    <link href="http://williamteng.github.io/2023/05/20/DT2023/"/>
-    <id>http://williamteng.github.io/2023/05/20/DT2023/</id>
-    <published>2023-05-20T11:28:17.859Z</published>
-    <updated>2023-05-20T12:30:35.399Z</updated>
-    
-    <content type="html"><![CDATA[<p>在未来的众多不确定因素中，数字化成为唯一确定的趋势。当数字要素成为社会发展的新动能，数字化转型成为企业和行业增长的必然道路。目前，行业数字化转型的基础条件已经具备，场景应用和技术落地则成为迈出转型步伐的重要一步。</p><img src="https://s1.ax1x.com/2023/05/20/p95mkef.png" style="zoom:80%;" /><span id="more"></span><p>虽然企业数字化转型看起来正处在“天时地利人和”的好时机，但是在数字化转型的过程中，很多企业面临着挑战。可以归结为顶层设计不全面，技术架构不完整、不稳定，落实措施不到位。</p><p>在顶层设计方面，很多企业针对如何对准经营目标、选择业务场景缺少数字化战略顶层设计；在技术架构方面，数字化已经从办公系统发展到业务支撑系统，再深入到生产业务系统，但是技术与业务场景存在差距，需要及时调整适配企业的技术架构治理体系；在落实举措方面，企业数字化转型进入了深入区，落实数字化战略需要在意识、组织、文化、方法和模式的转变上持续投入。</p><p>企业实施数字化转型可以分为以下几个步骤：</p><p><strong>（1）确立数字化建设目标；</strong></p><p><strong>（2）找出实现数字化转型的关键要素；</strong></p><p><strong>（3）规划蓝图的构建；</strong></p><p><strong>（4）实施路径的确立。</strong></p><p>数字化转型的关键就是要实现技术的转换、数据的融合以及业务的重构。</p><p><strong>技术的“转换”</strong>，主要是使企业从传统的信息技术承载的数字转变成“新一代信息技术”的数字，实现技术应用的升级。</p><p><strong>数据的“融合”</strong>，主要是指企业从实体状态的过程转变成信息系统中的数字、从物理形态的数字转变成虚拟形态的数字，打通全方位、全过程、全领域的数据实时流动与共享，实现信息技术与业务管理的真正融合。</p><p><strong>业务的“重构”</strong>，主要是指企业适应互联网时代和智能时代的需求，基于数字化实现精准运营的基础上，加快传统业态下投资、设计、建造、运营等的管理变革与重构。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在未来的众多不确定因素中，数字化成为唯一确定的趋势。当数字要素成为社会发展的新动能，数字化转型成为企业和行业增长的必然道路。目前，行业数字化转型的基础条件已经具备，场景应用和技术落地则成为迈出转型步伐的重要一步。&lt;/p&gt;
-&lt;img src=&quot;https://s1.ax1x.com/2023/05/20/p95mkef.png&quot; style=&quot;zoom:80%;&quot; /&gt;
-    
-    </summary>
-    
-      <category term="数字化转型" scheme="http://williamteng.github.io/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/"/>
-    
-    
-      <category term="企业战略" scheme="http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5/"/>
-    
-      <category term="数字化转型" scheme="http://williamteng.github.io/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/"/>
-    
-  </entry>
   
   <entry>
     <title>2023AI发展趋势</title>
@@ -63,6 +38,31 @@
       <category term="人工智能" scheme="http://williamteng.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
       <category term="2023发展趋势" scheme="http://williamteng.github.io/tags/2023%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>企业数字化转型当前形势与发展趋势(2023)</title>
+    <link href="http://williamteng.github.io/2023/04/15/DT2023/"/>
+    <id>http://williamteng.github.io/2023/04/15/DT2023/</id>
+    <published>2023-04-15T14:17:12.000Z</published>
+    <updated>2023-05-20T12:35:12.044Z</updated>
+    
+    <content type="html"><![CDATA[<p>在未来的众多不确定因素中，数字化成为唯一确定的趋势。当数字要素成为社会发展的新动能，数字化转型成为企业和行业增长的必然道路。目前，行业数字化转型的基础条件已经具备，场景应用和技术落地则成为迈出转型步伐的重要一步。</p><img src="https://s1.ax1x.com/2023/05/20/p95mkef.png" style="zoom:80%;" /><span id="more"></span><p>虽然企业数字化转型看起来正处在“天时地利人和”的好时机，但是在数字化转型的过程中，很多企业面临着挑战。可以归结为顶层设计不全面，技术架构不完整、不稳定，落实措施不到位。</p><p>在顶层设计方面，很多企业针对如何对准经营目标、选择业务场景缺少数字化战略顶层设计；在技术架构方面，数字化已经从办公系统发展到业务支撑系统，再深入到生产业务系统，但是技术与业务场景存在差距，需要及时调整适配企业的技术架构治理体系；在落实举措方面，企业数字化转型进入了深入区，落实数字化战略需要在意识、组织、文化、方法和模式的转变上持续投入。</p><p>企业实施数字化转型可以分为以下几个步骤：</p><p><strong>（1）确立数字化建设目标；</strong></p><p><strong>（2）找出实现数字化转型的关键要素；</strong></p><p><strong>（3）规划蓝图的构建；</strong></p><p><strong>（4）实施路径的确立。</strong></p><p>数字化转型的关键就是要实现技术的转换、数据的融合以及业务的重构。</p><p><strong>技术的“转换”</strong>，主要是使企业从传统的信息技术承载的数字转变成“新一代信息技术”的数字，实现技术应用的升级。</p><p><strong>数据的“融合”</strong>，主要是指企业从实体状态的过程转变成信息系统中的数字、从物理形态的数字转变成虚拟形态的数字，打通全方位、全过程、全领域的数据实时流动与共享，实现信息技术与业务管理的真正融合。</p><p><strong>业务的“重构”</strong>，主要是指企业适应互联网时代和智能时代的需求，基于数字化实现精准运营的基础上，加快传统业态下投资、设计、建造、运营等的管理变革与重构。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在未来的众多不确定因素中，数字化成为唯一确定的趋势。当数字要素成为社会发展的新动能，数字化转型成为企业和行业增长的必然道路。目前，行业数字化转型的基础条件已经具备，场景应用和技术落地则成为迈出转型步伐的重要一步。&lt;/p&gt;
+&lt;img src=&quot;https://s1.ax1x.com/2023/05/20/p95mkef.png&quot; style=&quot;zoom:80%;&quot; /&gt;
+    
+    </summary>
+    
+      <category term="数字化转型" scheme="http://williamteng.github.io/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/"/>
+    
+    
+      <category term="企业战略" scheme="http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5/"/>
+    
+      <category term="数字化转型" scheme="http://williamteng.github.io/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/"/>
     
   </entry>
   
