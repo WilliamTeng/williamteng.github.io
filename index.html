@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
 
   </li>
   </ul>
@@ -606,6 +606,230 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2021/12/22/RLHF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/22/RLHF/" class="post-title-link" itemprop="url">RLHF--基于人类反馈的强化学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-22 11:12:29" itemprop="dateCreated datePublished" datetime="2021-12-22T11:12:29+08:00">2021-12-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>基于人类反馈的强化学习（RLHF，Reinforcement Learning from Human Feedback）是人工智能（AI）领域的一个新兴研究领域，它将强化学习技术与人类反馈相结合，以训练能够学习复杂任务的个体。该方法在提高人工智能系统的性能方面显示出前景，使其在各种应用中更具有适应性和效率。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/22/RLHF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2021/11/21/LoRA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/21/LoRA/" class="post-title-link" itemprop="url">低秩适应的概念、原理、优缺点和主要应用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-21 15:12:01" itemprop="dateCreated datePublished" datetime="2021-11-21T15:12:01+08:00">2021-11-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>近年来自然语言处理（NLP）的进步很大程度上是由越来越强大的语言模型推动的，比如 OpenAI 的 GPT 系列大语言模型。然而，这些模型的训练不仅在计算上很昂贵，而且还需要大量的数据、能量和时间。因此，研究人员一直在探索更有效的方法来微调这些预训练模型，使其适应特定的任务或领域，而不会产生重新训练的全部成本。</p>
+<p>其中一种方法便是低秩适应（Low-Rank Adaptation, LoRA），这种技术允许更快、更有效地将大型语言模型适应特定的任务或领域。本文将概述LoRA是什么、主要组成、工作原理、优点和局限性，以及它的潜在应用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/21/LoRA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2021/10/12/GAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/12/GAN/" class="post-title-link" itemprop="url">生成式对抗网络（Generative Adversarial Network）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-12 14:27:19" itemprop="dateCreated datePublished" datetime="2021-10-12T14:27:19+08:00">2021-10-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>生成式对抗网络（GAN，英文全称Generative Adversarial Network）是一种深度学习模型，由于其生成高质量、真实数据的能力，近年来获得了极大的关注。GAN已被用于广泛的应用中，包括图像合成、风格转移和数据增强。在这篇文章中，我们将探讨什么是GAN、GAN是如何工作的、GAN与其他神经网络模型相比的优势，以及它们的主要应用和用例。</p>
+<h2 id="什么是GAN"><a href="#什么是GAN" class="headerlink" title="什么是GAN"></a>什么是GAN</h2><p>生成式对抗网络（GAN）是一类机器学习模型，由两个神经网络组成，一个是生成器（Generator）和一个判别器（Discriminator），它们在零和游戏中相互竞争。生成器创建合成数据样本，而判别器的工作是区分真实和虚假的数据样本。生成器的目标是提高其创造能够“欺骗”判别器的真实数据的能力，而判别器的目标是提高其识别假数据的能力。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/12/GAN/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2021/09/09/GreenFinance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -679,242 +903,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2020/10/12/NewRetail02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="William Teng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="William's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/12/NewRetail02/" class="post-title-link" itemprop="url">聊聊现代零售行业数字化转型痛点、路径和系统实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-12 19:47:44" itemprop="dateCreated datePublished" datetime="2020-10-12T19:47:44+08:00">2020-10-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>近来零售行业的数字化转型引发越来越多企业的关注，因为随着以客户为中心经营理念的普及，几乎每一家企业都越来越多地牵涉到销售、客户相关问题的解决中了。下面就我个人的观察，谈一谈对相关痛点问题、实现路径和具体实操中一些问题的粗略看法。</p>
-<p><img src="https://s1.ax1x.com/2020/10/13/0Wzg9s.png" alt="我的客户永辉成为Gartner新零售业务创新的典型案例，详情可见Gartner官网。"></p>
-<h3 id="零售行业拓展市场的主要方式和痛点问题"><a href="#零售行业拓展市场的主要方式和痛点问题" class="headerlink" title="零售行业拓展市场的主要方式和痛点问题"></a>零售行业拓展市场的主要方式和痛点问题</h3><p>零售行业拓展市场通常采用如下方式：</p>
-<ul>
-<li>建立消费者数据库</li>
-<li>消费者精细化营销</li>
-<li>实现品牌营收增长</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/12/NewRetail02/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2019/02/10/DigitalEconomy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="William Teng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="William's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/10/DigitalEconomy/" class="post-title-link" itemprop="url">数字经济：颠覆、转型、机遇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-10 07:52:44" itemprop="dateCreated datePublished" datetime="2019-02-10T07:52:44+08:00">2019-02-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/" itemprop="url" rel="index"><span itemprop="name">数字经济</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>数字经济时代不是即将来临，而是已经到来。虽然Gartner发布的新技术趋势报告都是企业在未来五到十年数字经济中赢得生存空间和蓬勃发展的重要方向，但Gartner报告中很少涉及<strong>数字经济</strong>概念本身，毕竟这是一个非常宏观层面的概念，以IT为方向的Gartner研究只能是其中一个分支。数字经济是当前政府、企业都无法回避的一个热点话题，我在和客户贵阳市政府领导的交流中感触良多，这里简单总结一下。</p>
-<p><img src="https://s1.ax1x.com/2018/02/20/9NCTMt.jpg" alt="Gartner 2018十大战略科技发展趋势（引自互联网）"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/02/10/DigitalEconomy/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2019/01/19/NewRetail/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="William Teng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="William's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/19/NewRetail/" class="post-title-link" itemprop="url">新零售时代的取胜之道</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-19 19:47:44" itemprop="dateCreated datePublished" datetime="2019-01-19T19:47:44+08:00">2019-01-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>永辉和Gartner是长期的战略合作伙伴，双方携手对新零售以及垂直行业数字化转型共同研究以期突破。</p>
-<p><img src="https://s1.ax1x.com/2018/02/23/9aFoss.jpg" alt="永辉新零售业务“超级物种”"></p>
-<p>2016年，阿里巴巴马云首次提出“新零售”的概念。此后，“新零售”成为热点话题，开始席卷各个消费品细分行业，对品牌商及零售企业都带来了巨大的变革性影响。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/01/19/NewRetail/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -982,7 +974,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -995,7 +987,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
