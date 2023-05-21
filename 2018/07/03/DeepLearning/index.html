@@ -23,7 +23,7 @@
 
   <meta name="description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。 未来10年人工智能将成为最具颠覆性的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个卷积神经网络MNIST数据集实验">
+<meta property="og:title" content="自己动手做卷积神经网络MNIST数据集实验">
 <meta property="og:url" content="http://williamteng.github.io/2018/07/03/DeepLearning/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
 <meta property="og:description" content="每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。 未来10年人工智能将成为最具颠覆性的">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pEbViV.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/01/06/pEbZGT.jpg">
 <meta property="article:published_time" content="2018-07-03T12:18:24.000Z">
-<meta property="article:modified_time" content="2020-10-14T07:40:38.227Z">
+<meta property="article:modified_time" content="2023-05-20T14:29:36.804Z">
 <meta property="article:author" content="William Teng">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="人工智能">
@@ -55,7 +55,7 @@
   };
 </script>
 
-  <title>一个卷积神经网络MNIST数据集实验 | William's Blog</title>
+  <title>自己动手做卷积神经网络MNIST数据集实验 | William's Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一个卷积神经网络MNIST数据集实验
+          自己动手做卷积神经网络MNIST数据集实验
         </h1>
 
         <div class="post-meta">
@@ -222,7 +222,8 @@
         <p>每年Gartner发布的技术成熟度曲线(The Hype Cycle)都备受市场关注，也成为企业精准创新、重大投资决策的风向标。今年新兴技术成熟度曲线最亮眼的就是人工智能技术。基于数据，人们可以解决超乎想象的问题。不少朋友在问企业hands on深度学习的人工智能怎么做，我来给大家做一个关于编码细节程度的卷积神经网络、基于MNIST数据集的实验，带您一探究竟。</p>
 <p>未来10年人工智能将成为最具颠覆性的技术，主要源于越来越强的计算能力、越来越海量的互联网和物联网数据以及深度学习理论的快速进步。</p>
 <p><img src="https://s1.ax1x.com/2018/01/04/pPNzgP.jpg" alt="Gartner 2017年新兴技术成熟度曲线(引自互联网)"></p>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>深度学习研究的热潮持续高涨，各种开源深度学习框架也层出不穷，其中包括Google的TensorFlow、Keras、Facebook的Caffe、Torch、Microsoft的CNTK、Amazon的MXNet、以及蒙特利尔大学的Theano等等。而现在几乎所有主流云平台都支持深度学习框架，使用框架创建神经网络就变成一件轻而易举的事情了。</p>
 <p><img src="https://s1.ax1x.com/2018/01/04/pPNx3t.jpg" alt="framework"></p>
 <p>下面简单演示一下使用pyTorch创建一个卷积神经网络，使用经典的MNIST数据集进行训练和测试。</p>
@@ -237,61 +238,63 @@
 <pre><code>class CNN(nn.Module):
     def __init__(self):
     super(CNN, self).__init__()
-    self.conv1 = nn.Sequential(             # input shape (1, 28, 28)
+    self.conv1 = nn.Sequential( 			# input shape (1, 28, 28)
         nn.Conv2d(
-            in_channels=1,              # input height
-            out_channels=16,            # n_filters
-            kernel_size=5,              # filter size
-            stride=1,                   # filter movement/step
-            padding=2,                  # if want same width and length of this image after con2d, padding=(kernel_size-1)/2 if stride=1
+            in_channels=1,  			# input height
+            out_channels=16,			# n_filters
+            kernel_size=5,  			# filter size
+            stride=1,   				# filter movement/step
+            padding=2,  				# if want same width and length of this image after con2d, padding=(kernel_size-1)/2 if stride=1
         ),  # output shape (16, 28, 28)
-        nn.ReLU(),                      # activation
-        nn.MaxPool2d(kernel_size=2),    # choose max value in 2x2 area, output shape (16, 14, 14)
+        nn.ReLU(),  					# activation
+        nn.MaxPool2d(kernel_size=2),	# choose max value in 2x2 area, output shape (16, 14, 14)
     )
-    self.conv2 = nn.Sequential(             # input shape (1, 14, 14)
-        nn.Conv2d(16, 32, 5, 1, 2),         # output shape (32, 14, 14)
-        nn.ReLU(),                      # activation
-        nn.MaxPool2d(2),                # output shape (32, 7, 7)
+    self.conv2 = nn.Sequential( 			# input shape (1, 14, 14)
+        nn.Conv2d(16, 32, 5, 1, 2), 		# output shape (32, 14, 14)
+        nn.ReLU(),  					# activation
+        nn.MaxPool2d(2),				# output shape (32, 7, 7)
     )
-    self.out = nn.Linear(32 * 7 * 7, 10)      # fully connected layer, output 10 classes
-
+    self.out = nn.Linear(32 * 7 * 7, 10)  	# fully connected layer, output 10 classes
+    
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
-        x = x.view(x.size(0), -1)           # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
+        x = x.view(x.size(0), -1)   		# flatten the output of conv2 to (batch_size, 32 * 7 * 7)
         output = self.out(x)
-        return output, x                # return x for visualization
-</code></pre><p>下面使用MNIST数据集训练网络。MNIST 数据集来自美国国家标准与技术研究所，National Institute of Standards and Technology (NIST)。训练集 (training set) 由来自 250 个不同人手写的数字构成，其中 50% 是高中学生，50% 来自人口普查局 (the Census Bureau) 的工作人员。</p>
+        return output, x				# return x for visualization
+</code></pre>
+<p>下面使用MNIST数据集训练网络。MNIST 数据集来自美国国家标准与技术研究所，National Institute of Standards and Technology (NIST)。训练集 (training set) 由来自 250 个不同人手写的数字构成，其中 50% 是高中学生，50% 来自人口普查局 (the Census Bureau) 的工作人员。</p>
 <p><img src="https://s1.ax1x.com/2018/01/05/pA1VGq.jpg" alt="mnist"></p>
 <p>测试集(test set) 也是同样比例的手写数字数据。MNIST 数据集可在 <a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a> 获取。</p>
 <pre><code># Mnist digits dataset
-if not(os.path.exists(&apos;./mnist/&apos;)) or not os.listdir(&apos;./mnist/&apos;):
+if not(os.path.exists(&#39;./mnist/&#39;)) or not os.listdir(&#39;./mnist/&#39;):
 # not mnist dir or mnist is empyt dir
 DOWNLOAD_MNIST = True
 
 train_data = torchvision.datasets.MNIST(
-    root=&apos;./mnist/&apos;,
-    train=True,                                     # this is training data
-    transform=torchvision.transforms.ToTensor(),        # Converts a PIL.Image or numpy.ndarray to
+    root=&#39;./mnist/&#39;,
+    train=True, 									# this is training data
+    transform=torchvision.transforms.ToTensor(),		# Converts a PIL.Image or numpy.ndarray to
                                                     # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
     download=DOWNLOAD_MNIST,
 )
 
 # plot one example
-print(train_data.train_data.size())                     # (60000, 28, 28)
-print(train_data.train_labels.size())                       # (60000)
-plt.imshow(train_data.train_data[0].numpy(), cmap=&apos;gray&apos;)
-plt.title(&apos;%i&apos; % train_data.train_labels[0])
+print(train_data.train_data.size()) 					# (60000, 28, 28)
+print(train_data.train_labels.size())   					# (60000)
+plt.imshow(train_data.train_data[0].numpy(), cmap=&#39;gray&#39;)
+plt.title(&#39;%i&#39; % train_data.train_labels[0])
 plt.show()
 
 # Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)
 train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 
 # convert test data into Variable, pick 2000 samples to speed up testing
-test_data = torchvision.datasets.MNIST(root=&apos;./mnist/&apos;, train=False)
+test_data = torchvision.datasets.MNIST(root=&#39;./mnist/&#39;, train=False)
 test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1), volatile=True).type(torch.FloatTensor)[:2000]/255.   # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
 test_y = test_data.test_labels[:2000]
-</code></pre><p>运行程序，我们画出第一个数字是5。</p>
+</code></pre>
+<p>运行程序，我们画出第一个数字是5。</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pEbAI0.jpg" alt="5"></p>
 <p>一些模块的引入语句如下，然后开始训练网络。</p>
 <pre><code>import os
@@ -311,7 +314,8 @@ EPOCH = 1   # train the training data n times, to save time, we just train 1 epo
 BATCH_SIZE = 50
 LR = 0.001  # learning rate
 DOWNLOAD_MNIST = False
-</code></pre><p>下面是测试网络部分代码：</p>
+</code></pre>
+<p>下面是测试网络部分代码：</p>
 <pre><code>cnn = CNN()
 print(cnn)  # net architecture
 
@@ -321,13 +325,13 @@ loss_func = nn.CrossEntropyLoss()   # the target label is not one-hotted
 # following function (plot_with_labels) is for visualization, can be ignored if not interested
 from matplotlib import cm
 try: from sklearn.manifold import TSNE; HAS_SK = True
-except: HAS_SK = False; print(&apos;Please install sklearn for layer visualization&apos;)
+except: HAS_SK = False; print(&#39;Please install sklearn for layer visualization&#39;)
 def plot_with_labels(lowDWeights, labels):
     plt.cla()
     X, Y = lowDWeights[:, 0], lowDWeights[:, 1]
     for x, y, s in zip(X, Y, labels):
         c = cm.rainbow(int(255 * s / 9)); plt.text(x, y, s, backgroundcolor=c, fontsize=9)
-    plt.xlim(X.min(), X.max()); plt.ylim(Y.min(), Y.max()); plt.title(&apos;Visualize last layer&apos;); plt.show(); plt.pause(0.01)
+    plt.xlim(X.min(), X.max()); plt.ylim(Y.min(), Y.max()); plt.title(&#39;Visualize last layer&#39;); plt.show(); plt.pause(0.01)
 
 plt.ion()
 # training and testing
@@ -335,7 +339,7 @@ plt.ion()
     for step, (x, y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader
     b_x = Variable(x)   # batch x
     b_y = Variable(y)   # batch y
-
+    
     output = cnn(b_x)[0]   # cnn output
     loss = loss_func(output, b_y)   # cross entropy loss
     optimizer.zero_grad()   # clear gradients for this training step
@@ -346,10 +350,10 @@ plt.ion()
         test_output, last_layer = cnn(test_x)
         pred_y = torch.max(test_output, 1)[1].data.squeeze()
         accuracy = sum(pred_y == test_y) / float(test_y.size(0))
-        print(&apos;Epoch: &apos;, epoch, &apos;| train loss: %.4f&apos; % loss.data[0], &apos;| test accuracy: %.2f&apos; % accuracy)
+        print(&#39;Epoch: &#39;, epoch, &#39;| train loss: %.4f&#39; % loss.data[0], &#39;| test accuracy: %.2f&#39; % accuracy)
         if HAS_SK:
             # Visualization of trained flatten layer (T-SNE)
-            tsne = TSNE(perplexity=30, n_components=2, init=&apos;pca&apos;, n_iter=5000)
+            tsne = TSNE(perplexity=30, n_components=2, init=&#39;pca&#39;, n_iter=5000)
             plot_only = 500
             low_dim_embs = tsne.fit_transform(last_layer.data.numpy()[:plot_only, :])
             labels = test_y.numpy()[:plot_only]
@@ -359,9 +363,10 @@ plt.ioff()
 # print 10 predictions from test data
 test_output, _ = cnn(test_x[:10])
 pred_y = torch.max(test_output, 1)[1].data.numpy().squeeze()
-print(pred_y, &apos;prediction number&apos;)
-print(test_y[:10].numpy(), &apos;real number&apos;)
-</code></pre><p><img src="https://s1.ax1x.com/2018/01/06/pEbViV.jpg" alt="误差图像"></p>
+print(pred_y, &#39;prediction number&#39;)
+print(test_y[:10].numpy(), &#39;real number&#39;)
+</code></pre>
+<p><img src="https://s1.ax1x.com/2018/01/06/pEbViV.jpg" alt="误差图像"></p>
 <p>运行结果：</p>
 <p><img src="https://s1.ax1x.com/2018/01/06/pEbZGT.jpg" alt="result"></p>
 <p>话说哪位老铁有多余的有CUDA功能的Geforce显卡，当初入了A家，现在想自己在深度学习领域hands-on一下，有点欲哭无泪啊……</p>
