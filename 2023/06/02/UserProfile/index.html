@@ -23,7 +23,7 @@
 
   <meta name="description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅议数字营销中的用户画像及实时画像的系统架构">
+<meta property="og:title" content="数字营销中的用户画像及实时画像的系统架构">
 <meta property="og:url" content="http://williamteng.github.io/2023/06/02/UserProfile/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
 <meta property="og:description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。">
@@ -31,8 +31,9 @@
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbqVP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbKN8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpzekn.png">
 <meta property="article:published_time" content="2023-06-02T13:17:25.000Z">
-<meta property="article:modified_time" content="2023-06-03T08:53:52.501Z">
+<meta property="article:modified_time" content="2023-06-03T11:53:42.714Z">
 <meta property="article:author" content="William Teng">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="大数据">
@@ -52,7 +53,7 @@
   };
 </script>
 
-  <title>浅议数字营销中的用户画像及实时画像的系统架构 | William's Blog</title>
+  <title>数字营销中的用户画像及实时画像的系统架构 | William's Blog</title>
   
 
 
@@ -183,7 +184,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          浅议数字营销中的用户画像及实时画像的系统架构
+          数字营销中的用户画像及实时画像的系统架构
         </h1>
 
         <div class="post-meta">
@@ -265,6 +266,20 @@
 <p>在数据计算引擎的选择上，选用了Apache Flink作为流处理引擎。Flink被广泛认为是目前最先进和最完整的流处理框架之一。相比于其他计算引擎，它拥有更高的容错性、处理能力和稳定性。同时，Flink还支持多种大数据格式、内存管理机制、事件时间处理和窗口等高级特性，能够从根本上改善流处理的计算效率和结果准确性。</p>
 <p>标签元数据的管理方面，选择了Mysql作为数据库来存储标签，同时开发了相应的可视化管理界面。在调度任务框架方面，使用Apache Airflow来进行任务管理和调度，并将最终结果输出到Mysql和Hbase中。</p>
 <p>总体来说，这个实时数据处理系统的设计采用了各种最新、最流行的技术，以确保系统运行速度快、效率高、容错性强，同时还保证了数据质量和稳定性。</p>
+<p>相较于传统的技术架构，实时技术架构在计算引擎方面更多地依赖了Flink的实时计算能力。虽然大部分聚合运算可以通过SQL语句完成，但是更复杂的机器学习算法需要采用编码方式来实现计算能力。同时，在标签管理方面，我们仍然使用Mysql数据库来存储标签元数据，而Hive和Druid则共同建立起完善的数据仓库进行数据存储和处理。</p>
+<p>相对于原来的技术架构，最主要的变化之一就是将计算引擎从Spark换成了更加强大的Flink。尽管Spark也有structured streaming功能，但是要考虑具体情况做出取舍。综合来看，Flink比Spark更适用于实时场景的大数据处理，因此我们选择了Flink作为流处理引擎。同时，Flink支持多种内存管理机制、事件时间处理和窗口等高级特性，也能从根本上改善流处理的计算效率和结果准确性。整个系统中各组件间的搭配和选用都被仔细考虑过，并经过了多次测试和优化，以达到对业务和用户的需求最大化地满足。</p>
+<h2 id="六、电商平台的用户画像标签体系"><a href="#六、电商平台的用户画像标签体系" class="headerlink" title="六、电商平台的用户画像标签体系"></a>六、电商平台的用户画像标签体系</h2><p>不同的业务领域，例如电商、风控等行业，对用户画像的需求各不相同。因此，为了明确这些需求，首先需要定义一个合适的用户画像标签体系。该标签体系是技术人员、产品经理和运营人员等岗位之间共同讨论的结果，并且是用户画像的核心所在。</p>
+<p>在标签体系的制定中，需要考虑多个角度的因素，例如用户的个人信息、行为偏好、消费习惯等方面。针对不同的业务需求，需要选择合适的标签类型，例如定性或定量标签。在具体实施时，根据业务特点，可以结合机器学习等技术手段来提高标签体系的准确度和实用性。</p>
+<p>除此之外，在定义用户画像标签体系时，还需要参照业界标准以及客户具体情况进行定制化调整，从而更好地满足用户需求。随着数据不断积累和业务需求不断变化，用户画像标签体系也需要不断更新与优化，以保证其有效性和实用性。</p>
+<p>用户画像的核心是为用户打标签，每个标签通常是一种人工规定的特征标识，以高度精炼的方式描述人群的年龄、性别、兴趣偏好等。这些不同标签通过结构化数据整合，就可与组合出各种类型的用户画像。</p>
+<p>梳理标签体系是实现用户画像的基础和核心工作，后续的建模和数据仓库都会依赖于标签体系。不同企业制定用户画像的标签体系有不同的战略目的，例如广告公司为了精准广告服务、电商为了提高用户购买率、内容平台为了推荐更加感兴趣的内容来提升流量，金融行业则是为了控制风险并寻找目标客户。</p>
+<p>因此，首先要根据所在行业和业务分析目的，也就是制定战略，从而引导最终目标的实现。</p>
+<p>电商作为一种比较成熟的互联网业态，在用户画像的制作中占据了重要地位，拥有自己的标签体系。</p>
+<img src="https://s1.ax1x.com/2023/06/03/pCpzekn.png" style="zoom:67%;" />
+
+<p>在电商的标签体系中，更关注用户的属性、行为等信息。其中，用户的基本信息通常包括：年龄、性别、职业等。这些信息对于电商企业的市场定位和产品开发都非常重要。此外，用户的行为信息也非常关键，例如用户的浏览记录、搜索记录、收藏行为、访问时长等。这些行为数据可以从用户访问页面，缓存或cookie等渠道中获取，应该尽可能多的获取以提高用户画像的精准度。此外，用户的订单情况也是极其重要的标签，如用户购买的商品类别、次数、金额等。通过挖掘订单数据，电商企业可以深入了解用户需求与偏好，对目标用户群体进行精准营销活动。</p>
+<p>为获得这些所需数据，电商企业可以通过用户登录&#x2F;注册获取用户的基本信息，使用埋点技术来收集用户的行为数据，以及利用电商平台所产生的流量进一步丰富和完善用户画像。同时，随着互联网普及和数据分析技术的不断成熟，大数据分析技术和算法将进一步加强电商用户画像的准确度和实用性。</p>
+<p>总体而言，电商用户画像的标签体系在制定时需考虑用户的属性和行为等多个因素，同时需要挖掘用户订单情况来对用户进行精细化定位。获取这些数据可以通过各种渠道并结合大数据分析技术和算法来实现。</p>
 
     </div>
 
@@ -359,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">五、一个具体的系统架构</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">五、一个具体的系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="nav-number">6.</span> <span class="nav-text">六、电商平台的用户画像标签体系</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
