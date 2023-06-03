@@ -21,22 +21,23 @@
     var CONFIG = {"hostname":"williamteng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。  在互联网信息时代，数据已经扮演了企业整体运营规划中至关重要的角色。因此，数据运营也成为了企业核心竞争力之一。而数据运营的流程主要包">
+  <meta name="description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅议数字营销中的用户画像及实时画像的系统架构">
 <meta property="og:url" content="http://williamteng.github.io/2023/06/02/UserProfile/index.html">
 <meta property="og:site_name" content="William&#39;s Blog">
-<meta property="og:description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。  在互联网信息时代，数据已经扮演了企业整体运营规划中至关重要的角色。因此，数据运营也成为了企业核心竞争力之一。而数据运营的流程主要包">
+<meta property="og:description" content="一、什么是用户画像用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbqVP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbKN8.png">
 <meta property="article:published_time" content="2023-06-02T13:17:25.000Z">
-<meta property="article:modified_time" content="2023-06-03T08:40:24.230Z">
+<meta property="article:modified_time" content="2023-06-03T08:53:52.501Z">
 <meta property="article:author" content="William Teng">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/03/pCpbqVP.png">
 
 <link rel="canonical" href="http://williamteng.github.io/2023/06/02/UserProfile/">
 
@@ -216,11 +217,17 @@
 
       
         <h2 id="一、什么是用户画像"><a href="#一、什么是用户画像" class="headerlink" title="一、什么是用户画像"></a>一、什么是用户画像</h2><p>用户画像指的是将用户信息进行标签化，主要是通过收集丰富的、多样化的、全面的数据，在多个维度上对各种人群特征进行分析和总结。这些维度可以包括但不限于 用户的基本属性、地理位置、社交媒体身份、搜索关键词、浏览记录、交易行为、口碑评价以及客户服务记录等。</p>
-<p><img src="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg"></p>
+<img src="https://s1.ax1x.com/2023/06/03/pCpbqVP.png" style="zoom: 50%;" />
+
+
+
+<span id="more"></span>
+
 <p>在互联网信息时代，数据已经扮演了企业整体运营规划中至关重要的角色。因此，数据运营也成为了企业核心竞争力之一。而数据运营的流程主要包括数据基础设施建设和数据应用两大块。其中，数据基础设施建设包括数据平台搭建和数据功能开发。而数据应用则包含了多种板块，如数据统计分析、报表生成与可视化、用户画像建模、个性化推荐以及精准营销等等。</p>
 <p>在实际应用中，用户画像更多地用于深入挖掘用户的属性、意向和需求，并基于此提供更加精准化的服务。它是实现个性化运营和定向广告投放的前置条件，也是数据驱动运营的核心部分。同时，用户画像的建模需要依赖于机器学习、数据挖掘等领域的技术手段来对各类用户特征进行分析和建模，得出精准的用户标签。</p>
 <h2 id="二、用户画像分析的价值"><a href="#二、用户画像分析的价值" class="headerlink" title="二、用户画像分析的价值"></a>二、用户画像分析的价值</h2><p>用户画像是分析海量用户数据，帮助企业准确定位目标人群和理解用户需求的工具。用户画像通过收集用户性别、职业、城市、年龄、生活习惯、兴趣爱好、用户行为等多维度信息，并进行分类分析，帮助企业制定个性化的运营策略，提升运营效率和投产比。</p>
 <p>用户画像分析对于产品定位和运营也非常重要。通过深入了解用户需求和痛点，明确产品或服务是否符合客户期望，并据此制定差异化的产品定位和运营策略，提高用户满意度和产品竞争力。</p>
+<p><img src="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg"></p>
 <p>此外，用户画像分析还可以启动用户标签管理，通过对用户属性、消费行为等信息进行分类，实现个性化运营，提高用户粘性和忠诚度。</p>
 <h3 id="2-1-企业战略决策支持"><a href="#2-1-企业战略决策支持" class="headerlink" title="2.1 企业战略决策支持"></a>2.1 企业战略决策支持</h3><p>用户画像是一种基于海量用户数据的标签化数据呈现方式，其通过多维度的分析和建模，可以帮助企业清晰地定位目标人群并了解用户的需求和痛点。它通过聚合和分类分析海量用户数据，为企业提供决策支持，优化运营策略，帮助企业提高整体运营效率和投产比。</p>
 <h3 id="2-2-用户精细化运营"><a href="#2-2-用户精细化运营" class="headerlink" title="2.2 用户精细化运营"></a>2.2 用户精细化运营</h3><p>用户画像分析的核心在于，从不同细分维度收集用户的信息，包括用户的性别、职业、城市、年龄、生活习惯、兴趣爱好、用户行为分析等，基于对用户细分维度信息的分析，可对用户进行分类，比如收集用户数据涉及到多种细分维度，其中包括用户的基本信息（例如性别、年龄、教育程度等）、生活习惯（例如旅游偏好、消费习惯等）以及行为分析（例如用户在网站中的行为路径、购买行为等）。通过综合分析这些数据和信息，可以对用户进行分类并识别用户需求和痛点，从而制定针对不同类别用户的个性化运营策略，提高整体经营效率，实现精细化运营。</p>
