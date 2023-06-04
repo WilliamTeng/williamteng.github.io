@@ -30,10 +30,17 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbqVP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpfKts.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbKN8.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpzekn.png">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2021/0504/115753_e474aeec_5325125.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbKN8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wBHP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wsN8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC90lvj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wy4S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wc9g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wIEV.png">
 <meta property="article:published_time" content="2023-06-02T13:17:25.000Z">
-<meta property="article:modified_time" content="2023-06-03T11:53:42.714Z">
+<meta property="article:modified_time" content="2023-06-04T03:54:46.994Z">
 <meta property="article:author" content="William Teng">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="大数据">
@@ -259,16 +266,7 @@
 <p>在实时数据处理过程中，需要考虑到复杂事件处理（Complex Event Processing），将不同类型的事件按规则组合起来，触发对应的响应操作。这一过程需要有高效的流程管理和异常处理机制，保证实时处理的可靠性和正确性。</p>
 <p>实现实时数据处理的关键是数据流的速度控制，需要根据不同的场景设定合理的时间窗口和水位线，避免过多延迟和重复数据的处理。同时，还需要根据实时计算的负载，适配调整分布式计算集群的规模和性能。</p>
 <p>在实时用户画像的构建中，通过对实时数据的不断迭代计算，逐渐的不断完善出用户画像的全貌，这也正符合数据传输的本质，这整体架构中，淡化离线计算在之前特别重的作用，只留做归档和历史查询使用，更多的数据通过实时计算进行输出，最终达到对用户画像的目的。 在实时计算的过程需要对数据实时聚合计算，而复杂的标签也需要实时的进行机器学习，难度巨大，但是最终对于画像的实时性有着重大的意义。</p>
-<h2 id="五、一个具体的系统架构"><a href="#五、一个具体的系统架构" class="headerlink" title="五、一个具体的系统架构"></a>五、一个具体的系统架构</h2><p>这里分享一个我们曾经实施的实时数据处理系统设计。</p>
-<p><img src="https://s1.ax1x.com/2023/06/03/pCpbKN8.png"></p>
-<p>为了满足海量数据的高效处理需求，采用了Apache Kafka作为数据接入层。Kafka是一种分布式流处理平台，能够高效地增加、删除和重复应用数据流。此外，Kafka提供了高可靠性、高吞吐量和可扩展性特征，具有良好的压缩技术和持久化存储能力。</p>
-<p>对于数据仓库方面，采用了Apache Druid和Hive配合使用。Druid是一个实时OLAP数据库系统，非常适合快速查询多维度、多层次的数据集，并且它还可以聚合大规模数据集以加速查询。而Hive则是一个数据仓库解决方案，通常用于管理基于Hadoop的大型数据集。</p>
-<p>在数据计算引擎的选择上，选用了Apache Flink作为流处理引擎。Flink被广泛认为是目前最先进和最完整的流处理框架之一。相比于其他计算引擎，它拥有更高的容错性、处理能力和稳定性。同时，Flink还支持多种大数据格式、内存管理机制、事件时间处理和窗口等高级特性，能够从根本上改善流处理的计算效率和结果准确性。</p>
-<p>标签元数据的管理方面，选择了Mysql作为数据库来存储标签，同时开发了相应的可视化管理界面。在调度任务框架方面，使用Apache Airflow来进行任务管理和调度，并将最终结果输出到Mysql和Hbase中。</p>
-<p>总体来说，这个实时数据处理系统的设计采用了各种最新、最流行的技术，以确保系统运行速度快、效率高、容错性强，同时还保证了数据质量和稳定性。</p>
-<p>相较于传统的技术架构，实时技术架构在计算引擎方面更多地依赖了Flink的实时计算能力。虽然大部分聚合运算可以通过SQL语句完成，但是更复杂的机器学习算法需要采用编码方式来实现计算能力。同时，在标签管理方面，我们仍然使用Mysql数据库来存储标签元数据，而Hive和Druid则共同建立起完善的数据仓库进行数据存储和处理。</p>
-<p>相对于原来的技术架构，最主要的变化之一就是将计算引擎从Spark换成了更加强大的Flink。尽管Spark也有structured streaming功能，但是要考虑具体情况做出取舍。综合来看，Flink比Spark更适用于实时场景的大数据处理，因此我们选择了Flink作为流处理引擎。同时，Flink支持多种内存管理机制、事件时间处理和窗口等高级特性，也能从根本上改善流处理的计算效率和结果准确性。整个系统中各组件间的搭配和选用都被仔细考虑过，并经过了多次测试和优化，以达到对业务和用户的需求最大化地满足。</p>
-<h2 id="六、电商平台的用户画像标签体系"><a href="#六、电商平台的用户画像标签体系" class="headerlink" title="六、电商平台的用户画像标签体系"></a>六、电商平台的用户画像标签体系</h2><p>不同的业务领域，例如电商、风控等行业，对用户画像的需求各不相同。因此，为了明确这些需求，首先需要定义一个合适的用户画像标签体系。该标签体系是技术人员、产品经理和运营人员等岗位之间共同讨论的结果，并且是用户画像的核心所在。</p>
+<h2 id="五、电商平台的用户画像标签体系"><a href="#五、电商平台的用户画像标签体系" class="headerlink" title="五、电商平台的用户画像标签体系"></a>五、电商平台的用户画像标签体系</h2><p>不同的业务领域，例如电商、风控等行业，对用户画像的需求各不相同。因此，为了明确这些需求，首先需要定义一个合适的用户画像标签体系。该标签体系是技术人员、产品经理和运营人员等岗位之间共同讨论的结果，并且是用户画像的核心所在。</p>
 <p>在标签体系的制定中，需要考虑多个角度的因素，例如用户的个人信息、行为偏好、消费习惯等方面。针对不同的业务需求，需要选择合适的标签类型，例如定性或定量标签。在具体实施时，根据业务特点，可以结合机器学习等技术手段来提高标签体系的准确度和实用性。</p>
 <p>除此之外，在定义用户画像标签体系时，还需要参照业界标准以及客户具体情况进行定制化调整，从而更好地满足用户需求。随着数据不断积累和业务需求不断变化，用户画像标签体系也需要不断更新与优化，以保证其有效性和实用性。</p>
 <p>用户画像的核心是为用户打标签，每个标签通常是一种人工规定的特征标识，以高度精炼的方式描述人群的年龄、性别、兴趣偏好等。这些不同标签通过结构化数据整合，就可与组合出各种类型的用户画像。</p>
@@ -280,6 +278,44 @@
 <p>在电商的标签体系中，更关注用户的属性、行为等信息。其中，用户的基本信息通常包括：年龄、性别、职业等。这些信息对于电商企业的市场定位和产品开发都非常重要。此外，用户的行为信息也非常关键，例如用户的浏览记录、搜索记录、收藏行为、访问时长等。这些行为数据可以从用户访问页面，缓存或cookie等渠道中获取，应该尽可能多的获取以提高用户画像的精准度。此外，用户的订单情况也是极其重要的标签，如用户购买的商品类别、次数、金额等。通过挖掘订单数据，电商企业可以深入了解用户需求与偏好，对目标用户群体进行精准营销活动。</p>
 <p>为获得这些所需数据，电商企业可以通过用户登录&#x2F;注册获取用户的基本信息，使用埋点技术来收集用户的行为数据，以及利用电商平台所产生的流量进一步丰富和完善用户画像。同时，随着互联网普及和数据分析技术的不断成熟，大数据分析技术和算法将进一步加强电商用户画像的准确度和实用性。</p>
 <p>总体而言，电商用户画像的标签体系在制定时需考虑用户的属性和行为等多个因素，同时需要挖掘用户订单情况来对用户进行精细化定位。获取这些数据可以通过各种渠道并结合大数据分析技术和算法来实现。</p>
+<h2 id="六、业务设计思路"><a href="#六、业务设计思路" class="headerlink" title="六、业务设计思路"></a>六、业务设计思路</h2><p>埋点业务设计，首先需要根据业务分析明确采集的目标行为，进一步搞清楚应该在哪些地方埋什么样的点。过程中建议使用 “事件模型（ Event 模型）” 来描述用户的各种行为，事件模型包括事件（ Event ）和用户（ User ）两个核心实体。 基于 4W1H 模型描述用户行为可将整个行为描述清楚，要点包括：是谁、什么时间、什么地点、以什么方式、干了什么。通过这两个实体结合在一起就可以清晰地描述清楚用户行为。 <img src="https://images.gitee.com/uploads/images/2021/0504/115753_e474aeec_5325125.png" alt="输入图片说明"></p>
+<h2 id="七、一个具体的系统架构"><a href="#七、一个具体的系统架构" class="headerlink" title="七、一个具体的系统架构"></a>七、一个具体的系统架构</h2><p>这里分享一个我们曾经实施的实时数据处理系统设计。</p>
+<p><img src="https://s1.ax1x.com/2023/06/03/pCpbKN8.png"></p>
+<p>为了满足海量数据的高效处理需求，采用了Apache Kafka作为数据接入层。Kafka是一种分布式流处理平台，能够高效地增加、删除和重复应用数据流。此外，Kafka提供了高可靠性、高吞吐量和可扩展性特征，具有良好的压缩技术和持久化存储能力。</p>
+<p>对于数据仓库方面，采用了Apache Druid和Hive配合使用。Druid是一个实时OLAP数据库系统，非常适合快速查询多维度、多层次的数据集，并且它还可以聚合大规模数据集以加速查询。而Hive则是一个数据仓库解决方案，通常用于管理基于Hadoop的大型数据集。</p>
+<p>在数据计算引擎的选择上，选用了Apache Flink作为流处理引擎。Flink被广泛认为是目前最先进和最完整的流处理框架之一。相比于其他计算引擎，它拥有更高的容错性、处理能力和稳定性。同时，Flink还支持多种大数据格式、内存管理机制、事件时间处理和窗口等高级特性，能够从根本上改善流处理的计算效率和结果准确性。</p>
+<p>标签元数据的管理方面，选择了Mysql作为数据库来存储标签，同时开发了相应的可视化管理界面。在调度任务框架方面，使用Apache Airflow来进行任务管理和调度，并将最终结果输出到Mysql和Hbase中。</p>
+<p>总体来说，这个实时数据处理系统的设计采用了各种最新、最流行的技术，以确保系统运行速度快、效率高、容错性强，同时还保证了数据质量和稳定性。</p>
+<p>相较于传统的技术架构，实时技术架构在计算引擎方面更多地依赖了Flink的实时计算能力。虽然大部分聚合运算可以通过SQL语句完成，但是更复杂的机器学习算法需要采用编码方式来实现计算能力。同时，在标签管理方面，我们仍然使用Mysql数据库来存储标签元数据，而Hive和Druid则共同建立起完善的数据仓库进行数据存储和处理。</p>
+<p>相对于原来的技术架构，最主要的变化之一就是将计算引擎从Spark换成了更加强大的Flink。尽管Spark也有structured streaming功能，但是要考虑具体情况做出取舍。综合来看，Flink比Spark更适用于实时场景的大数据处理，因此我们选择了Flink作为流处理引擎。同时，Flink支持多种内存管理机制、事件时间处理和窗口等高级特性，也能从根本上改善流处理的计算效率和结果准确性。整个系统中各组件间的搭配和选用都被仔细考虑过，并经过了多次测试和优化，以达到对业务和用户的需求最大化地满足。</p>
+<p>SDK 埋点采集行为数据来源终端包括 iOS、安卓、Web、H5、微信小程序等。不同终端 SDK 采用对应平台和主流语言的 SDK，埋点采集到的数据通过 JSON 数据以 HTTP POST 方式提交到服务端 API。 服务端 API 由数据接入系统组成，采用 Nginx 来接收通过 API 发送的数据，并且将之写到日志文件上。使用 Nginx 实现高可靠性与高可扩展性。 对于 Nginx 打印到文件的日志，会由 Flume 的 Source 模块来实时读取 Nginx 日志，并由 Channel 模块进行数据处理，最终通过 Sink 模块将处理结果发布到 Kafka 中。</p>
+<img src="https://s1.ax1x.com/2023/06/04/pC9wBHP.png" style="zoom: 50%;" />
+
+<h2 id="八、软件完整架构"><a href="#八、软件完整架构" class="headerlink" title="八、软件完整架构"></a>八、软件完整架构</h2><img src="https://s1.ax1x.com/2023/06/04/pC9wsN8.png" style="zoom: 80%;" />
+
+<h2 id="九、第三方埋点-SDK-集成步骤"><a href="#九、第三方埋点-SDK-集成步骤" class="headerlink" title="九、第三方埋点 SDK 集成步骤"></a>九、第三方埋点 SDK 集成步骤</h2><ul>
+<li>引入 SDK：引入 SDK可以方便开发人员进行快速集成和开发。在终端应用配置文件中添加 SDK 依赖后，还需要按照具体操作步骤来完成引入，通常需要根据不同的终端采取不同的引入方式。</li>
+<li>配置上报服务端 API 地址：配置上报服务端 API地址是指在应用中设置SDK上报API的服务端地址。通过这个地址可控制SDK数据上报到哪个服务器、哪个URL地址，以及如何验证该地址的合法性。在进行SDK设置之前需要明确服务端API地址的位置和格式，然后再用API地质进行SDK初始化操作，使SDK能够准确地发送监控数据到指定API地址。</li>
+<li>开启全埋点：开启全埋点意味着SDK可以自动收集并记录用户行为，从而分析和诊断应用程序的性能和行为。常见的用户行为范畴包括App启动、退出、浏览页面、控件点击等。要实现全局堆积跟踪，开发人员需要在初始化SDK时调用相应的API，并设置相关参数。开启全埋点的优势在于，可以在不影响业务代码的情况下全面监测应用程序的使用情况，从而有效提高产品质量、用户体验和市场竞争力。</li>
+</ul>
+<h2 id="十、API-接入服务设计"><a href="#十、API-接入服务设计" class="headerlink" title="十、API 接入服务设计"></a>十、API 接入服务设计</h2><p>API接入服务是指不同渠道的埋点数据通过HTTP API发送至服务端API，从而实现数据的接入。在数据接入方面，为了实现高并发、高可靠性与高可扩展性，采用Nginx作为WEB容器来接收客户端SDK发送的数据，并将之写到日志文件上。在使用API接入时，需要注意必须遵循RESTful风格，并按照特定的请求方式或请求体格式进行数据传输。</p>
+<p>使用Nginx作为API服务器是出于多个考虑。首先，Nginx是一个轻量级的Web服务器，它可以处理数百个连接，这使得其能够针对大规模数据接入提供可靠的解决方案。其次，Nginx支持负载均衡和反向代理，因此可以处理分布式场景下的大量数据流量。最后，由于Nginx存储和处理日志等操作都被封装为模块，因此它可以轻松地存储和处理各种 HTTP 请求，管理和优化大型日志文件以及确保数据安全性。</p>
+<p>具体来说，在API接入服务设计中，需要配置Nginx的相关参数，例如缓冲区大小、缓存时间和缓存位置等。同时还需要设置Nginx的转发方式，如负载均衡、高可用性等。在API接口设置方面，需要定义输入&#x2F;输出参数，考虑支持本地代码或者远程调用，以及后续数据解析和分析的方便性。</p>
+<img src="https://s1.ax1x.com/2023/06/04/pC90lvj.png" style="zoom: 43%;" />
+
+<p>虽然Nginx在实现API接入服务中有很多优点，但它仍存在某些潜在问题和瓶颈。例如，由于Nginx是单线程的，它不能利用多核CPU提高吞吐量和并发性能，也可能会导致请求阻塞或堵塞。此外，Nginx无法处理与具体业务相关的复杂逻辑，因此必须将这些复杂逻辑委托给其他API产品或专业团队来开发和维护。</p>
+<p>对于这些问题，可以采取一些优化措施来解决。例如，使用多线程&#x2F;多进程模型来优化并发性能，并通过微服务架构来拆分应用程序，以简化API接口的管理和优化。此外，可以采用异步编程模式，例如使用Event-Driven 或 Reactive Programming来提高整个系统的性能和降低延迟。总之，不同的优化技术可以根据具体需求和场景选择使用，以获得最佳性能和可靠性。</p>
+<h2 id="十一、用户行为采集场景"><a href="#十一、用户行为采集场景" class="headerlink" title="十一、用户行为采集场景"></a>十一、用户行为采集场景</h2><ul>
+<li>实现以场景规划埋点，用场景检验埋点，需要结合通用基础场景、重要操作场景和业务主流程场景来进行场景梳理。</li>
+</ul>
+<p>首先，在通用基础场景方面，需要确定在整个产品中哪些场景是通用的且需要考虑埋点。例如，点击、曝光、滑动等时间点、页面停留时间、网络情况以及设备类型等指标。这些需要被高度统一考虑并进行用户行为汇总分析，从而更清晰地了解用户偏好，提升产品体验。</p>
+<p>其次，在重要操作场景方面，需要确定关键业务操作，如浏览商品详情、下单购买、使用优惠券等核心场景。这些操作都需要统一归因，以便更好地定位用户需求和行为习惯，并进一步提高转化率和用户满意度。一旦确定这些操作场景，就可以确定需要采集的事件名称及其属性，以及构建对应的事件漏斗模型和数据报表。</p>
+<p>最后，在业务主流程场景方面，需要定义用户在业务主流程中所经历的完整过程。例如，在电商领域中，一个完整流程可能包括注册、登录、搜索商品、筛选商品、查看详情、加入购物车、提交订单、付款、评价等环节。这些业务主流程表示具体的用户行为跟踪路径，可以通过梳理场景，规划埋点，并采用可视化报表展现，为产品提供决策支持和数据驱动的改进方向。</p>
+<p>总之，通过以上三个层面的场景梳理考虑，可以实现以场景规划埋点，用场景检验埋点。同时，不同阶段的场景梳理，也能拓展产品理解和定位，满足各种需求和数据分析目标，不仅能帮助指导产品设计和运营策略，更能优化用户体验，提升生命周期价值。</p>
+<p><img src="https://s1.ax1x.com/2023/06/04/pC9wy4S.png"></p>
+<h2 id="十二、应用效果"><a href="#十二、应用效果" class="headerlink" title="十二、应用效果"></a>十二、应用效果</h2><img src="https://s1.ax1x.com/2023/06/04/pC9wc9g.png" style="zoom: 50%;" />
+
+<img src="https://s1.ax1x.com/2023/06/04/pC9wIEV.png" style="zoom:50%;" />
 
     </div>
 
@@ -374,7 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">五、一个具体的系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="nav-number">6.</span> <span class="nav-text">六、电商平台的用户画像标签体系</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="nav-number">5.</span> <span class="nav-text">五、电商平台的用户画像标签体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%9A%E5%8A%A1%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">6.</span> <span class="nav-text">六、业务设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">七、一个具体的系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E8%BD%AF%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%9E%B6%E6%9E%84"><span class="nav-number">8.</span> <span class="nav-text">八、软件完整架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9F%8B%E7%82%B9-SDK-%E9%9B%86%E6%88%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">9.</span> <span class="nav-text">九、第三方埋点 SDK 集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81API-%E6%8E%A5%E5%85%A5%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.</span> <span class="nav-text">十、API 接入服务设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E9%87%87%E9%9B%86%E5%9C%BA%E6%99%AF"><span class="nav-number">11.</span> <span class="nav-text">十一、用户行为采集场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%BA%94%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">12.</span> <span class="nav-text">十二、应用效果</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
