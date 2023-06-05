@@ -147,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -157,7 +157,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
 
   </li>
   </ul>
@@ -233,7 +233,8 @@
       
         <p>看到新闻寒武纪科技（Cambricon）获得了一亿美元A轮融资，而在不久前的7月，商汤科技(SenseTime)4.1亿美元B轮融资，人工智能的火势可以说越烧越大。在产业发展史中，每一场重要的产业变革总会带来新的重大机遇。如果能够在新兴产业中占据核心产业链位臵，必将能够充分享受新兴产业爆发性增长带来的红利。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pj5181.jpg" alt="寒武纪Cambricon芯片"></p>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>今天想就寒武纪科技的融资总结一下人工智能芯片产业的生态，我们依旧从Gartner人工智能发展周期曲线开始。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pj5mbF.gif" alt="gartner"></p>
 <p align=center font size =2>引自互联网图片</p>
@@ -255,7 +256,7 @@
 <p><img src="https://s1.ax1x.com/2018/01/28/pj5ji9.jpg" alt="TPU"></p>
 <p>AMD目前发布了三款基于Radeon Instinct的深度学习加速器方案，希望在GPU深度学习加速市场分回一点份额，当然AMD是否能针对NVIDIA的同类产品获得相对优势尚为未知之数。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pj5xR1.jpg" alt="radeon instinct"></p>
-<p>对于深度学习训练这个人工智能生态最为关键的一环，我们可以看到竞争的核心已经不是单纯的芯片本身，而是基于芯片加速背后的整个生态圈，提供足够友好、易用的工具环境让开发者迅速获取到深度学习加速算力，从而降低深度学习模型研发+训练加速的整体TCO和研发周期。Google能否构筑出足够好用的生态，让众多AI研究/开发者从CUDA+GPU转向Google，打破业界对NVIDIA的路径依赖，而这点才是真正艰难的道路。</p>
+<p>对于深度学习训练这个人工智能生态最为关键的一环，我们可以看到竞争的核心已经不是单纯的芯片本身，而是基于芯片加速背后的整个生态圈，提供足够友好、易用的工具环境让开发者迅速获取到深度学习加速算力，从而降低深度学习模型研发+训练加速的整体TCO和研发周期。Google能否构筑出足够好用的生态，让众多AI研究&#x2F;开发者从CUDA+GPU转向Google，打破业界对NVIDIA的路径依赖，而这点才是真正艰难的道路。</p>
 <p>但从市场潜力来看，未来市场规模最大的肯定是推断环节。当一项深度学习应用，如基于深度神经网络的机器翻译服务，经过数周甚至长达数月的GPU集群并行训练后获得了足够性能，接下来将投入面向终端用户的消费级服务应用中。由于一般而言训练出来的深度神经网络模型往往非常复杂，其推断仍然是计算密集型和存储密集型的，这使得它难以被部署到资源有限的终端用户设备(如智能手机)上。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pjInQP.gif" alt="recognition"></p>
 <p>由此可见，推断环节才是未来最大的潜在市场，也是人工智能芯片决胜的主战场。在推断环节还远没有爆发的时候。未来胜负尚未可知，各家技术路线都有机会胜出。</p>
@@ -266,7 +267,7 @@
 <h5 id="第二代GPU-1999-2005年"><a href="#第二代GPU-1999-2005年" class="headerlink" title="第二代GPU(1999-2005年)"></a>第二代GPU(1999-2005年)</h5><p>实现进一步的硬件加速和有限的编程性。1999年英伟达GEFORCE 256将T&amp;L(TRANSFORM AND LIGHTING)等功能从CPU分离出来，实现了快速变换，这成为GPU真正出现的标志;2001年英伟达和ATI分别推出的GEFORCE3和RADEON 8500，图形硬件的流水线被定义为流处理器，出现了顶点级可编程性，同时像素级也具有有限的编程性，但GPU的编程性比较有限。</p>
 <h5 id="第三代GPU-2006年以后"><a href="#第三代GPU-2006年以后" class="headerlink" title="第三代GPU(2006年以后)"></a>第三代GPU(2006年以后)</h5><p>GPU实现方便的编程环境可以直接编写程序;2006年英伟达与ATI分别推出了CUDA(COMPUTER UNIFIED DEVICE ARCHITECTURE，统一计算架构)编程环境和CTM(CLOSE TO THE METAL)编程环境;2008年，苹果公司提出一个通用的并行计算编程平台OPENCL(OPEN COMPUTING LANGUAGE，开放运算语言)，与CUDA绑定在英伟达的显卡上不同，OPENCL和具体的计算设备没有关系。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pjoHN4.jpg" alt="cuda"></p>
-<p>目前，GPU已经发展到较为成熟的阶段。谷歌、FACEBOOK、微软、TWITTER和百度等公司都在使用GPU分析图片、视频和音频文件，以改进搜索和图像标签等应用功能。GPU也被应用于VR/AR 相关的产业。此外，很多汽车生产商也在使用GPU芯片发展无人驾驶。</p>
+<p>目前，GPU已经发展到较为成熟的阶段。谷歌、FACEBOOK、微软、TWITTER和百度等公司都在使用GPU分析图片、视频和音频文件，以改进搜索和图像标签等应用功能。GPU也被应用于VR&#x2F;AR 相关的产业。此外，很多汽车生产商也在使用GPU芯片发展无人驾驶。</p>
 <p>值得一提的是,近十年来，人工智能的通用计算GPU完全由英伟达引领。</p>
 <h4 id="FPGA（可编程门阵列，Field-Programmable-Gate-Array）"><a href="#FPGA（可编程门阵列，Field-Programmable-Gate-Array）" class="headerlink" title="FPGA（可编程门阵列，Field Programmable Gate Array）"></a>FPGA（可编程门阵列，Field Programmable Gate Array）</h4><p>FPGA即现场可编程门阵列，它不采用指令和软件，是软硬件合一的器件。FPGA是一种集成大量基本门电路及存储器的芯片，可通过烧入FPGA配置文件来来定义这些门电路及存储器间的连线，从而实现特定的功能。而且烧入的内容是可配置的，通过配置特定的文件可将FPGA转变为不同的处理器，就如一块可重复刷写的白板一样。</p>
 <p><img src="https://s1.ax1x.com/2018/01/28/pjoO3R.png" alt="fpga"></p>
@@ -415,7 +416,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -428,7 +429,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
