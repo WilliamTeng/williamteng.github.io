@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">24</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
 
   </li>
   </ul>
@@ -550,7 +550,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/16/SentimentAnalysis/" class="post-title-link" itemprop="url">情感分析</a>
+            <a href="/2022/10/16/SentimentAnalysis/" class="post-title-link" itemprop="url">情感分析与生成式对抗网络</a>
         </h2>
 
         <div class="post-meta">
@@ -585,84 +585,10 @@
       
           <p>在今天这个数字连接的世界里，人们不断地在各种平台上分享他们的想法和意见，从社交媒体网站到在线评论论坛。这些用户生成的文本提供了海量的信息，企业、政府和其他组织可以利用这些信息来获得对其客户的偏好、意见和情感的宝贵见解。作为自然语言处理（NLP）的一个子领域，情感分析便是用来分析这些大量文本数据的关键技术之一。</p>
 <h3 id="什么是情感分析"><a href="#什么是情感分析" class="headerlink" title="什么是情感分析"></a>什么是情感分析</h3><p><strong>情感分析（Sentiment Analysis），也被称为观点挖掘（Opinion Mining）或情感人工智能（Emotion AI），是确定一段文本中所表达的情感或情绪的过程，如一个帖子或一条评论回复。</strong>它涉及识别和提取文本数据中的主观信息，以了解潜在的情感或情绪。情感分析使用NLP、机器学习和计算语言学技术，根据文本数据传达的情感进行分析和分类。</p>
+<img src="https://s1.ax1x.com/2023/06/07/pCFTlLj.jpg" style="zoom: 67%;" />
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/10/16/SentimentAnalysis/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2021/10/12/GAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="William Teng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="William's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/12/GAN/" class="post-title-link" itemprop="url">生成式对抗网络（Generative Adversarial Network）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-12 14:27:19" itemprop="dateCreated datePublished" datetime="2021-10-12T14:27:19+08:00">2021-10-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>生成式对抗网络（GAN，英文全称Generative Adversarial Network）是一种深度学习模型，由于其生成高质量、真实数据的能力，近年来获得了极大的关注。GAN已被用于广泛的应用中，包括图像合成、风格转移和数据增强。在这篇文章中，我们将探讨什么是GAN、GAN是如何工作的、GAN与其他神经网络模型相比的优势，以及它们的主要应用和用例。</p>
-<h2 id="什么是GAN"><a href="#什么是GAN" class="headerlink" title="什么是GAN"></a>什么是GAN</h2><p>生成式对抗网络（GAN）是一类机器学习模型，由两个神经网络组成，一个是生成器（Generator）和一个判别器（Discriminator），它们在零和游戏中相互竞争。生成器创建合成数据样本，而判别器的工作是区分真实和虚假的数据样本。生成器的目标是提高其创造能够“欺骗”判别器的真实数据的能力，而判别器的目标是提高其识别假数据的能力。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/12/GAN/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -915,6 +841,82 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://williamteng.github.io/2019/01/19/NewRetail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="William Teng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/19/NewRetail/" class="post-title-link" itemprop="url">新零售时代的取胜之道</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-19 19:47:44" itemprop="dateCreated datePublished" datetime="2019-01-19T19:47:44+08:00">2019-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">数字化转型</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>永辉和Gartner是长期的战略合作伙伴，双方携手对新零售以及垂直行业数字化转型共同研究以期突破。</p>
+<p><img src="https://s1.ax1x.com/2018/02/23/9aFoss.jpg" alt="永辉新零售业务“超级物种”"></p>
+<p>2016年，阿里巴巴马云首次提出“新零售”的概念。此后，“新零售”成为热点话题，开始席卷各个消费品细分行业，对品牌商及零售企业都带来了巨大的变革性影响。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/01/19/NewRetail/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -986,7 +988,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -999,7 +1001,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

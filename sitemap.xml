@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://williamteng.github.io/2022/10/16/SentimentAnalysis/</loc>
+    
+    <lastmod>2023-06-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/about/index.html</loc>
+    
+    <lastmod>2023-06-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2023/06/02/UserProfile/</loc>
     
     <lastmod>2023-06-07</lastmod>
@@ -37,28 +51,7 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/about/index.html</loc>
-    
-    <lastmod>2023-05-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://williamteng.github.io/2018/07/03/DeepLearning/</loc>
-    
-    <lastmod>2023-05-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2022/10/16/SentimentAnalysis/</loc>
-    
-    <lastmod>2023-05-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2021/10/12/GAN/</loc>
     
     <lastmod>2023-05-20</lastmod>
     
@@ -179,6 +172,13 @@
   </url>
   
   <url>
+    <loc>http://williamteng.github.io/tags/2023%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/</loc>
+    <lastmod>2023-06-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93%E8%8A%AF%E7%89%87/</loc>
     <lastmod>2023-06-07</lastmod>
     <changefreq>daily</changefreq>
@@ -187,20 +187,6 @@
   
   <url>
     <loc>http://williamteng.github.io/tags/AIGC/</loc>
-    <lastmod>2023-06-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/tags/2023%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/</loc>
-    <lastmod>2023-06-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-06-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -221,14 +207,14 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/</loc>
+    <loc>http://williamteng.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-06-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/tags/GAN/</loc>
+    <loc>http://williamteng.github.io/tags/%E4%BC%81%E4%B8%9A%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2023-06-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
