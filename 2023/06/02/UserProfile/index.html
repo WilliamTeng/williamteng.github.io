@@ -35,12 +35,13 @@
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/03/pCpbKN8.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wBHP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wsN8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/07/pCFWab6.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC90lvj.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wy4S.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wc9g.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC9wIEV.png">
 <meta property="article:published_time" content="2023-06-02T13:17:25.000Z">
-<meta property="article:modified_time" content="2023-06-04T05:37:20.885Z">
+<meta property="article:modified_time" content="2023-06-07T11:10:48.518Z">
 <meta property="article:author" content="William Teng">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="大数据">
@@ -285,25 +286,96 @@
 
 <h2 id="八、软件完整架构"><a href="#八、软件完整架构" class="headerlink" title="八、软件完整架构"></a>八、软件完整架构</h2><img src="https://s1.ax1x.com/2023/06/04/pC9wsN8.png" style="zoom: 80%;" />
 
-<h2 id="九、第三方埋点-SDK-集成步骤"><a href="#九、第三方埋点-SDK-集成步骤" class="headerlink" title="九、第三方埋点 SDK 集成步骤"></a>九、第三方埋点 SDK 集成步骤</h2><ul>
+<h2 id="九、关于阿里云数据仓库工具与开源工具的对比"><a href="#九、关于阿里云数据仓库工具与开源工具的对比" class="headerlink" title="九、关于阿里云数据仓库工具与开源工具的对比"></a>九、关于阿里云数据仓库工具与开源工具的对比</h2><p>不少企业使用阿里云、腾讯云或者亚马逊云的数据仓库实现营销数据仓库，使用组件大部分和开源是对应的，比如阿里云的对应如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>阿里云产品</strong></th>
+<th align="center"><strong>简介</strong></th>
+<th align="center"><strong>类比</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">DataHub</td>
+<td align="center">数据总线</td>
+<td align="center">Kafka+各种服务接口</td>
+</tr>
+<tr>
+<td align="center">MaxCompute</td>
+<td align="center">大数据计算框架</td>
+<td align="center">Hadoop+Hive+调度器</td>
+</tr>
+<tr>
+<td align="center">DataWorks</td>
+<td align="center">可视化MaxCompute的开发管理平台</td>
+<td align="center">目前没有</td>
+</tr>
+<tr>
+<td align="center">RDS</td>
+<td align="center">关系型数据库</td>
+<td align="center">MySQL</td>
+</tr>
+<tr>
+<td align="center">QuickBI</td>
+<td align="center">可视化数据展示工具</td>
+<td align="center">Tableau、Echarts、Kibana</td>
+</tr>
+<tr>
+<td align="center">ECS</td>
+<td align="center">弹性服务器</td>
+<td align="center">Linux服务器</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"><strong>阿里云框架</strong></th>
+<th align="center"><strong>开源框架</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>数据采集传输</strong></td>
+<td align="center">Flume, DataHub, RDS</td>
+<td align="center">Flume, Kafka, Sqoop, DataX</td>
+</tr>
+<tr>
+<td align="center"><strong>数据存储</strong></td>
+<td align="center">MaxCompute, DataWorks</td>
+<td align="center">MySQL, Hadoop, HBase</td>
+</tr>
+<tr>
+<td align="center"><strong>数据计算</strong></td>
+<td align="center">MaxCompute, DataWorks</td>
+<td align="center">Hive, Spark, Flink</td>
+</tr>
+<tr>
+<td align="center"><strong>数据可视化</strong></td>
+<td align="center">QuickBI</td>
+<td align="center">Tableau, Echats, Kibana</td>
+</tr>
+</tbody></table>
+<img src="https://s1.ax1x.com/2023/06/07/pCFWab6.png" style="zoom: 50%;" />
+
+<h2 id="十、第三方埋点-SDK-集成步骤"><a href="#十、第三方埋点-SDK-集成步骤" class="headerlink" title="十、第三方埋点 SDK 集成步骤"></a>十、第三方埋点 SDK 集成步骤</h2><ul>
 <li>引入 SDK：引入 SDK可以方便开发人员进行快速集成和开发。在终端应用配置文件中添加 SDK 依赖后，还需要按照具体操作步骤来完成引入，通常需要根据不同的终端采取不同的引入方式。</li>
 <li>配置上报服务端 API 地址：配置上报服务端 API地址是指在应用中设置SDK上报API的服务端地址。通过这个地址可控制SDK数据上报到哪个服务器、哪个URL地址，以及如何验证该地址的合法性。在进行SDK设置之前需要明确服务端API地址的位置和格式，然后再用API地质进行SDK初始化操作，使SDK能够准确地发送监控数据到指定API地址。</li>
 <li>开启全埋点：开启全埋点意味着SDK可以自动收集并记录用户行为，从而分析和诊断应用程序的性能和行为。常见的用户行为范畴包括App启动、退出、浏览页面、控件点击等。要实现全局堆积跟踪，开发人员需要在初始化SDK时调用相应的API，并设置相关参数。开启全埋点的优势在于，可以在不影响业务代码的情况下全面监测应用程序的使用情况，从而有效提高产品质量、用户体验和市场竞争力。</li>
 </ul>
-<h2 id="十、API-接入服务设计"><a href="#十、API-接入服务设计" class="headerlink" title="十、API 接入服务设计"></a>十、API 接入服务设计</h2><p>API接入服务是指不同渠道的埋点数据通过HTTP API发送至服务端API，从而实现数据的接入。在数据接入方面，为了实现高并发、高可靠性与高可扩展性，采用Nginx作为WEB容器来接收客户端SDK发送的数据，并将之写到日志文件上。在使用API接入时，需要注意必须遵循RESTful风格，并按照特定的请求方式或请求体格式进行数据传输。</p>
+<h2 id="十一、API-接入服务设计"><a href="#十一、API-接入服务设计" class="headerlink" title="十一、API 接入服务设计"></a>十一、API 接入服务设计</h2><p>API接入服务是指不同渠道的埋点数据通过HTTP API发送至服务端API，从而实现数据的接入。在数据接入方面，为了实现高并发、高可靠性与高可扩展性，采用Nginx作为WEB容器来接收客户端SDK发送的数据，并将之写到日志文件上。在使用API接入时，需要注意必须遵循RESTful风格，并按照特定的请求方式或请求体格式进行数据传输。</p>
 <p>使用Nginx作为API服务器是出于多个考虑。首先，Nginx是一个轻量级的Web服务器，它可以处理数百个连接，这使得其能够针对大规模数据接入提供可靠的解决方案。其次，Nginx支持负载均衡和反向代理，因此可以处理分布式场景下的大量数据流量。最后，由于Nginx存储和处理日志等操作都被封装为模块，因此它可以轻松地存储和处理各种 HTTP 请求，管理和优化大型日志文件以及确保数据安全性。</p>
 <p>具体来说，在API接入服务设计中，需要配置Nginx的相关参数，例如缓冲区大小、缓存时间和缓存位置等。同时还需要设置Nginx的转发方式，如负载均衡、高可用性等。在API接口设置方面，需要定义输入&#x2F;输出参数，考虑支持本地代码或者远程调用，以及后续数据解析和分析的方便性。</p>
 <img src="https://s1.ax1x.com/2023/06/04/pC90lvj.png" style="zoom: 43%;" />
 
 <p>虽然Nginx在实现API接入服务中有很多优点，但它仍存在某些潜在问题和瓶颈。例如，由于Nginx是单线程的，它不能利用多核CPU提高吞吐量和并发性能，也可能会导致请求阻塞或堵塞。此外，Nginx无法处理与具体业务相关的复杂逻辑，因此必须将这些复杂逻辑委托给其他API产品或专业团队来开发和维护。</p>
 <p>对于这些问题，可以采取一些优化措施来解决。例如，使用多线程&#x2F;多进程模型来优化并发性能，并通过微服务架构来拆分应用程序，以简化API接口的管理和优化。此外，可以采用异步编程模式，例如使用Event-Driven 或 Reactive Programming来提高整个系统的性能和降低延迟。总之，不同的优化技术可以根据具体需求和场景选择使用，以获得最佳性能和可靠性。</p>
-<h2 id="十一、用户行为采集场景"><a href="#十一、用户行为采集场景" class="headerlink" title="十一、用户行为采集场景"></a>十一、用户行为采集场景</h2><p>实现以场景规划埋点，用场景检验埋点，需要结合通用基础场景、重要操作场景和业务主流程场景来进行场景梳理。</p>
+<h2 id="十二、用户行为采集场景"><a href="#十二、用户行为采集场景" class="headerlink" title="十二、用户行为采集场景"></a>十二、用户行为采集场景</h2><p>实现以场景规划埋点，用场景检验埋点，需要结合通用基础场景、重要操作场景和业务主流程场景来进行场景梳理。</p>
 <p>首先，在通用基础场景方面，需要确定在整个产品中哪些场景是通用的且需要考虑埋点。例如，点击、曝光、滑动等时间点、页面停留时间、网络情况以及设备类型等指标。这些需要被高度统一考虑并进行用户行为汇总分析，从而更清晰地了解用户偏好，提升产品体验。</p>
 <p>其次，在重要操作场景方面，需要确定关键业务操作，如浏览商品详情、下单购买、使用优惠券等核心场景。这些操作都需要统一归因，以便更好地定位用户需求和行为习惯，并进一步提高转化率和用户满意度。一旦确定这些操作场景，就可以确定需要采集的事件名称及其属性，以及构建对应的事件漏斗模型和数据报表。</p>
 <p>最后，在业务主流程场景方面，需要定义用户在业务主流程中所经历的完整过程。例如，在电商领域中，一个完整流程可能包括注册、登录、搜索商品、筛选商品、查看详情、加入购物车、提交订单、付款、评价等环节。这些业务主流程表示具体的用户行为跟踪路径，可以通过梳理场景，规划埋点，并采用可视化报表展现，为产品提供决策支持和数据驱动的改进方向。</p>
 <p>总之，通过以上三个层面的场景梳理考虑，可以实现以场景规划埋点，用场景检验埋点。同时，不同阶段的场景梳理，也能拓展产品理解和定位，满足各种需求和数据分析目标，不仅能帮助指导产品设计和运营策略，更能优化用户体验，提升生命周期价值。</p>
 <p><img src="https://s1.ax1x.com/2023/06/04/pC9wy4S.png"></p>
-<h2 id="十二、应用效果"><a href="#十二、应用效果" class="headerlink" title="十二、应用效果"></a>十二、应用效果</h2><img src="https://s1.ax1x.com/2023/06/04/pC9wc9g.png" style="zoom: 50%;" />
+<h2 id="十三、应用效果"><a href="#十三、应用效果" class="headerlink" title="十三、应用效果"></a>十三、应用效果</h2><img src="https://s1.ax1x.com/2023/06/04/pC9wc9g.png" style="zoom: 50%;" />
 
 <img src="https://s1.ax1x.com/2023/06/04/pC9wIEV.png" style="zoom:50%;" />
 
@@ -400,7 +472,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%94%B6%E9%9B%86%E7%94%A8%E6%88%B7%E7%9A%84%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 收集用户的基础数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%B7%A5%E5%92%8C%E5%A4%84%E7%90%86%EF%BC%8C%E5%B9%B6%E6%8A%BD%E8%B1%A1%E5%87%BA%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E3%80%82"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 数据加工和处理，并抽象出用户标签。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%A0%87%E7%AD%BE%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9E%B6%E6%9E%84%E5%BC%80%E5%8F%91%E5%92%8C%E5%AE%9E%E7%8E%B0%EF%BC%8C"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 标签化的数据进行大数据架构开发和实现，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%9C%80%E7%BB%88%E5%BD%A2%E6%88%90%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 最终形成服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="nav-number">5.</span> <span class="nav-text">五、电商平台的用户画像标签体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%9A%E5%8A%A1%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">6.</span> <span class="nav-text">六、业务设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">七、一个具体的系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E8%BD%AF%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%9E%B6%E6%9E%84"><span class="nav-number">8.</span> <span class="nav-text">八、软件完整架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9F%8B%E7%82%B9-SDK-%E9%9B%86%E6%88%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">9.</span> <span class="nav-text">九、第三方埋点 SDK 集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81API-%E6%8E%A5%E5%85%A5%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.</span> <span class="nav-text">十、API 接入服务设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E9%87%87%E9%9B%86%E5%9C%BA%E6%99%AF"><span class="nav-number">11.</span> <span class="nav-text">十一、用户行为采集场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%BA%94%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">12.</span> <span class="nav-text">十二、应用效果</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">二、用户画像分析的价值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 企业战略决策支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%94%A8%E6%88%B7%E7%B2%BE%E7%BB%86%E5%8C%96%E8%BF%90%E8%90%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 用户精细化运营</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5%E6%94%AF%E6%8C%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 产品运营支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 用户标签管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、用户画像的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%94%B6%E9%9B%86%E7%94%A8%E6%88%B7%E7%9A%84%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 收集用户的基础数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%B7%A5%E5%92%8C%E5%A4%84%E7%90%86%EF%BC%8C%E5%B9%B6%E6%8A%BD%E8%B1%A1%E5%87%BA%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E3%80%82"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 数据加工和处理，并抽象出用户标签。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%A0%87%E7%AD%BE%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9E%B6%E6%9E%84%E5%BC%80%E5%8F%91%E5%92%8C%E5%AE%9E%E7%8E%B0%EF%BC%8C"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 标签化的数据进行大数据架构开发和实现，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%9C%80%E7%BB%88%E5%BD%A2%E6%88%90%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 最终形成服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">四、实时用户画像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%A0%87%E7%AD%BE%E4%BD%93%E7%B3%BB"><span class="nav-number">5.</span> <span class="nav-text">五、电商平台的用户画像标签体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%9A%E5%8A%A1%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">6.</span> <span class="nav-text">六、业务设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">七、一个具体的系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E8%BD%AF%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%9E%B6%E6%9E%84"><span class="nav-number">8.</span> <span class="nav-text">八、软件完整架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%85%B3%E4%BA%8E%E9%98%BF%E9%87%8C%E4%BA%91%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">9.</span> <span class="nav-text">九、关于阿里云数据仓库工具与开源工具的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9F%8B%E7%82%B9-SDK-%E9%9B%86%E6%88%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">10.</span> <span class="nav-text">十、第三方埋点 SDK 集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81API-%E6%8E%A5%E5%85%A5%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.</span> <span class="nav-text">十一、API 接入服务设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E9%87%87%E9%9B%86%E5%9C%BA%E6%99%AF"><span class="nav-number">12.</span> <span class="nav-text">十二、用户行为采集场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E5%BA%94%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">13.</span> <span class="nav-text">十三、应用效果</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
