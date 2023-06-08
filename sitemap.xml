@@ -2,7 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://williamteng.github.io/2020/10/12/NewRetail02/</loc>
+    <loc>http://williamteng.github.io/2019/02/10/DigitalEconomy/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2023/04/15/DT2023/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2021/09/09/GreenFinance/</loc>
     
     <lastmod>2023-06-08</lastmod>
     
@@ -16,7 +30,28 @@
   </url>
   
   <url>
+    <loc>http://williamteng.github.io/2023/05/06/2023AITrends/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://williamteng.github.io/2023/06/02/UserProfile/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2019/01/19/NewRetail/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2020/10/12/NewRetail02/</loc>
     
     <lastmod>2023-06-08</lastmod>
     
@@ -37,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/2023/05/06/2023AITrends/</loc>
-    
-    <lastmod>2023-06-05</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2023/04/15/DT2023/</loc>
-    
-    <lastmod>2023-05-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://williamteng.github.io/2023/03/12/AIGC/</loc>
     
     <lastmod>2023-05-21</lastmod>
@@ -61,13 +82,6 @@
     <loc>http://williamteng.github.io/2018/07/03/DeepLearning/</loc>
     
     <lastmod>2023-05-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2021/09/09/GreenFinance/</loc>
-    
-    <lastmod>2022-06-26</lastmod>
     
   </url>
   
@@ -115,20 +129,6 @@
   
   <url>
     <loc>http://williamteng.github.io/2018/08/06/cnn/</loc>
-    
-    <lastmod>2020-10-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2019/02/10/DigitalEconomy/</loc>
-    
-    <lastmod>2020-10-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2019/01/19/NewRetail/</loc>
     
     <lastmod>2020-10-14</lastmod>
     
