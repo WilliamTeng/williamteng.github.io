@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://williamteng.github.io/about/index.html</loc>
+    <loc>http://williamteng.github.io/2020/10/12/NewRetail02/</loc>
+    
+    <lastmod>2023-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://williamteng.github.io/2023/02/14/Pre-training/</loc>
     
     <lastmod>2023-06-08</lastmod>
     
@@ -16,14 +23,14 @@
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/2022/10/16/SentimentAnalysis/</loc>
+    <loc>http://williamteng.github.io/about/index.html</loc>
     
-    <lastmod>2023-06-07</lastmod>
+    <lastmod>2023-06-08</lastmod>
     
   </url>
   
   <url>
-    <loc>http://williamteng.github.io/2023/02/14/Pre-training/</loc>
+    <loc>http://williamteng.github.io/2022/10/16/SentimentAnalysis/</loc>
     
     <lastmod>2023-06-07</lastmod>
     
@@ -68,13 +75,6 @@
     <loc>http://williamteng.github.io/2018/04/04/DowEA/</loc>
     
     <lastmod>2022-06-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://williamteng.github.io/2020/10/12/NewRetail02/</loc>
-    
-    <lastmod>2020-10-14</lastmod>
     
   </url>
   
